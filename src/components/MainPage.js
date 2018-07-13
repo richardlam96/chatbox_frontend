@@ -7,17 +7,14 @@ import Blank from '../components/Blank';
 
 
 const MainPage = ({ currentUser }) => {
-	if (currentUser.isAuthenticated) {
-		return (
-			<Route exact path="/user/:userId" render={Blank} />
-		);
-	}
+	console.log(currentUser);
 
 	return (
 		<div className="main">
 			<Switch>
 				<Route exact path="/" render={LaunchPage} />
 				<Route exact path="/:authMode" render={Auth} />
+				<Route exact path="/welcome/user" render={Blank} />
 			</Switch>
 		</div>
 	);

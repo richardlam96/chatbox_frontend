@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class AuthPage extends Component {
@@ -15,7 +15,7 @@ class AuthPage extends Component {
 		e.preventDefault();
 		let { match: { params } } = this.props;
 		this.props.submitCred(params.authMode, this.state)
-			.then(() => this.props.history.push("/"));
+			.then(() => this.props.history.push("/welcome/user"));
 	}
 
 	handleChange = e => {
@@ -40,12 +40,14 @@ class AuthPage extends Component {
 
 		// Create Link to alternate Auth mode.
 		let altPath, linkText;
-		if (params.authMode === "signin") {
+		if (params.authMode === 'signin') {
 			altPath = '/register';
 			linkText = 'Register';
-		} else {
+		} else if (params.authMode === 'register') {
 			altPath = '/signin';
 			linkText = 'Sign in';
+		} else {
+			return (<Redirect to="/" />);
 		}
 
 		return (
