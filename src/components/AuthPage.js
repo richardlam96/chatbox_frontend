@@ -14,13 +14,11 @@ class AuthPage extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		let { match: { params } } = this.props;
-		let { dispatch, handleAuth } = this.props;
-		dispatch(handleAuth(params.authMode, this.state))
+		this.props.submitCred(params.authMode, this.state)
 			.then(() => this.props.history.push("/"));
 	}
 
 	handleChange = e => {
-		console.log(this.props);
 		this.setState({
 			[e.target.name]: e.target.value,
 		});

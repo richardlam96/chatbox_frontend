@@ -12,8 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		dispatch,
-		handleAuth,
+		submitCred: (mode, cred) => dispatch(handleAuth(mode, cred)),
 	};
 }
 
