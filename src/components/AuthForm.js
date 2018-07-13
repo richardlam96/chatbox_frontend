@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { registerUser } from '../store/actions/auth';
 
 
 class AuthForm extends Component {
@@ -27,7 +26,8 @@ class AuthForm extends Component {
 
 	render() {
 		return (
-			<div className="signin">
+			<div className="authform">
+				{this.props.alternateLink}
 				<form onSubmit={this.handleSubmit}>
 					<p>Username</p>
 					<input 
@@ -42,7 +42,7 @@ class AuthForm extends Component {
 						onChange={this.handleChange}
 					/>
 					<button>
-						{this.props.text}
+						Submit
 					</button>
 				</form>
 			</div>

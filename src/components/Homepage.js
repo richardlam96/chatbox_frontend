@@ -1,16 +1,33 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
+import AuthContainer from '../containers/AuthContainer';
 
 
 const Homepage = props => {
-	return (
-		<div className="homepage">
-			This is the homepage.
-			{props.currentUser ? 
-				(<p>You logged in</p>) :
-				(<p>You did NOT log in yet</p>)
-			}
-		</div>
-	);
+	const showLaunchPage = () => {
+		return (
+			<div className="homepage">
+				<Route
+					path="/"
+					render={() => <AuthContainer />}
+				/>
+			</div>
+		);
+	
+	}
+	
+	const showUserHome = () => {
+		return (
+			<div>You logged in! Redirect or Route to UserHome</div>
+		);
+	}
+
+	if (props.user) {
+		return showUserHome();
+	} else {
+		return showLaunchPage();
+	}
+
 }
 
 export default Homepage;

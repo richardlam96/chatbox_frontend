@@ -9,8 +9,22 @@ export function setCurrentUser(user) {
 	};
 }
 
+export function handleAuth(mode, userData) {
+	return dispatch => {
+		return apiCall(
+			'post',
+			'/api/auth/' + mode,
+			userData,
+		).then(data => {
+			localStorage.setItem('jwtToken', data.token);
+			dispatch(setCurrentUser(data.user));
+		});
+	}
+}
+
+
 export function signInUser(userData) {
-	return function(dispatch) {
+	return dispatch => {
 		return apiCall(
 			'post', 
 			'/api/auth/signin',
@@ -23,7 +37,7 @@ export function signInUser(userData) {
 }
 
 export function registerUser(userData) {
-	return function(dispatch) {
+	return dispatch => {
 		return apiCall(
 			'post', 
 			'/api/auth/register',
