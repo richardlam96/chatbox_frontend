@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import MainPage from '../components/MainPage';
+import handleAuth from '../store/actions/auth';
+import AuthPage from '../components/AuthPage';
 
 
 const mapStateToProps = state => {
@@ -9,11 +10,14 @@ const mapStateToProps = state => {
 	};
 }
 
-	
+const mapDispatchToProps = dispatch => {
+	return {
+		dispatch,
+		handleAuth,
+	};
+}
 
 export default withRouter(connect(
 	mapStateToProps,
-	null
-)(MainPage));
-
-
+	mapDispatchToProps
+)(AuthPage));

@@ -9,7 +9,7 @@ export function setCurrentUser(user) {
 	};
 }
 
-export function handleAuth(mode, userData) {
+export default function handleAuth(mode, userData) {
 	return dispatch => {
 		return apiCall(
 			'post',

@@ -1,18 +1,78 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from '../store';
-import HomepageContainer from './HomepageContainer';
-
+import Main from './Main';
+// import { Route, Switch, Link } from 'react-router-dom';
 
 const store = configureStore();
 
-const App = () => (
-	<Provider store={store}>
-		<BrowserRouter>
-			<HomepageContainer />
-		</BrowserRouter>
-	</Provider>
-);
+class App extends Component {
+	render() {
+		return (
+			<Provider store={store}>
+				<BrowserRouter>
+					<Main />
+				</BrowserRouter>
+			</Provider>
+		);
+	}
+};
+
+
+// TEMPORARY same-file components ____________________________________________
+// Basic structure of the Auth UI feature.
+
+// const Main = (props) => (
+// 	<div>
+// 		<Switch>
+// 			<Route exact path="/" render={LaunchPage} />
+// 			<Route exact path="/:authMode" render={AuthPage} />
+// 		</Switch>
+// 	</div>
+// );
+// 
+// const LaunchPage = ({ match }) => (
+// 	<div>
+// 		<p>Route: {match.path}</p>
+// 		<p>This is the Launch Page</p>
+// 		<Link to="/signin">Go to Sign In page</Link>
+// 		<Link to="/register">Go to Register page</Link>
+// 	</div>
+// );
+// 
+// const AuthPage = ({ match }) => {
+// 	var link;
+// 	if (match.params.authMode === "signin") {
+// 		link = <Link to="/register">Register for an account</Link>
+// 	} else {
+// 		link = <Link to="/signin">Sign in to your account</Link>
+// 	}
+// 
+// 	return (
+// 		<div>
+// 			<Link to="/">Home</Link>
+// 			<p>Auth Mode: {match.params.authMode}</p>
+// 			<p>This is the {match.params.authMode} page</p>
+// 			{link}
+// 		</div>
+// 	);
+// }
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default App;
