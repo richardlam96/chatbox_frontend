@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 
-const AuthRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    props.currentUser.isAuthenticated
+const AuthRoute = ({ component: Component, currentUser, ...rest }) => (
+  <Route {...rest} render={props => (
+    currentUser.isAuthenticated
       ? <Component {...props} />
       : <Redirect to="/signin" />
   )} />

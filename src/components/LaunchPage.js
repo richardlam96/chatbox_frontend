@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from './Navbar';
 
 
-const LaunchPage = ({ match: { path } }) => (
+const LaunchPage = () => (
 	<div className="launchpage">
 		<Navbar />
-		<p>Launch Page, at: {path}</p>
+		<p>Launch Page</p>
 	</div>
 );
 

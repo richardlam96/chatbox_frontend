@@ -1,5 +1,9 @@
 import { apiCall } from '../../services/api';
-import { SET_CURRENT_USER } from '../actionTypes';
+import { 
+  SET_CURRENT_USER,
+  AUTH_CURRENT_USER,
+  SIGNOUT_CURRENT_USER,
+} from '../actionTypes';
 
 
 export function setCurrentUser(userData) {
@@ -9,14 +13,26 @@ export function setCurrentUser(userData) {
 	};
 }
 
-export default function handleAuth(mode, userData) {
+export function authCurrentUser() {
+  return {
+    type: AUTH_CURRENT_USER,
+  };
+}
+
+export function signoutUser() {
+  localStorage.clear();
+  return {
+    type: SIGNOUT_CURRENT_USER,
+  };
+}
+
+export function handleAuth(mode, userData) {
 	return dispatch => {
 		return apiCall(
 			'post',
-			'http://localhost:3000/api/auth/' + mode,
+			'/api/auth/' + mode,
 			userData,
 		).then(data => {
-			console.log('data', data);
 			localStorage.setItem('jwtToken', data.token);
 			dispatch(setCurrentUser(data));
 		}).catch(error => {

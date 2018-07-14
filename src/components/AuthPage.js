@@ -13,9 +13,9 @@ class AuthPage extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		let { match: { params } } = this.props;
-		this.props.submitCred(params.authMode, this.state)
-			.then(() => this.props.history.push("/welcome/user"));
+    let { authMode, submitCred } = this.props;
+		submitCred(authMode, this.state)
+			.then(() => this.props.history.push("/welcome"));
 	}
 
 	handleChange = e => {
@@ -24,36 +24,33 @@ class AuthPage extends Component {
 		});
 	}
 
-	clearState = () => {
-		// !!! this does not work !!!
-		console.log(this.state);
-		this.setState({
-			username: '', 
-			password: '',
-		});
-	}
-
 	render() {
+    // Redirect if user is already logged in.
+    if (this.props.currentUser.isAuthenticated) {
+      return <Redirect to="/welcome" />;
+    }
+
 		let { 
-			match: { params }, 
+      authMode,
 		} = this.props;
 
 		// Create Link to alternate Auth mode.
 		let altPath, linkText;
-		if (params.authMode === 'signin') {
+		if (authMode === 'signin') {
 			altPath = '/register';
 			linkText = 'Register';
-		} else if (params.authMode === 'register') {
+		} else if (authMode === 'register') {
 			altPath = '/signin';
 			linkText = 'Sign in';
 		} else {
-			return (<Redirect to="/" />);
+      // If another route is caught, redirect to that route.
+			return (<Redirect to="/{authMode}" />);
 		}
 
 		return (
 			<div className="authpage">
 				<Link to="/">Return Home</Link>
-				<p>Auth page, at: {params.authMode}</p>
+				<p>Auth page, at: {authMode}</p>
 				<hr />
 				<form onSubmit={this.handleSubmit}>
 					<div>
@@ -76,8 +73,7 @@ class AuthPage extends Component {
 				</form>
 				<Link 
 					to={altPath}
-					onClick={this.clearState}
-					>
+					onClick={this.clearState}>
 					{linkText}
 				</Link>
 			</div>

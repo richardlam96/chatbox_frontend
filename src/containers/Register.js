@@ -7,6 +7,7 @@ import AuthPage from '../components/AuthPage';
 const mapStateToProps = state => {
 	return {
 		currentUser: state.currentUser,
+    authMode: 'register',
 	};
 }
 

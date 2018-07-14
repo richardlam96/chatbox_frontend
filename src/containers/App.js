@@ -1,18 +1,44 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import configureStore from '../store';
-import Main from './Main';
-// import { Route, Switch, Link } from 'react-router-dom';
+
+// containers
+import Auth from './Auth';
+import Blank from './Blank';
+import SignIn from './SignIn';
+import Register from './Register';
+import Home from './Home';
+
+// components
+import LaunchPage from '../components/LaunchPage';
+
+// functions and utils
+import { authCurrentUser } from '../store/actions/auth';
+import AuthRoute from '../utils/AuthRoute';
+
 
 const store = configureStore();
+const token = localStorage.getItem('jwtToken');
+if (token) {
+  store.dispatch(authCurrentUser());
+  console.log(store.getState());
+}
 
 class App extends Component {
 	render() {
 		return (
 			<Provider store={store}>
 				<BrowserRouter>
-					<Main />
+
+          <Switch>
+            <Route exact path="/" render={LaunchPage} />
+            <Route exact path="/signin" render={SignIn} />
+            <Route exact path="/register" render={Register} />
+            <Route exact path="/welcome" render={Home} />
+          </Switch>
+
 				</BrowserRouter>
 			</Provider>
 		);

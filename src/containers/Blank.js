@@ -1,23 +1,20 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import MainPage from '../components/MainPage';
+import BlankPage from '../components/BlankPage';
 
 
 const mapStateToProps = state => {
-	return {
-		currentUser: state.currentUser,
-	};
+  return {
+    currentUser: state.currentUser,
+  };
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-  };
+  return {};
 }
 
 
 export default withRouter(connect(
-	mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps,
-)(MainPage));
-
-
+)(BlankPage));
