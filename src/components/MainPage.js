@@ -8,6 +8,9 @@ import Blank from '../components/Blank';
 
 const MainPage = ({ currentUser }) => {
 	console.log(currentUser);
+	if (!currentUser.isAuthenticated) {
+		return( <Redirect to="/:authMode" /> );
+	}
 
 	return (
 		<div className="main">
