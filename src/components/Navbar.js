@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { signoutUser } from '../store/actions/auth';
 
 
 const Navbar = ({ currentUser, logout }) => {
@@ -31,4 +34,20 @@ const Navbar = ({ currentUser, logout }) => {
   );
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(signoutUser()),
+  };
+}
+
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar));

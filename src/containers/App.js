@@ -23,7 +23,6 @@ const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
   store.dispatch(authCurrentUser());
-  console.log(store.getState());
 }
 
 class App extends Component {

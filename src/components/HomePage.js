@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import Nav from '../containers/Nav';
+import Navbar from './Navbar';
 
 
 const HomePage = ({ currentUser }) => {
   if (currentUser.isAuthenticated) {
-    console.log('already logged in.');
-    console.log(currentUser);
     return (
-      <div className="blank">
-        <Nav />
+      <div className="homepage">
+        <Navbar />
         <p>HomePage</p>
         <p>Hello, {currentUser.username}</p>
         <Link to="/">Return to Launch</Link>
