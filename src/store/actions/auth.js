@@ -42,29 +42,29 @@ export function handleAuth(mode, userData) {
 }
 
 
-export function signInUser(userData) {
-	return dispatch => {
-		return apiCall(
-			'post', 
-			'/api/auth/signin',
-			userData,
-		).then(data => {
-			localStorage.setItem('jwtToken', data.token);
-			dispatch(setCurrentUser(data.user));
-		});
-	}
-}
-
-export function registerUser(userData) {
-	return dispatch => {
-		return apiCall(
-			'post', 
-			'/api/auth/register',
-			userData,
-		).then(data => {
-			localStorage.setItem('jwtToken', data.token);
-			dispatch(setCurrentUser(data.user));
-		});
-	}
-}
-
+// export function signInUser(userData) {
+// 	return dispatch => {
+// 		return apiCall(
+// 			'post', 
+// 			'/api/auth/signin',
+// 			userData,
+// 		).then(data => {
+// 			localStorage.setItem('jwtToken', data.token);
+// 			dispatch(setCurrentUser(data.user));
+// 		});
+// 	}
+// }
+// 
+// export function registerUser(userData) {
+// 	return dispatch => {
+// 		return apiCall(
+// 			'post', 
+// 			'/api/auth/register',
+// 			userData,
+// 		).then(data => {
+// 			localStorage.setItem('jwtToken', data.token);
+// 			dispatch(setCurrentUser(data.user));
+// 		});
+// 	}
+// }
+// 

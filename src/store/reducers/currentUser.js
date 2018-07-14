@@ -5,7 +5,9 @@ import {
 } from '../actionTypes';
 
 
-const DEFAULT_STATE = {};
+const DEFAULT_STATE = {
+  isAuthenticated: false,
+};
 
 export default (state=DEFAULT_STATE, action) => {
 	state = Object.freeze(state);

@@ -37,7 +37,6 @@ class App extends Component {
             <Route exact path="/register" render={Register} />
             <AuthRoute 
               exact path="/welcome" 
-              currentUser={store.getState().currentUser} 
               component={Home} 
             />
           </Switch>

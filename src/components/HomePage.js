@@ -10,7 +10,6 @@ const HomePage = ({ currentUser }) => {
       <Navbar />
       <p>HomePage</p>
       <p>Hello, {currentUser.username}</p>
-      <Link to="/">Return to Launch</Link>
     </div>
   );
 }
