@@ -35,7 +35,11 @@ class App extends Component {
             <Route exact path="/" render={LaunchPage} />
             <Route exact path="/signin" render={SignIn} />
             <Route exact path="/register" render={Register} />
-            <Route exact path="/welcome" render={Home} />
+            <AuthRoute 
+              exact path="/welcome" 
+              currentUser={store.getState().currentUser} 
+              component={Home} 
+            />
           </Switch>
 
 				</BrowserRouter>
