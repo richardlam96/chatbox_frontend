@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import configureStore from '../store';
 
 // containers
-import Auth from './Auth';
-import Blank from './Blank';
 import SignIn from './SignIn';
 import Register from './Register';
 import Home from './Home';
