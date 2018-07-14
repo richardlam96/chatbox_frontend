@@ -1,23 +1,20 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LaunchPage from './LaunchPage';
-import Auth from '../containers/Auth';
+import AuthRoute from '../utils/AuthRoute';
 
 import Blank from '../components/Blank';
 
 
 const MainPage = ({ currentUser }) => {
 	console.log(currentUser);
-	if (!currentUser.isAuthenticated) {
-		return( <Redirect to="/:authMode" /> );
-	}
 
 	return (
 		<div className="main">
 			<Switch>
 				<Route exact path="/" render={LaunchPage} />
 				<Route exact path="/:authMode" render={Auth} />
-				<Route exact path="/welcome/user" render={Blank} />
+				<AuthRoute exact path="/welcome/user" component={Blank} />
 			</Switch>
 		</div>
 	);
