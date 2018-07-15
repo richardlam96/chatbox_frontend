@@ -11,12 +11,25 @@ class AuthPage extends Component {
 		};
 	}
 
+  componentWillUnmount() {
+    this.handleClear();
+  }
+
+  handleClear = () => {
+    this.props.clearError();
+    this.setState({
+      username: '',
+      password: '',
+    });
+  }
+
 	handleSubmit = e => {
 		e.preventDefault();
     let { currentUser, authMode, submitCred } = this.props;
 		submitCred(authMode, this.state)
 		  .then(() => {
         if (currentUser.isAuthenticated) {
+          this.handleClear();
           this.props.history.push("/welcome");
         }       
       });
@@ -28,14 +41,7 @@ class AuthPage extends Component {
 		});
 	}
 
-  handleClear = () => {
-    this.props.clearError();
-    this.setState({
-      username: '',
-      password: '',
-    });
-  }
-
+  
 	render() {
     // Redirect if user is already logged in.
     if (this.props.currentUser.isAuthenticated) {
@@ -47,7 +53,7 @@ class AuthPage extends Component {
       error,
 		} = this.props;
 
-		// Create Link to alternate Auth mode.
+		// Create Link params for alternate Auth mode.
 		let altPath, linkText;
 		if (authMode === 'signin') {
 			altPath = '/register';
@@ -60,7 +66,7 @@ class AuthPage extends Component {
 			return (<Redirect to="/{authMode}" />);
 		}
 
-    // Show any errors;
+    // Show any error messages.
     let errorMessage;
     if (error.exists) {
       errorMessage = error.message;
