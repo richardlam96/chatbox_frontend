@@ -46,7 +46,7 @@ class AuthPage extends Component {
 	render() {
     // Redirect if user is already logged in.
     if (this.props.currentUser.isAuthenticated) {
-      return <Redirect to="/welcome" />;
+      return <Redirect to="/home" />;
     }
 
 		let { 
@@ -80,7 +80,6 @@ class AuthPage extends Component {
 		}
 
     // Show any error messages.
-    let errorMessage;
     if (error.exists) {
       subheading = error.message;
     }
@@ -88,7 +87,7 @@ class AuthPage extends Component {
 		return (
 			<div className="authpage">
         <div className="header">
-          <div className="logo">
+          <div className="logo"> 
             <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
           </div>
         </div>

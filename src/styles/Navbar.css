@@ -1,0 +1,29 @@
+.navbar {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.navbar-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.navbar-link {
+  font-family: PT Sans;
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.navbar-link:hover {
+  opacity: 0.8;
+}
+
+.navbar-logo {
+  position: absolute;
+  font-family: Righteous;
+  color: white;
+}
+

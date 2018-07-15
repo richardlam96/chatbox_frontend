@@ -3,33 +3,31 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { signoutUser } from '../store/actions/auth';
+import '../styles/Navbar.css';
 
 
 const Navbar = ({ currentUser, logout }) => {
   let links;
   if (currentUser.isAuthenticated) {
     links = (
-      <ul>
-        <li><Link to="/welcome">Home</Link></li>
-        <li><button onClick={logout}>Logout</button></li>
-      </ul>
+      <div className="navbar-links">
+        <Link className="navbar-link" to="/home">Home</Link>
+        <button className="navbar-link" onClick={logout}>Logout</button>
+      </div>
     );
   } else { 
     links = (
-      <ul>
-        <li><Link to="/">Launch</Link></li>
-        <li><Link to="/signin">SignIn</Link></li>
-        <li><Link to="/register">Register</Link></li>
-      </ul>
+      <div className="navbar-links">
+        <Link className="navbar-link" to="/signin">SignIn</Link>
+        <Link className="navbar-link" to="/register">Register</Link>
+      </div>
     );
   }
 
   return (
     <div className="navbar">
-      <hr />
-      <p>Navbar</p>
+      <Link className="navbar-logo navbar-link" to="/">DROCSID</Link>
       {links}
-      <hr />
     </div>
   );
 }

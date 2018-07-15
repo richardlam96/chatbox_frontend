@@ -36,7 +36,7 @@ class App extends Component {
               <Route exact path="/signin" render={SignIn} />
               <Route exact path="/register" render={Register} />
               <AuthRoute 
-                exact path="/welcome" 
+                exact path="/home" 
                 component={Home} 
               />
             </Switch>
