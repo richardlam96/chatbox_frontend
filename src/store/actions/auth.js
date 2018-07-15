@@ -1,6 +1,8 @@
 import { apiCall } from '../../services/api';
 import { 
   SET_CURRENT_USER,
+  SET_CURRENT_USER_FAIL,
+  CLEAR_CURRENT_USER_FAIL,
   AUTH_CURRENT_USER,
   SIGNOUT_CURRENT_USER,
 } from '../actionTypes';
@@ -11,6 +13,19 @@ export function setCurrentUser(userData) {
 		type: SET_CURRENT_USER,
 		user: { ...userData },
 	};
+}
+
+export function setCurrentUserFail(error) {
+  return {
+    type: SET_CURRENT_USER_FAIL,
+    error,
+  };
+}
+
+export function clearCurrentUserFail() {
+  return {
+    type: CLEAR_CURRENT_USER_FAIL,
+  };
 }
 
 export function authCurrentUser() {
@@ -26,6 +41,8 @@ export function signoutUser() {
   };
 }
 
+
+
 export function handleAuth(mode, userData) {
 	return dispatch => {
 		return apiCall(
@@ -36,7 +53,7 @@ export function handleAuth(mode, userData) {
 			localStorage.setItem('jwtToken', data.token);
 			dispatch(setCurrentUser(data));
 		}).catch(error => {
-			console.log('error', error);
+      dispatch(setCurrentUserFail(error));
 		});
 	}
 }

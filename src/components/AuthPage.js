@@ -15,7 +15,7 @@ class AuthPage extends Component {
 		e.preventDefault();
     let { authMode, submitCred } = this.props;
 		submitCred(authMode, this.state)
-			.then(() => this.props.history.push("/welcome"));
+		  .then(() => this.props.history.push("/welcome"));
 	}
 
 	handleChange = e => {
@@ -23,6 +23,14 @@ class AuthPage extends Component {
 			[e.target.name]: e.target.value,
 		});
 	}
+
+  handleClear = e => {
+    this.props.clearError();
+    this.setState({
+      username: '',
+      password: '',
+    });
+  }
 
 	render() {
     // Redirect if user is already logged in.
@@ -32,6 +40,7 @@ class AuthPage extends Component {
 
 		let { 
       authMode,
+      error,
 		} = this.props;
 
 		// Create Link to alternate Auth mode.
@@ -47,35 +56,46 @@ class AuthPage extends Component {
 			return (<Redirect to="/{authMode}" />);
 		}
 
+    // Show any errors;
+    let errorMessage;
+    if (error.exists) {
+      errorMessage = error.message;
+    }
+
 		return (
 			<div className="authpage">
 				<Link to="/">Return Home</Link>
 				<p>Auth page, at: {authMode}</p>
 				<hr />
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>Username</label>
-						<input 
-							type="text"
-							name="username"
-							onChange={this.handleChange}
-						/>
-					</div>
-					<div>
-						<label>Password</label>
-						<input 
-							type="password"
-							name="password"
-							onChange={this.handleChange}
-						/>
-					</div>
-					<button type="submit">Submit</button>
-				</form>
-				<Link 
-					to={altPath}
-					onClick={this.clearState}>
-					{linkText}
-				</Link>
+
+        <div className="authform">
+          <p>{errorMessage}</p>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <label>Username</label>
+              <input 
+                type="text"
+                name="username"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label>Password</label>
+              <input 
+                type="password"
+                name="password"
+                onChange={this.handleChange}
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+          <Link 
+            to={altPath}
+            onClick={this.handleClear}>
+            {linkText}
+          </Link>
+        </div>
+
 			</div>
 		);
 	}
