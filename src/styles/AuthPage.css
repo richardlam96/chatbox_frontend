@@ -1,13 +1,28 @@
 .header {
-  position: absolute;
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.header .logo {
+  font-family: Righteous;
+  font-size: 28px;
+  border: 1px blue;
+  margin: 20px 60px;
+}
+
+.header i {
+  margin: 0 5px;
+}
 
 .authpage {
   height: 100%;
   background: url('./images/discord_login.jpg') no-repeat center fixed;
   background-size: cover;
+}
+
+.authform-wrapper {
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +34,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
   box-sizing: border-box;
-  height: 425px;
+  min-height: 425px;
   width: 480px;
   padding: 40px;
   margin-left: 25%;

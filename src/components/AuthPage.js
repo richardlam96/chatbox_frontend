@@ -56,7 +56,7 @@ class AuthPage extends Component {
 
 		// Create Link params for alternate Auth mode.
     let heading, subheading, submitButtonText;
-		let altPath, linkText;
+		let altPath, promptText, linkText;
     let terms;
 		if (authMode === 'signin') {
       heading = "Welcome back!";
@@ -64,6 +64,7 @@ class AuthPage extends Component {
       submitButtonText = "Log In";
       terms = "";
 			altPath = '/register';
+      promptText = "Need an account?"
 			linkText = 'Register';
 		} else if (authMode === 'register') {
       heading = "Create an account";
@@ -71,7 +72,8 @@ class AuthPage extends Component {
       submitButtonText = "Continue";
       terms = "By registering, you agree to buying me donuts everyday."
 			altPath = '/signin';
-			linkText = 'Sign in';
+      promptText = "";
+			linkText = "Already have an account?";
 		} else {
       // If another route is caught, redirect to that route.
 			return (<Redirect to="/{authMode}" />);
@@ -86,7 +88,9 @@ class AuthPage extends Component {
 		return (
 			<div className="authpage">
         <div className="header">
-          <i class="fa fa-gamepad" aria-hidden="true"></i>Drocsid
+          <div className="logo">
+            <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
+          </div>
         </div>
         <div className="authform-wrapper">
           <form className="authform" onSubmit={this.handleSubmit}>
@@ -112,7 +116,7 @@ class AuthPage extends Component {
               <a className="redirect-link">Forgot your password?</a>
               <button type="submit">{submitButtonText}</button>
               <span className="redirect">
-                <span>Need an account? </span>
+                <span>{promptText} </span>
                 <Link 
                   to={altPath}
                   onClick={this.handleClear}
