@@ -87,46 +87,48 @@ class AuthPage extends Component {
 
 		return (
 			<div className="authpage">
-        <div className="header">
-          <div className="logo">
-            <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
-          </div>
-        </div>
-        <div className="authform-wrapper">
-          <form className="authform" onSubmit={this.handleSubmit}>
-            <div className="inner-wrapper">
-              <div className="heading">
-                {heading}
-              </div>
-              <div className={error.exists ? "error" : "subheading"}>
-                {subheading}
-              </div>
-              <h5>USERNAME</h5>
-              <input 
-                type="text"
-                name="username"
-                onChange={this.handleChange}
-              />
-              <h5>PASSWORD</h5>
-              <input 
-                type="password"
-                name="password"
-                onChange={this.handleChange}
-              />
-              <a className="redirect-link">Forgot your password?</a>
-              <button type="submit">{submitButtonText}</button>
-              <span className="redirect">
-                <span>{promptText} </span>
-                <Link 
-                  to={altPath}
-                  onClick={this.handleClear}
-                  className="redirect-link">
-                  {linkText}
-                </Link>
-              </span>
-              <span className="redirect">{terms}</span>
+        <div className="gradient">
+          <div className="header">
+            <div className="logo">
+              <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
             </div>
-          </form>
+          </div>
+          <div className="authform-wrapper">
+            <form className="authform" onSubmit={this.handleSubmit}>
+              <div className="inner-wrapper">
+                <div className="heading">
+                  {heading}
+                </div>
+                <div className={error.exists ? "error" : "subheading"}>
+                  {subheading}
+                </div>
+                <h5>USERNAME</h5>
+                <input 
+                  type="text"
+                  name="username"
+                  onChange={this.handleChange}
+                />
+                <h5>PASSWORD</h5>
+                <input 
+                  type="password"
+                  name="password"
+                  onChange={this.handleChange}
+                />
+                <a className="redirect-link">Forgot your password?</a>
+                <button type="submit">{submitButtonText}</button>
+                <span className="redirect">
+                  <span>{promptText} </span>
+                  <Link 
+                    to={altPath}
+                    onClick={this.handleClear}
+                    className="redirect-link">
+                    {linkText}
+                  </Link>
+                </span>
+                <span className="redirect">{terms}</span>
+              </div>
+            </form>
+          </div>
         </div>
 			</div>
 		);
