@@ -51,6 +51,10 @@
   text-align: center;
 }
 
+.error {
+  color: #f04747;
+}
+
 .inner-wrapper {
   height: 100%;
   display: flex;

@@ -82,7 +82,7 @@ class AuthPage extends Component {
     // Show any error messages.
     let errorMessage;
     if (error.exists) {
-      errorMessage = error.message;
+      subheading = error.message;
     }
 
 		return (
@@ -98,7 +98,7 @@ class AuthPage extends Component {
               <div className="heading">
                 {heading}
               </div>
-              <div className="subheading">
+              <div className={error.exists ? "error" : "subheading"}>
                 {subheading}
               </div>
               <h5>USERNAME</h5>
