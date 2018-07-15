@@ -13,9 +13,13 @@ class AuthPage extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-    let { authMode, submitCred } = this.props;
+    let { currentUser, authMode, submitCred } = this.props;
 		submitCred(authMode, this.state)
-		  .then(() => this.props.history.push("/welcome"));
+		  .then(() => {
+        if (currentUser.isAuthenticated) {
+          this.props.history.push("/welcome");
+        }       
+      });
 	}
 
 	handleChange = e => {
@@ -24,7 +28,7 @@ class AuthPage extends Component {
 		});
 	}
 
-  handleClear = e => {
+  handleClear = () => {
     this.props.clearError();
     this.setState({
       username: '',
