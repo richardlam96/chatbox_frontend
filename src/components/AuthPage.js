@@ -98,7 +98,7 @@ class AuthPage extends Component {
               <div className="heading">
                 {heading}
               </div>
-              <div className={error.exists ? "error" : "subheading"}>
+              <div className={error.exists ? "subheading error" : "subheading"}>
                 {subheading}
               </div>
               <h5>USERNAME</h5>
