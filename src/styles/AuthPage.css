@@ -18,7 +18,7 @@
 
 .authpage {
   height: 100%;
-  background: linear-gradient(to bottom right, rgba(96, 141, 255, 0.3), rgba(232, 238, 255, 0.1)), url('./images/discord_login.jpg') no-repeat center fixed;
+  background: linear-gradient(to bottom right, rgba(96, 141, 255, 0.4), rgba(232, 238, 255, 0.2)), url('./images/discord_login.jpg');
   background-size: cover;
 }
 
