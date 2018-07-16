@@ -12,12 +12,13 @@ const Navbar = ({ currentUser, logout }) => {
     links = (
       <div className="navbar-links">
         <Link className="navbar-link" to="/home">Home</Link>
-        <button className="navbar-link" onClick={logout}>Logout</button>
+        <a className="navbar-link" onClick={logout}>Logout</a>
       </div>
     );
   } else { 
     links = (
       <div className="navbar-links">
+        <Link className="navbar-logo navbar-link" to="/">DROCSID</Link>
         <Link className="navbar-link" to="/signin">SignIn</Link>
         <Link className="navbar-link" to="/register">Register</Link>
       </div>
@@ -26,7 +27,6 @@ const Navbar = ({ currentUser, logout }) => {
 
   return (
     <div className="navbar">
-      <Link className="navbar-logo navbar-link" to="/">DROCSID</Link>
       {links}
     </div>
   );
