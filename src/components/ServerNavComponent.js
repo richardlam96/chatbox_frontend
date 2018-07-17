@@ -7,10 +7,17 @@ class ServerNavComponent extends Component {
 	}
 
 	render() {
-		let { currentUser, servers, createServer } = this.props;
+		let { currentUser, servers, createServer, deleteServer } = this.props;
 		console.log(servers);
-		const serverList = servers.serverIds.map(id => (
-			<li key={id}>{servers.serversById[id].name}</li>
+		const serverList = servers.serverIds.map(serverId => (
+			<li key={serverId}>
+				{servers.serversById[serverId].name}
+				<button
+					onClick={() => deleteServer(currentUser.id, serverId)}
+					>
+					Delete
+				</button>
+			</li>
 		));
 
 		return (

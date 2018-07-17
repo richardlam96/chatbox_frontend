@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createUserServer } from '../store/actions/server';
+import { createUserServer, deleteUserServer } from '../store/actions/server';
 import ServerNavComponent from '../components/ServerNavComponent';
 
 
@@ -14,6 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		createServer: (userId, serverName) => dispatch(createUserServer(userId, serverName)),
+		deleteServer: (ownerId, serverId) => dispatch(deleteUserServer(ownerId, serverId)),
 	};
 }
 

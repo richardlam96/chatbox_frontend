@@ -4,6 +4,10 @@ import {
 	INDEX_USER_SERVERS_FAILURE,
 	CREATE_USER_SERVER_SUCCESS,
 	CREATE_USER_SERVER_FAILURE,
+	DELETE_USER_SERVER_SUCCESS,
+	DELETE_USER_SERVER_FAILURE,
+	UPDATE_USER_SERVER_SUCCESS,
+	UPDATE_USER_SERVER_FAILURE,
 } from '../actionTypes';
 
 
@@ -69,3 +73,34 @@ export function createUserServer(userId, serverName) {
 		});
 	}
 }
+
+
+// DELETE SERVER _____________________________________________________________
+export function deleteUserServerSuccess(deletedServer) {
+	return {
+		type: DELETE_USER_SERVER_SUCCESS,
+		deletedServer,
+	};
+}
+
+export function deleteUserServerFailure(error) {
+	return {
+		type: DELETE_USER_SERVER_FAILURE,
+		error,
+	};
+}
+
+export function deleteUserServer(ownerId, serverId) {
+	return dispatch => {
+		return apiCall(
+			'DELETE',
+			`/api/${ownerId}/servers/${serverId}`,
+		).then(deletedServer => {
+			dispatch(deleteUserServerSuccess(deletedServer));
+		}).catch(error => {
+			dispatch(deleteUserServerFailure(error));
+		});
+	}
+}
+
+

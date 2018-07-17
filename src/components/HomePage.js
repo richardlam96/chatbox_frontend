@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import ServerNav from '../containers/ServerNav';
+import ServerMain from '../containers/ServerMain';
 import '../styles/HomePage.css';
 
 
@@ -22,6 +24,7 @@ class HomePage extends Component {
 				<Navbar />
 				<p>HomePage</p>
 				<ServerNav />
+				<Route path="/channels/:serverId" render={ServerMain} />
 			</div>
 		);
 	}

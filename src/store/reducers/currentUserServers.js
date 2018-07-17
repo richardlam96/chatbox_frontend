@@ -1,6 +1,7 @@
 import {
 	INDEX_USER_SERVERS_SUCCESS,
 	CREATE_USER_SERVER_SUCCESS,
+	DELETE_USER_SERVER_SUCCESS,
 } from '../actionTypes';
 
 
@@ -30,6 +31,16 @@ export default (state=DEFAULT_STATE, action) => {
 				...state,
 				serversById,
 				serverIds,
+			};
+		case DELETE_USER_SERVER_SUCCESS:
+			const { [action.deletedServer._id]: deletedServer, ...rest } = state.serversById;
+			const remainingServerIds = state.serverIds.filter(id => {
+				return id !== action.deletedServer._id;
+			});
+			return {
+				...state,
+				serversById: rest,
+				serverIds: remainingServerIds,
 			};
 		default:
 			return state;
