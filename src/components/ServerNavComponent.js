@@ -8,14 +8,14 @@ class ServerNavComponent extends Component {
 
 	render() {
 		console.log(this.props);
-		// const serverList = this.props.servers.serverIds.map(id => (
-		// 	<li>{this.props.servers.serverById[id].name}</li>
-		// ));
+		const serverList = this.props.servers.serverIds.map(id => (
+			<li>{this.props.servers.serverById[id].name}</li>
+		));
 
 		return (
 			<div className="server-nav-component">
 				<ul>
-					serverList
+					{serverList}
 				</ul>
 			</div>
 		);

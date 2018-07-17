@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import ServerNavComponent from './ServerNavComponent';
+import ServerNav from '../containers/ServerNav';
 import '../styles/HomePage.css';
 
 
@@ -20,7 +20,7 @@ class HomePage extends Component {
 			<div className="homepage">
 				<Navbar />
 				<p>HomePage</p>
-				<ServerNavComponent />
+				<ServerNav />
 			</div>
 		);
 	}
