@@ -12,9 +12,6 @@ class AuthPage extends Component {
 		};
 	}
 
-	componentWillMount() {
-	}
-
   componentWillUnmount() {
     this.handleClear();
   }
@@ -45,7 +42,6 @@ class AuthPage extends Component {
 		});
 	}
 
-  
 	render() {
     // Redirect if user is already logged in.
     if (this.props.currentUser.isAuthenticated) {
