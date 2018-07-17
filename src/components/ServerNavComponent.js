@@ -30,6 +30,7 @@ class ServerNavComponent extends Component {
 				<ul>
 					{serverList}
 				</ul>
+				<Link to="/activity">Activity</Link>
 			</div>
 		);
 	}
