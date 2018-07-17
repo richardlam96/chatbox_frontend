@@ -40,6 +40,10 @@ class App extends Component {
                 exact path="/home" 
                 component={Home} 
               />
+							<AuthRoute 
+                exact path="/home/:serverId" 
+                component={Home} 
+              />
             </Switch>
           </div>
 				</BrowserRouter>

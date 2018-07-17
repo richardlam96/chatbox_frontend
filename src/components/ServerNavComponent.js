@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class ServerNavComponent extends Component {
@@ -9,14 +10,14 @@ class ServerNavComponent extends Component {
 	render() {
 		let { currentUser, servers, createServer, deleteServer } = this.props;
 		const serverList = servers.serverIds.map(serverId => (
-			<li key={serverId}>
+			<Link to={'/home/' + serverId} key={serverId}>
 				{servers.serversById[serverId].name}
 				<button
 					onClick={() => deleteServer(currentUser.id, serverId)}
 					>
 					Delete
 				</button>
-			</li>
+			</Link>
 		));
 
 		return (

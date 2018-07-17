@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import ServerNav from '../containers/ServerNav';
 import ServerMain from '../containers/ServerMain';
@@ -17,12 +17,13 @@ class HomePage extends Component {
 	}
 
 	render() {
+	// This should have a different main, ie HomeMain
 		return (
 			<div className="homepage">
 				<Navbar />
 				<p>HomePage</p>
 				<ServerNav />
-				<Route path="/channels/:serverId" render={ServerMain} />
+				<ServerMain /> 
 			</div>
 		);
 	}
