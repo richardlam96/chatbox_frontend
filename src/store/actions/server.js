@@ -28,12 +28,10 @@ export function indexUserServersFailure(error) {
 
 export function indexUserServers(ownerId) {
 	return dispatch => {
-		console.log(...arguments);
 		return apiCall(
 			'GET',
 			`/api/${ownerId}/servers`,
 		).then(serverData => {
-			console.log(serverData);
 			dispatch(indexUserServersSuccess(serverData));
 		}).catch(error => {
 			dispatch(indexUserServersFailure(error));
@@ -59,16 +57,13 @@ export function createUserServerFailure(error) {
 
 export function createUserServer(userId, serverName) {
 	return dispatch =>  {
-		console.log(...arguments);
 		return apiCall(
 			'POST',
 			`/api/${userId}/servers`,
 			{ name: serverName }
 		).then(newServer => {
-			console.log(newServer);
 			dispatch(createUserServerSuccess(newServer));
 		}).catch(error => {
-			console.log(error);
 			dispatch(createUserServerFailure(error));
 		});
 	}

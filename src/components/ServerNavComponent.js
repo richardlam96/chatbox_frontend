@@ -8,7 +8,6 @@ class ServerNavComponent extends Component {
 
 	render() {
 		let { currentUser, servers, createServer, deleteServer } = this.props;
-		console.log(servers);
 		const serverList = servers.serverIds.map(serverId => (
 			<li key={serverId}>
 				{servers.serversById[serverId].name}
