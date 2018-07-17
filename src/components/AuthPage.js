@@ -12,6 +12,9 @@ class AuthPage extends Component {
 		};
 	}
 
+	componentWillMount() {
+	}
+
   componentWillUnmount() {
     this.handleClear();
   }
@@ -31,9 +34,9 @@ class AuthPage extends Component {
 		  .then(() => {
         if (currentUser.isAuthenticated) {
           this.handleClear();
-          this.props.history.push("/welcome");
-        }       
-      });
+          this.props.history.push("/home");
+				}
+			});
 	}
 
 	handleChange = e => {
@@ -48,7 +51,7 @@ class AuthPage extends Component {
     if (this.props.currentUser.isAuthenticated) {
       return <Redirect to="/home" />;
     }
-
+	
 		let { 
       authMode,
       error,
@@ -88,7 +91,7 @@ class AuthPage extends Component {
 			<div className="authpage">
         <div className="header">
           <div className="logo"> 
-            <i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
+            <i className="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
           </div>
         </div>
         <div className="authform-wrapper">
@@ -97,7 +100,7 @@ class AuthPage extends Component {
               <div className="heading">
                 {heading}
               </div>
-              <div className={error.exists ? "subheading error" : "subheading"}>
+              <div className={this.props.error.exists ? "subheading error" : "subheading"}>
                 {subheading}
               </div>
               <h5>USERNAME</h5>

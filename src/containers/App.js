@@ -12,7 +12,7 @@ import Home from './Home';
 import LaunchPage from '../components/LaunchPage';
 
 // functions and utils
-import { authCurrentUser } from '../store/actions/auth';
+import { setCurrentUser } from '../store/actions/auth';
 import AuthRoute from '../utils/AuthRoute';
 
 // styles
@@ -22,7 +22,8 @@ import '../styles/App.css';
 const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
-  store.dispatch(authCurrentUser());
+	const userData = JSON.parse(localStorage.getItem('currentUser'))
+  store.dispatch(setCurrentUser(userData));
 }
 
 class App extends Component {
