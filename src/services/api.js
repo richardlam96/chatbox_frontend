@@ -1,17 +1,6 @@
-import axios from 'axios';
 import fetch from 'isomorphic-fetch';
 import 'es6-promise';
 
-
-export function axiosApiCall(method, path, data) {
-	return axios[method](path, data).then(res => {
-		return res.data;
-	}).catch(error => {
-    throw {
-      ...error.response.data,
-    };
-  });
-}
 
 export function apiCall(method, path, data) {
 	const authToken = "Bearer " + localStorage.getItem('jwtToken');
