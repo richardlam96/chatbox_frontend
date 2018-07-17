@@ -3,6 +3,7 @@ import {
 	REMOVE_ERROR,
   SET_CURRENT_USER_FAIL,
   CLEAR_CURRENT_USER_FAIL,
+	INDEX_USER_SERVERS_FAILURE,
 } from '../actionTypes';
 
 
@@ -31,6 +32,11 @@ export default (state=DEFAULT_STATE, action) => {
       return {
         exists: false,
       };
+		case INDEX_USER_SERVERS_FAILURE:
+			return {
+				exists: true,
+				...action.error,
+			};
 		default:
 			return state;
 	}

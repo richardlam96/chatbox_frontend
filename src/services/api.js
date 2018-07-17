@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import 'es6-promise';
 
 
-export function apiCall(method, path, data) {
+export function apiCall(method, path, data=undefined) {
 	const authToken = "Bearer " + localStorage.getItem('jwtToken');
 	return fetch(path, {
 		method,
