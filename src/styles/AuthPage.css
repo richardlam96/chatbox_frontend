@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+	position: fixed;
 }
 
 .header .logo {
@@ -25,7 +26,7 @@
 }
 
 .authform-wrapper {
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +41,7 @@
   min-height: 425px;
   width: 480px;
   padding: 40px;
-  margin-left: 25%;
+	margin: auto;
 }
 
 .heading {
