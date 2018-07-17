@@ -9,7 +9,8 @@ class HomePage extends Component {
 		super(props);
 	}
 
-	async componentsDidMount() {
+	async componentWillMount() {
+		console.log('wuut');
 		let { indexServers, currentUser } = this.props;
 		await indexServers(currentUser.id);
 	}

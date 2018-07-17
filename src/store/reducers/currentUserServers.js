@@ -1,5 +1,6 @@
 import {
 	INDEX_USER_SERVERS_SUCCESS,
+	CREATE_USER_SERVER_SUCCESS,
 } from '../actionTypes';
 
 
@@ -15,6 +16,20 @@ export default (state=DEFAULT_STATE, action) => {
 			return {
 				...state,
 				...action.serverData,
+			};
+		case CREATE_USER_SERVER_SUCCESS:
+			const serversById = {
+				...state.serversById,
+				[action.newServer._id]: action.newServer,
+			};
+			const serverIds = [
+				...state.serverIds,
+				action.newServer._id,
+			];
+			return {
+				...state,
+				serversById,
+				serverIds,
 			};
 		default:
 			return state;

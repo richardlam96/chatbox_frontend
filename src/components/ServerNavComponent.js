@@ -7,13 +7,19 @@ class ServerNavComponent extends Component {
 	}
 
 	render() {
-		console.log(this.props);
-		const serverList = this.props.servers.serverIds.map(id => (
-			<li>{this.props.servers.serverById[id].name}</li>
+		let { currentUser, servers, createServer } = this.props;
+		console.log(servers);
+		const serverList = servers.serverIds.map(id => (
+			<li key={id}>{servers.serversById[id].name}</li>
 		));
 
 		return (
 			<div className="server-nav-component">
+				<button 
+					onClick={() => createServer(currentUser.id, 'new server')}
+					>
+					Create new Server
+				</button>
 				<ul>
 					{serverList}
 				</ul>
