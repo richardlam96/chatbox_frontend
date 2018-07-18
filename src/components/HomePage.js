@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Navbar from './Navbar';
 import ServerNav from '../containers/ServerNav';
-import Blank from '../containers/Blank';
 import '../styles/HomePage.css';
+
+// To be later replaced by UserControl.
+import Navbar from './Navbar';
+
+// Placeholder component.
+import Blank from '../containers/Blank';
+
+// Component in current progress.
+import ControlPane from '../containers/ControlPane';
+
 
 
 class HomePage extends Component {
@@ -17,16 +25,13 @@ class HomePage extends Component {
 	}
 
 	render() {
-	// This should have a different main, ie HomeMain
 		return (
 			<div className="homepage">
 				<Navbar />
 				<p>HomePage</p>
 				<ServerNav />
-				<Switch>
-					<Route path="/activity" render={Blank} />
-					<Route path="/home/:serverId" render={Blank} />
-				</Switch>
+        <ControlPane />
+        <Blank />
 			</div>
 		);
 	}

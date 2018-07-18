@@ -7,6 +7,7 @@ import configureStore from '../store';
 import SignIn from './SignIn';
 import Register from './Register';
 import Home from './Home';
+import Blank from './Blank';
 
 // components
 import LaunchPage from '../components/LaunchPage';
@@ -41,7 +42,11 @@ class App extends Component {
                 component={Home} 
               />
 							<AuthRoute 
-                exact path="/home/:serverId" 
+                exact path="/channels/:serverId" 
+                component={Home} 
+              />
+							<AuthRoute 
+                exact path="/activity"
                 component={Home} 
               />
             </Switch>
