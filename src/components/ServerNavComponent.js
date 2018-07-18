@@ -7,6 +7,11 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
+  handleClick = (e) => {
+    let index = Math.floor(Math.random() * 100000);
+    this.props.createServer(this.props.currentUser.id, 'new server' + index);
+  }
+
 	render() {
 		let { currentUser, servers, createServer, deleteServer } = this.props;
 		const serverList = servers.serverIds.map(serverId => (
@@ -23,7 +28,7 @@ class ServerNavComponent extends Component {
 		return (
 			<div className="server-nav-component">
 				<button 
-					onClick={() => createServer(currentUser.id, 'new server')}
+					onClick={this.handleClick}
 					>
 					Create new Server
 				</button>

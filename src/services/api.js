@@ -4,6 +4,7 @@ import 'es6-promise';
 
 export function apiCall(method, path, data=undefined) {
 	const authToken = "Bearer " + localStorage.getItem('jwtToken');
+  console.log(...arguments);
 	return fetch(path, {
 		method,
 		headers: {
@@ -14,6 +15,7 @@ export function apiCall(method, path, data=undefined) {
 	}).then(response => {
 		return response.json();
 	}).then(data => {
+    console.log(data);
 		// If there is no error, there will not be a status code
 		if (data.status !== 200 && data.status !== undefined) {
 			throw new Error(data.message);
