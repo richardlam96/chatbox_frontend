@@ -18,7 +18,6 @@ const Navbar = ({ currentUser, logout }) => {
   } else { 
     links = (
       <div className="navbar-links">
-        <Link className="navbar-logo navbar-link" to="/">DROCSID</Link>
         <Link className="navbar-link" to="/signin">SignIn</Link>
         <Link className="navbar-link" to="/register">Register</Link>
       </div>
