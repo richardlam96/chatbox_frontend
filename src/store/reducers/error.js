@@ -24,7 +24,8 @@ export default (state=DEFAULT_STATE, action) => {
 		case DELETE_USER_SERVER_FAILURE:
 			return {
 				exists: true,
-				...action.error,
+				status: action.error.status,
+				message: action.error.message,
 			};
 		default:
 			return state;
