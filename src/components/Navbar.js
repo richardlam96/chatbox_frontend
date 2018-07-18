@@ -6,8 +6,12 @@ import { signoutUser } from '../store/actions/auth';
 import '../styles/Navbar.css';
 
 
-const Navbar = ({ currentUser, logout }) => {
-  let links;
+const Navbar = ({ currentUser, error, logout }) => {
+  let links, message;
+	if (error.exists) {
+		message = error.message;
+	}
+
   if (currentUser.isAuthenticated) {
     links = (
       <div className="navbar-links">
@@ -26,6 +30,7 @@ const Navbar = ({ currentUser, logout }) => {
 
   return (
     <div className="navbar">
+			<div>{message}</div>
       {links}
     </div>
   );
@@ -34,6 +39,7 @@ const Navbar = ({ currentUser, logout }) => {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+		error: state.error,
   };
 }
 

@@ -51,6 +51,7 @@ export function handleAuth(mode, userData) {
 			userData,
 		).then(data => {
 			localStorage.setItem('jwtToken', data.token);
+			localStorage.setItem('currentUser', JSON.stringify(data));
 			dispatch(setCurrentUser(data));
 		}).catch(error => {
       dispatch(setCurrentUserFail(error));
