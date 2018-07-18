@@ -23,10 +23,18 @@ class ServerNavComponent extends Component {
 		} = this.props;
 
 		const serverList = serverIds.map(serverId => {
-			let firstChannel = ('/' + serversById[serverId].channels[0]) || '';
+			// Create path based on existance of channels.
+			let path, firstChannel;
+			if (serversById[serverId].channels[0]) {
+				firstChannel = '/' + serversById[serverId].channels[0];
+				path = '/channels/' + serverId + firstChannel;
+			} else {
+				path = '/channels/' + serverId;  
+			}
+
 			return (
 				<Link 
-					to={'/channels/' + serverId + firstChannel} 
+					to={path} 
 					key={serverId}
 					onClick={() => indexChannels(currentUser.id, serverId)}
 					>
@@ -47,10 +55,10 @@ class ServerNavComponent extends Component {
 					>
 					Create new Server
 				</button>
-				<ul>
+				<div className="server-list">
+					<Link to="/activity">Activity</Link>
 					{serverList}
-				</ul>
-				<Link to="/activity">Activity</Link>
+				</div>
 			</div>
 		);
 	}

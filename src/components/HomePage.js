@@ -25,17 +25,18 @@ class HomePage extends Component {
 	}
 
 	render() {
-		console.log(this.props.state);
 		// Focus on just rendering the Server Components of the app.
 		return (
 			<div className="homepage">
 				<Navbar />
 				<ServerNav />
-				<Switch>
-					<Route path="/channels/:serverId" render={ControlPane} />
+				<Switch className="control-pane">
+					<Route exact path="/channels/:serverId" render={ControlPane} />
 					<Route exact path="/activity" render={Blank} />
 				</Switch>
-				<Blank />
+				<Switch className="main-content">
+					<Blank />
+				</Switch>
 			</div>
 		);
 	}

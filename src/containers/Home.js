@@ -7,7 +7,6 @@ import HomePage from '../components/HomePage';
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-		state,
   };
 }
 
