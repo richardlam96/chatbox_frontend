@@ -31,11 +31,13 @@ class HomePage extends Component {
 				<Navbar />
 				<ServerNav />
 				<Switch className="control-pane">
+					<Route exact path="/channels/:serverId/:channelId" render={ControlPane} />
 					<Route exact path="/channels/:serverId" render={ControlPane} />
 					<Route exact path="/activity" render={Blank} />
 				</Switch>
 				<Switch className="main-content">
-					<Blank />
+					<Route exact path="/channels/:serverId" render={Blank} />
+					<Route exact path="/channels/:serverId/:channelId" render={Blank} />
 				</Switch>
 			</div>
 		);

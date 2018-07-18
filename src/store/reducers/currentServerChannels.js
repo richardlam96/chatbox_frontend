@@ -3,6 +3,7 @@ import {
 	CREATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_SERVER_CHANNEL_SUCCESS,
 	UPDATE_SERVER_CHANNEL_SUCCESS,
+	DELETE_USER_SERVER_SUCCESS,
 } from '../actionTypes';
 
 
@@ -59,6 +60,7 @@ export default (state=DEFAULT_STATE, action) => {
 				channelsById,
 				channelIds,
 			};
+		case DELETE_USER_SERVER_SUCCESS:
 		default:
 			return state;
 	}

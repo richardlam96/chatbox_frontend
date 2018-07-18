@@ -20,6 +20,7 @@ class ControlPaneComponent extends Component {
 		let channelList = channelIds.map(id => (
 			<li key={id}>{channelsById[id].name}</li>
 		));
+		console.log(channelIds);
 
 		return (
 			<div className="control-pane-component">

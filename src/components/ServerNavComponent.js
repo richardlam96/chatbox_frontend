@@ -25,12 +25,13 @@ class ServerNavComponent extends Component {
 		const serverList = serverIds.map(serverId => {
 			// Create path based on existance of channels.
 			let path, firstChannel;
-			if (serversById[serverId].channels[0]) {
-				firstChannel = '/' + serversById[serverId].channels[0];
-				path = '/channels/' + serverId + firstChannel;
+			if (serversById[serverId].channels.length > 0) {
+				firstChannel = serversById[serverId].channels[0];
+				path = '/channels/' + serverId + '/' + firstChannel;
 			} else {
 				path = '/channels/' + serverId;  
 			}
+			console.log(path);
 
 			return (
 				<Link 
