@@ -30,7 +30,7 @@ export function indexUserServers(ownerId) {
 	return dispatch => {
 		return apiCall(
 			'GET',
-			`/api/${ownerId}/servers`,
+			`/api/users/${ownerId}/servers`,
 		).then(serverData => {
 			dispatch(indexUserServersSuccess(serverData));
 		}).catch(error => {
@@ -59,7 +59,7 @@ export function createUserServer(userId, serverName) {
 	return dispatch =>  {
 		return apiCall(
 			'POST',
-			`/api/${userId}/servers`,
+			`/api/users/${userId}/servers`,
 			{ name: serverName }
 		).then(newServer => {
 			dispatch(createUserServerSuccess(newServer));
@@ -89,7 +89,7 @@ export function deleteUserServer(ownerId, serverId) {
 	return dispatch => {
 		return apiCall(
 			'DELETE',
-			`/api/${ownerId}/servers/${serverId}`,
+			`/api/users/${ownerId}/servers/${serverId}`,
 		).then(deletedServer => {
 			dispatch(deleteUserServerSuccess(deletedServer));
 		}).catch(error => {
