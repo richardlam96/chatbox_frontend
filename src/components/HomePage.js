@@ -19,19 +19,23 @@ class HomePage extends Component {
 		super(props);
 	}
 
-	async componentWillMount() {
+	componentWillMount() {
 		let { indexServers, currentUser } = this.props;
-		await indexServers(currentUser.id);
+		indexServers(currentUser.id);
 	}
 
 	render() {
+		console.log(this.props.state);
+		// Focus on just rendering the Server Components of the app.
 		return (
 			<div className="homepage">
 				<Navbar />
-				<p>HomePage</p>
 				<ServerNav />
-        <ControlPane />
-        <Blank />
+				<Switch>
+					<Route path="/channels/:serverId" render={ControlPane} />
+					<Route exact path="/activity" render={Blank} />
+				</Switch>
+				<Blank />
 			</div>
 		);
 	}

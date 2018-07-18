@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BlankPage = ({ currentUser, match }) => {
 	const params = Object.entries(match.params).map(pair => (
-		<li>{pair[0]} is {pair[1]}</li>
+		<li key={pair[1]}>{pair[0]} is {pair[1]}</li>
 	));
 
 	return (

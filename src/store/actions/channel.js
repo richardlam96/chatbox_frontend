@@ -59,7 +59,7 @@ export function createServerChannel(userId, serverId, channelName) {
 	return dispatch =>  {
 		return apiCall(
 			'POST',
-			`/api/users/${ownerId}/servers/${serverId}/channels`,
+			`/api/users/${userId}/servers/${serverId}/channels`,
 			{ name: channelName }
 		).then(newChannel => {
 			dispatch(createServerChannelSuccess(newChannel));

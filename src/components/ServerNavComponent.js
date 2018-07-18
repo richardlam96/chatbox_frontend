@@ -7,28 +7,43 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
-  handleClick = (e) => {
+  handleCreateServer = (e) => {
     let index = Math.floor(Math.random() * 100000);
     this.props.createServer(this.props.currentUser.id, 'new server' + index);
   }
 
 	render() {
-		let { currentUser, servers, createServer, deleteServer } = this.props;
-		const serverList = servers.serverIds.map(serverId => (
-			<Link to={'/channels/' + serverId} key={serverId}>
-				{servers.serversById[serverId].name}
-				<button
-					onClick={() => deleteServer(currentUser.id, serverId)}
+		let { 
+			currentUser, 
+			serversById, 
+			serverIds,
+			createServer, 
+			deleteServer,
+			indexChannels,
+		} = this.props;
+
+		const serverList = serverIds.map(serverId => {
+			let firstChannel = ('/' + serversById[serverId].channels[0]) || '';
+			return (
+				<Link 
+					to={'/channels/' + serverId + firstChannel} 
+					key={serverId}
+					onClick={() => indexChannels(currentUser.id, serverId)}
 					>
-					Delete
-				</button>
-			</Link>
-		));
+					{serversById[serverId].name}
+					<button
+						onClick={() => deleteServer(currentUser.id, serverId)}
+						>
+						Delete
+					</button>
+				</Link>
+			);
+		});
 
 		return (
 			<div className="server-nav-component">
 				<button 
-					onClick={this.handleClick}
+					onClick={this.handleCreateServer}
 					>
 					Create new Server
 				</button>
