@@ -31,9 +31,9 @@ class AuthPage extends Component {
 		  .then(() => {
         if (currentUser.isAuthenticated) {
           this.handleClear();
-          this.props.history.push("/welcome");
-        }       
-      });
+          this.props.history.push("/home");
+				}
+			});
 	}
 
 	handleChange = e => {
@@ -42,13 +42,12 @@ class AuthPage extends Component {
 		});
 	}
 
-  
 	render() {
     // Redirect if user is already logged in.
     if (this.props.currentUser.isAuthenticated) {
       return <Redirect to="/home" />;
     }
-
+	
 		let { 
       authMode,
       error,
@@ -97,7 +96,7 @@ class AuthPage extends Component {
               <div className="heading">
                 {heading}
               </div>
-              <div className={error.exists ? "subheading error" : "subheading"}>
+              <div className={this.props.error.exists ? "subheading error" : "subheading"}>
                 {subheading}
               </div>
               <h5>USERNAME</h5>

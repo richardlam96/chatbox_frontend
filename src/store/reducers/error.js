@@ -25,7 +25,7 @@ export default (state=DEFAULT_STATE, action) => {
       return {
         ...state,
         exists: true,
-        ...action.error,
+				message: action.error.message,
       };
     case CLEAR_CURRENT_USER_FAIL:
       return {
