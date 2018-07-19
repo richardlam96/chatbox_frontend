@@ -15,7 +15,7 @@ const Navbar = ({ currentUser, error, logout }) => {
   if (currentUser.isAuthenticated) {
     links = (
       <div className="navbar-links">
-        <Link className="navbar-link" to="/home">Home</Link>
+        <Link className="navbar-link" to="/">Home</Link>
         <a className="navbar-link" onClick={logout}>Logout</a>
       </div>
     );
