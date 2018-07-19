@@ -16,7 +16,7 @@ class ControlPaneComponent extends Component {
 	}
 
   render() {
-    console.log(this.props);
+    console.log('render', this.props);
 		let { 
 			currentUser, 
       serversById,

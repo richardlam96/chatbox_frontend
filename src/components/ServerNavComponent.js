@@ -14,7 +14,7 @@ class ServerNavComponent extends Component {
   }
 
 	render() {
-    console.log(this.props.state);
+    console.log('server nav', this.props.state);
 		let { 
 			currentUser, 
 			serversById, 

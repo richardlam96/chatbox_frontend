@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createServerChannel } from '../store/actions/channel';
+import { indexUserServers } from '../store/actions/server';
 import ControlPaneComponent from '../components/ControlPaneComponent';
 
 
@@ -18,7 +19,8 @@ const mapDispatchToProps = dispatch => {
   return {
 		createChannel: (userId, serverId, name) => {
 			return dispatch(createServerChannel(userId, serverId, name));
-		}
+		},
+		indexServers: (userId) => dispatch(indexUserServers(userId)),
 	};
 }
 
