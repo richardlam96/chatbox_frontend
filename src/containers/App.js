@@ -7,24 +7,33 @@ import configureStore from '../store';
 import SignIn from './SignIn';
 import Register from './Register';
 import Home from './Home';
-
-// components
-import LaunchPage from '../components/LaunchPage';
+import Blank from './Blank';
+import Launch from '../containers/Launch';
 
 // functions and utils
 import { setCurrentUser } from '../store/actions/auth';
+import { indexUserServers } from '../store/actions/server';
+import { indexUserChannels } from '../store/actions/channel';
+
 import AuthRoute from '../utils/AuthRoute';
 
 // styles
 import '../styles/App.css';
 
+async function reload(userId) {
+  await store.dispatch(indexUserServers(userId));
+  await store.dispatch(indexUserChannels(userId));
+}
+
 
 const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
-	const userData = JSON.parse(localStorage.getItem('currentUser'))
+	const userData = JSON.parse(localStorage.getItem('currentUser'));
   store.dispatch(setCurrentUser(userData));
+  reload(userData.id);
 }
+
 
 class App extends Component {
 	render() {
@@ -33,11 +42,19 @@ class App extends Component {
 				<BrowserRouter>
           <div className="App">
             <Switch>
-              <Route exact path="/" render={LaunchPage} />
+              <Route exact path="/" render={Launch} />
               <Route exact path="/signin" render={SignIn} />
               <Route exact path="/register" render={Register} />
-              <AuthRoute 
-                exact path="/home" 
+							<AuthRoute 
+                exact path="/channels/:serverId" 
+                component={Home} 
+              />
+							<AuthRoute 
+                exact path="/channels/:serverId/:channelId"
+                component={Home} 
+              />
+							<AuthRoute 
+                exact path="/activity"
                 component={Home} 
               />
             </Switch>
