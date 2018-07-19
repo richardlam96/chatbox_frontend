@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createServerChannel, deleteServerChannel } from '../store/actions/channel';
-import { indexUserServers } from '../store/actions/server';
 import ControlPaneComponent from '../components/ControlPaneComponent';
 
+import { createServerChannel, deleteServerChannel } from '../store/actions/channel';
+import { indexUserServers } from '../store/actions/server';
+import { indexChannelMessages, createChannelMessage } from '../store/actions/message';
 
 const mapStateToProps = state => {
   return {
@@ -24,6 +25,7 @@ const mapDispatchToProps = dispatch => {
       return dispatch(deleteServerChannel(userId, serverId, channelId));
     },
 		indexServers: (userId) => dispatch(indexUserServers(userId)),
+		indexMessages: (userId, channelId) => dispatch(indexChannelMessages(userId, channelId)),
 	};
 }
 

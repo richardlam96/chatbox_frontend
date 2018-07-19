@@ -63,8 +63,11 @@ class ControlPaneComponent extends Component {
           let link = '/channels/' + params.serverId + '/' + channelId;
           return (
             <li key={channelId}>
-              <Link to={link}>
-              {channelsById[channelId].name}
+              <Link 
+								to={link}
+								onClick={() => this.props.indexMessages(currentUser.id, channelId)}
+								>
+								{channelsById[channelId].name}
                 <button
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >

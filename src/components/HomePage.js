@@ -11,7 +11,7 @@ import Navbar from './Navbar';
 import Blank from '../containers/Blank';
 
 // Component in current progress.
-import Chatbox from '../containers/Chatbox';
+import MainContent from '../containers/MainContent';
 
 
 class HomePage extends Component {
@@ -31,22 +31,6 @@ class HomePage extends Component {
 
 	render() {
 		// Focus on just rendering the Server Components of the app.
-
-		// // Logic to only allow paths with existing serverId and channelId.
-		// let {
-		// 	serverIds,
-		// 	channelIds,
-		// 	match: { params },
-		// } = this.props;
-
-		// // If serverId is invalid, 
-		// if (serverIds.indexOf(params.serverId) === -1) {
-
-		// 	return <Redirect 
-		// 	
-		// 	&&
-		// 		channelIds.indexOf(params.channelId) === -1
-
 		return (
 			<div className="homepage">
 				<Navbar />
@@ -55,8 +39,9 @@ class HomePage extends Component {
 					<Route path="/channels/:serverId" render={ControlPane} />
 					<Route exact path="/activity" render={Blank} />
 				</Switch>
-				<Switch className="chatbox">
-					<Route exact path="/channels/:serverId/:channelId" render={Chatbox} />
+				<Switch className="main-content">
+					<Route exact path="/channels/:serverId" render={MainContent} />
+					<Route exact path="/channels/:serverId/:channelId" render={MainContent} />
 				</Switch>
 			</div>
 		);

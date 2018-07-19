@@ -6,20 +6,24 @@ class ChatboxComponent extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		let {
 			currentUser,
 			indexMessages,
+			messagesById,
+			messageIds,
 			match: { params },
 		} = this.props;
 
-		indexMessages(currentUser.id, params.channelId);
+		await indexMessages(currentUser.id, params.channelId);
 	}
 
 	handleCreateMessage = (e) => {
 		let {
 			currentUser,
 			createMessage,
+			messagesById,
+			messageIds,
 			match: { params },
 		} = this.props;
 
@@ -31,9 +35,10 @@ class ChatboxComponent extends Component {
 		let {
 			messagesById,
 			messageIds,
+			match: { params },
 		} = this.props;
 
-		const messageList = messageIds.map(messageId => {
+		let messageList = messageIds.map(messageId => {
 			return (
 				<li key={messageId}>{messagesById[messageId].text}</li>
 			);
@@ -41,7 +46,7 @@ class ChatboxComponent extends Component {
 
 		return (
 			<div className="chatbox-component">
-				<p>Chatbox</p>
+				<p>Chatbox on {params.channelId}</p>
 				<button
 					onClick={this.handleCreateMessage}
 					>
