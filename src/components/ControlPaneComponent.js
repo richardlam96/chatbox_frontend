@@ -15,16 +15,28 @@ class ControlPaneComponent extends Component {
 		);
 	}
 
-	render() {
+  render() {
+    console.log(this.props);
 		let { 
 			currentUser, 
+      serversById,
 			channelsById, 
 			channelIds,
 			match: { params },
 		} = this.props;
-		let channelList = channelIds.map(id => (
-			<li key={id}>{channelsById[id].name}</li>
-		));
+    
+    let server = serversById[params.serverId];
+    let channelList;
+    if (server) {
+      channelList = server.channels.map(channelId => {
+        if (channelsById[channelId]) {
+          return (
+            <li key={channelId}>{channelsById[channelId].name}</li>
+          );
+        }
+        return;
+      });
+    }
 
 		return (
 			<div className="control-pane-component">
@@ -35,7 +47,7 @@ class ControlPaneComponent extends Component {
 					Create Channel
 				</button>
 				<ul>
-					{channelList}
+          {channelList}
 				</ul>
 			</div>
 		);

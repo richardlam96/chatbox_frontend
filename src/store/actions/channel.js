@@ -2,6 +2,8 @@ import { apiCall } from '../../services/api';
 import {
 	INDEX_SERVER_CHANNELS_SUCCESS,
 	INDEX_SERVER_CHANNELS_FAILURE,
+	INDEX_USER_CHANNELS_SUCCESS,
+	INDEX_USER_CHANNELS_FAILURE,
 	CREATE_SERVER_CHANNEL_SUCCESS,
 	CREATE_SERVER_CHANNEL_FAILURE,
 	DELETE_SERVER_CHANNEL_SUCCESS,
@@ -9,6 +11,35 @@ import {
 	UPDATE_SERVER_CHANNEL_SUCCESS,
 	UPDATE_SERVER_CHANNEL_FAILURE,
 } from '../actionTypes';
+
+// INDEX ALL CHANNELS FOR USER ________________________________________________
+export function indexUserChannelsSuccess(channelData) {
+	return {
+		type: INDEX_USER_CHANNELS_SUCCESS,
+		channelData,
+	};
+}
+
+export function indexUserChannelsFailure(error) {
+	return {
+		type: INDEX_USER_CHANNELS_FAILURE,
+		error,
+	};
+}
+
+export function indexUserChannels(ownerId) {
+	return dispatch => {
+		return apiCall(
+			'GET',
+			`/api/users/${ownerId}/channels`,
+		).then(channelData => {
+			console.log(channelData);
+			dispatch(indexUserChannelsSuccess(channelData));
+		}).catch(error => {
+			dispatch(indexUserChannelsFailure(error));
+		});
+	}
+}
 
 
 // INDEX CHANNEL ______________________________________________________________

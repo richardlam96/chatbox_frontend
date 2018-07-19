@@ -12,18 +12,28 @@ import Launch from '../containers/Launch';
 
 // functions and utils
 import { setCurrentUser } from '../store/actions/auth';
+import { indexUserServers } from '../store/actions/server';
+import { indexUserChannels } from '../store/actions/channel';
+
 import AuthRoute from '../utils/AuthRoute';
 
 // styles
 import '../styles/App.css';
 
+async function reload(userId) {
+  await store.dispatch(indexUserServers(userId));
+  await store.dispatch(indexUserChannels(userId));
+}
+
 
 const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
-	const userData = JSON.parse(localStorage.getItem('currentUser'))
+	const userData = JSON.parse(localStorage.getItem('currentUser'));
   store.dispatch(setCurrentUser(userData));
+  reload(userData.id);
 }
+
 
 class App extends Component {
 	render() {

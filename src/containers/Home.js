@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { indexUserServers } from '../store/actions/server';
-import { indexServerChannels } from '../store/actions/channel';
+import { indexUserChannels } from '../store/actions/channel';
 import HomePage from '../components/HomePage';
 
 
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
 		indexServers: (userId) => dispatch(indexUserServers(userId)),
-		indexChannels: (userId) => dispatch(indexServerChannels(userId)),
+		indexChannels: (userId) => dispatch(indexUserChannels(userId)),
+    sayHello: () => console.log('hello'),
 	};
 }
 

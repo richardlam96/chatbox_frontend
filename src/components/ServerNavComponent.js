@@ -7,12 +7,14 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
+
   handleCreateServer = (e) => {
     let index = Math.floor(Math.random() * 100000);
     this.props.createServer(this.props.currentUser.id, 'new server' + index);
   }
 
 	render() {
+    console.log(this.props.state);
 		let { 
 			currentUser, 
 			serversById, 
@@ -31,7 +33,6 @@ class ServerNavComponent extends Component {
 			} else {
 				path = '/channels/' + serverId;  
 			}
-			console.log(path);
 
 			return (
 				<Link 

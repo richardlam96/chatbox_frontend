@@ -1,4 +1,5 @@
 import {
+	INDEX_USER_CHANNELS_SUCCESS,
 	INDEX_SERVER_CHANNELS_SUCCESS,
 	CREATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_SERVER_CHANNEL_SUCCESS,
@@ -14,8 +15,10 @@ const DEFAULT_STATE = {
 
 
 export default (state=DEFAULT_STATE, action) => {
+  state = Object.freeze(state);
 	switch(action.type) {
-		case INDEX_SERVER_CHANNELS_SUCCESS:
+    case INDEX_USER_CHANNELS_SUCCESS:
+      console.log(action.channelData);
 			return {
 				...state,
 				channelsById: action.channelData.channelsById,
