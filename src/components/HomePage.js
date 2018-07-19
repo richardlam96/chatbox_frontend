@@ -19,18 +19,14 @@ class HomePage extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-    console.log('Homepage reloaded');
-    console.log(this.props.currentUser.id);
+	async componentDidMount() {
 		let {
 			currentUser,
 			indexServers,
 			indexChannels,
 		} = this.props;
-		indexServers(currentUser.id);
-    indexChannels(currentUser.id);
-		console.log(this.props.state);
-    this.props.sayHello();
+		await indexServers(currentUser.id);
+    await indexChannels(currentUser.id);
 	}
 
 	render() {
