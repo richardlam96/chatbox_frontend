@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class ControlPaneComponent extends Component {
@@ -41,14 +42,17 @@ class ControlPaneComponent extends Component {
     if (server) {
       channelList = server.channels.map(channelId => {
         if (channelsById[channelId]) {
+          let link = '/channels/' + params.serverId + '/' + channelId;
           return (
             <li key={channelId}>
+              <Link to={link}>
               {channelsById[channelId].name}
-              <button
-                onClick={() => this.handleDeleteChannel(channelId)}
-                >
-                Delete
-              </button>
+                <button
+                  onClick={() => this.handleDeleteChannel(channelId)}
+                  >
+                  Delete
+                </button>
+              </Link>
             </li>
           );
         }
