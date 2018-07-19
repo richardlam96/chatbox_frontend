@@ -19,7 +19,6 @@ export default (state=DEFAULT_STATE, action) => {
   state = Object.freeze(state);
 	switch(action.type) {
     case INDEX_USER_CHANNELS_SUCCESS:
-      console.log(action.channelData);
 			return {
 				...state,
 				channelsById: action.channelData.channelsById,

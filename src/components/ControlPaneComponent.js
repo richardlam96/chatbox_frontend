@@ -8,7 +8,6 @@ class ControlPaneComponent extends Component {
 	}
 
 	handleCreateChannel = () => {
-    console.log(this.props.currentUser);
     let index = Math.floor(Math.random() * 100000);
 		this.props.createChannel(
 			this.props.currentUser.id, 
@@ -18,7 +17,6 @@ class ControlPaneComponent extends Component {
 	}
 
   handleDeleteChannel = (channelId) => {
-    console.log(this.props.state);
     let { 
 			currentUser,
 			channelIds,
@@ -49,7 +47,6 @@ class ControlPaneComponent extends Component {
   }
 
   render() {
-    console.log('render', this.props);
 		let { 
 			currentUser, 
       serversById,

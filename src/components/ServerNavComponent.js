@@ -14,7 +14,6 @@ class ServerNavComponent extends Component {
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
-    console.log(this.props.state);
 		let {
 			serversById,
 			serverIds,
@@ -26,11 +25,8 @@ class ServerNavComponent extends Component {
 		if (serverIndex > 0) {
 			serverIndex--;
 		}
-		console.log(serverIndex);
-		console.log(serverIds[serverIndex]);
 		let nextServerId = serverIds[serverIndex];
 		let nextPath = '/channels/' + nextServerId;
-		console.log(nextPath);
 		// Dispatch delete and route to previous server in list
     this.props.deleteServer(currentUserId, serverId)
 			.then(() => history.push(nextPath));
@@ -38,7 +34,6 @@ class ServerNavComponent extends Component {
 
 
 	render() {
-    console.log('server nav', this.props.state);
 		let { 
 			currentUser, 
 			serversById, 
