@@ -7,6 +7,7 @@ class ControlPaneComponent extends Component {
 	}
 
 	handleCreateChannel = () => {
+    console.log(this.props.currentUser);
     let index = Math.floor(Math.random() * 100000);
 		this.props.createChannel(
 			this.props.currentUser.id, 

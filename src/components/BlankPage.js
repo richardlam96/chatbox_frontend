@@ -1,11 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
-const BlankPage = ({ currentUser, match }) => {
+const BlankPage = ({ currentUser, serversById, match }) => {
 	const params = Object.entries(match.params).map(pair => (
 		<li key={pair[1]}>{pair[0]} is {pair[1]}</li>
 	));
+
+  // Make sure channel id in params doesn't exist (after delete).
+  if (match.path !== '/activity' && !serversById[match.params.serverId]) {
+    return (
+      <Redirect to='/activity' />
+    );
+  }
 
 	return (
 		<div className="blank">

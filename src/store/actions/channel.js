@@ -97,6 +97,7 @@ export function createServerChannel(userId, serverId, channelName) {
 			console.log('newChannel', newChannel);
 			dispatch(createServerChannelSuccess(newChannel));
 		}).catch(error => {
+      console.log('error', error);
 			dispatch(createServerChannelFailure(error));
 		});
 	}

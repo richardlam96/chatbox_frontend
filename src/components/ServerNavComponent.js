@@ -13,6 +13,11 @@ class ServerNavComponent extends Component {
     this.props.createServer(this.props.currentUser.id, 'new server' + index);
   }
 
+  handleDeleteServer = (currentUserId, serverId) => {
+    this.props.deleteServer(currentUserId, serverId);
+  }
+
+
 	render() {
     console.log('server nav', this.props.state);
 		let { 
@@ -21,8 +26,12 @@ class ServerNavComponent extends Component {
 			serverIds,
 			createServer, 
 			deleteServer,
+      channelsById,
 			indexChannels,
+      match: { params },
 		} = this.props;
+
+    
 
 		const serverList = serverIds.map(serverId => {
 			// Create path based on existance of channels.
@@ -41,7 +50,7 @@ class ServerNavComponent extends Component {
 					>
 					{serversById[serverId].name}
 					<button
-						onClick={() => deleteServer(currentUser.id, serverId)}
+						onClick={() => this.handleDeleteServer(currentUser.id, serverId)}
 						>
 						Delete
 					</button>
