@@ -54,14 +54,13 @@ export default (state=DEFAULT_STATE, action) => {
 				[action.deletedChannel._id]: deletedChannel,
 				...channelsByIdAfterDelete,
 			} = state.channelsById;
-			const [
-				deletedId = action.deletedChannel._id,
-				...channelIdsAfterDelete
-			] = state.channelIds;
+			const leftoverChannels = state.channelIds.filter(channelId => {
+        return channelId !== action.deletedChannel._id;
+      });
 			return { 
 				...state,
-				channelsById,
-				channelIds,
+				channelsById: channelsByIdAfterDelete,
+				channelIds: leftoverChannels,
 			};
 		case DELETE_USER_SERVER_SUCCESS:
 		default:

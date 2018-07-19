@@ -16,6 +16,16 @@ class ControlPaneComponent extends Component {
 		);
 	}
 
+  handleDeleteChannel = (channelId) => {
+    console.log(this.props.state);
+    let { currentUser, match: { params } } = this.props;
+    this.props.deleteChannel(
+      currentUser.id,
+      params.serverId,
+      channelId
+    );
+  }
+
   render() {
     console.log('render', this.props);
 		let { 
@@ -32,7 +42,14 @@ class ControlPaneComponent extends Component {
       channelList = server.channels.map(channelId => {
         if (channelsById[channelId]) {
           return (
-            <li key={channelId}>{channelsById[channelId].name}</li>
+            <li key={channelId}>
+              {channelsById[channelId].name}
+              <button
+                onClick={() => this.handleDeleteChannel(channelId)}
+                >
+                Delete
+              </button>
+            </li>
           );
         }
         return;

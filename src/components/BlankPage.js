@@ -8,7 +8,7 @@ const BlankPage = ({ currentUser, serversById, match }) => {
 	));
 
   // Make sure channel id in params doesn't exist (after delete).
-  if (match.path !== '/activity' && !serversById[match.params.serverId]) {
+  if (match.path === '/:serverId/:channelId' && !serversById[match.params.serverId]) {
     return (
       <Redirect to='/activity' />
     );

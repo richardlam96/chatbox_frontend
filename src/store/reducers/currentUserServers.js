@@ -3,6 +3,7 @@ import {
 	CREATE_USER_SERVER_SUCCESS,
 	DELETE_USER_SERVER_SUCCESS,
 	CREATE_SERVER_CHANNEL_SUCCESS,
+	DELETE_SERVER_CHANNEL_SUCCESS,
 } from '../actionTypes';
 
 
@@ -62,6 +63,25 @@ export default (state=DEFAULT_STATE, action) => {
           ),
         }),
       }
+    case DELETE_SERVER_CHANNEL_SUCCESS:
+      const deletedChannelServerId = action.deletedChannel.server;
+      const serverChannels = state.serversById[deletedChannelServerId].channels;
+      const filteredChannels = serverChannels.filter(channelId => {
+        return channelId !== action.deletedChannel._id;
+      });
+      return {
+        ...state,
+        serversById: Object.assign(state.serversById, {
+          [deletedChannelServerId]: Object.assign(
+            state.serversById[deletedChannelServerId], 
+            {
+              channels: filteredChannels,
+              ...rest,
+            }
+          ),
+        }),
+      }
+
 		default:
 			return state;
 	}

@@ -125,8 +125,10 @@ export function deleteServerChannel(ownerId, serverId, channelId) {
 			'DELETE',
 			`/api/users/${ownerId}/servers/${serverId}/channels/${channelId}`,
 		).then(deletedChannel => {
+      console.log('deletedch', deletedChannel);
 			dispatch(deleteServerChannelSuccess(deletedChannel));
 		}).catch(error => {
+      console.log('error', error);
 			dispatch(deleteServerChannelFailure(error));
 		});
 	}

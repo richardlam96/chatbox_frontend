@@ -14,6 +14,7 @@ class ServerNavComponent extends Component {
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
+    console.log(this.props.state);
     this.props.deleteServer(currentUserId, serverId);
   }
 
