@@ -5,6 +5,7 @@ import {
 	DELETE_SERVER_CHANNEL_SUCCESS,
 	UPDATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_USER_SERVER_SUCCESS,
+	CREATE_CHANNEL_MESSAGE_SUCCESS,
 } from '../actionTypes';
 
 
@@ -62,6 +63,7 @@ export default (state=DEFAULT_STATE, action) => {
 				channelsById: channelsByIdAfterDelete,
 				channelIds: leftoverChannels,
 			};
+		case CREATE_CHANNEL_MESSAGE_SUCCESS:
 		case DELETE_USER_SERVER_SUCCESS:
 		default:
 			return state;

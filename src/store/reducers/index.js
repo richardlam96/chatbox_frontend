@@ -3,6 +3,7 @@ import error from './error';
 import currentUser from './currentUser';
 import currentUserServers from './currentUserServers';
 import currentServerChannels from './currentServerChannels';
+import channelMessages from './channelMessages';
 
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
 	currentUser,
 	currentUserServers,
 	currentServerChannels,
+	channelMessages,
 });
 
 export default rootReducer;
