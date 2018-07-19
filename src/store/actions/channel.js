@@ -32,6 +32,7 @@ export function indexServerChannels(ownerId, serverId) {
 			'GET',
 			`/api/users/${ownerId}/servers/${serverId}/channels`,
 		).then(channelData => {
+			console.log(channelData);
 			dispatch(indexServerChannelsSuccess(channelData));
 		}).catch(error => {
 			dispatch(indexServerChannelsFailure(error));

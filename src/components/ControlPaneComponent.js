@@ -16,11 +16,15 @@ class ControlPaneComponent extends Component {
 	}
 
 	render() {
-		let { currentUser, channelsById, channelIds } = this.props;
+		let { 
+			currentUser, 
+			channelsById, 
+			channelIds,
+			match: { params },
+		} = this.props;
 		let channelList = channelIds.map(id => (
 			<li key={id}>{channelsById[id].name}</li>
 		));
-		console.log(channelIds);
 
 		return (
 			<div className="control-pane-component">

@@ -37,7 +37,6 @@ class ServerNavComponent extends Component {
 				<Link 
 					to={path} 
 					key={serverId}
-					onClick={() => indexChannels(currentUser.id, serverId)}
 					>
 					{serversById[serverId].name}
 					<button

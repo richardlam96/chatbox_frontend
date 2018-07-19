@@ -20,11 +20,17 @@ class HomePage extends Component {
 	}
 
 	componentWillMount() {
-		let { indexServers, currentUser } = this.props;
+		let {
+			currentUser,
+			indexServers,
+			indexChannels,
+		} = this.props;
 		indexServers(currentUser.id);
+		indexChannels(currentUser.id);
 	}
 
 	render() {
+		console.log(this.props.state);
 		// Focus on just rendering the Server Components of the app.
 		return (
 			<div className="homepage">
