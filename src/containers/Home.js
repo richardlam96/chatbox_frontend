@@ -8,6 +8,10 @@ import HomePage from '../components/HomePage';
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+		serversById: state.currentUserServers.serversById,
+		serverIds: state.currentUserServers.serverIds,
+		channelsById: state.currentServerChannels.channelsById,
+		channelIds: state.currentServerChannels.channelIds,
 		state,
   };
 }

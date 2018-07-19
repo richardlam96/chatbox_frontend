@@ -19,12 +19,33 @@ class ControlPaneComponent extends Component {
 
   handleDeleteChannel = (channelId) => {
     console.log(this.props.state);
-    let { currentUser, match: { params } } = this.props;
+    let { 
+			currentUser,
+			channelIds,
+			match: { params },
+			history,
+		} = this.props;
+
+		// Get index of deleted channel.
+		let channelIndex = channelIds.indexOf(channelId);
+		if (channelIndex > 0) {
+			channelIndex--;
+		}
+
+		// Create next path.
+		let nextPath;
+		if (channelIds.length <= 1) {
+			nextPath = '/channels/' + params.serverId;
+		} else {
+			let nextChannelId = channelIds[channelIndex];
+			nextPath = '/channels/' + params.serverId + '/' + nextChannelId;
+		}
+
     this.props.deleteChannel(
       currentUser.id,
       params.serverId,
       channelId
-    );
+    ).then(() => history.push(nextPath));
   }
 
   render() {

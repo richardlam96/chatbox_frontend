@@ -15,7 +15,25 @@ class ServerNavComponent extends Component {
 
   handleDeleteServer = (currentUserId, serverId) => {
     console.log(this.props.state);
-    this.props.deleteServer(currentUserId, serverId);
+		let {
+			serversById,
+			serverIds,
+			history,
+		} = this.props;
+
+		// Get serverid behind the deleted one.
+		let serverIndex = serverIds.indexOf(serverId)
+		if (serverIndex > 0) {
+			serverIndex--;
+		}
+		console.log(serverIndex);
+		console.log(serverIds[serverIndex]);
+		let nextServerId = serverIds[serverIndex];
+		let nextPath = '/channels/' + nextServerId;
+		console.log(nextPath);
+		// Dispatch delete and route to previous server in list
+    this.props.deleteServer(currentUserId, serverId)
+			.then(() => history.push(nextPath));
   }
 
 
@@ -46,7 +64,7 @@ class ServerNavComponent extends Component {
 
 			return (
 				<Link 
-					to={path} 
+					to={'/channels/' + serverId }
 					key={serverId}
 					>
 					{serversById[serverId].name}

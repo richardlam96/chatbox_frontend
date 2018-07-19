@@ -31,6 +31,22 @@ class HomePage extends Component {
 
 	render() {
 		// Focus on just rendering the Server Components of the app.
+
+		// // Logic to only allow paths with existing serverId and channelId.
+		// let {
+		// 	serverIds,
+		// 	channelIds,
+		// 	match: { params },
+		// } = this.props;
+
+		// // If serverId is invalid, 
+		// if (serverIds.indexOf(params.serverId) === -1) {
+
+		// 	return <Redirect 
+		// 	
+		// 	&&
+		// 		channelIds.indexOf(params.channelId) === -1
+
 		return (
 			<div className="homepage">
 				<Navbar />
