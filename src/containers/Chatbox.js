@@ -12,7 +12,6 @@ const mapStateToProps = state => {
 		channelIds: state.currentServerChannels.channelIds,
 		messagesById: state.channelMessages.messagesById,
 		messageIds: state.channelMessages.messageIds,
-		state,
 	};
 }
 

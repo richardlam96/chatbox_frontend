@@ -59,7 +59,7 @@ class ServerNavComponent extends Component {
 
 			return (
 				<Link 
-					to={'/channels/' + serverId }
+					to={path}
 					key={serverId}
 					>
 					{serversById[serverId].name}

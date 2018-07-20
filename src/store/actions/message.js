@@ -57,10 +57,8 @@ export function indexChannelMessages(userId, channelId) {
 			'GET',
 			`/api/users/${userId}/channels/${channelId}/messages`,
 		).then(messages => {
-			console.log('messages', messages);
 			dispatch(indexChannelMessagesSuccess(messages));
 		}).catch(error => {
-			console.log('error', error);
 			dispatch(indexChannelMessagesFailure(error));
 		});
 	}

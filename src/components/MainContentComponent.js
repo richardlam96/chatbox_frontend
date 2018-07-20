@@ -16,13 +16,11 @@ class MainContentComponent extends Component {
 			indexMessages,
 			match: { params, path },
 		} = this.props;
-		console.log(params, path);
 		if (params.channelId) {
 		}
 	}
 
 	render() {
-		console.log(this.props.match.params, this.props.match.path);
 		return ( 
 			<div className="main-content-component">
 				<p>Main Content</p>

@@ -42,7 +42,6 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		console.log(this.props.state);
 		// if channel is not valid, (on deletion of channel), redirect or empty
 		// chat?
 		let messageList;

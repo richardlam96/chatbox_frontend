@@ -10,7 +10,6 @@ const mapStateToProps = state => {
 		currentUser: state.currentUser,
 		messagesById: state.channelMessages.messagesById,
 		messageIds: state.channelMessages.messageIds,
-		state,
 	};
 }
 

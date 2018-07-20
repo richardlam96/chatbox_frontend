@@ -12,7 +12,6 @@ const mapStateToProps = state => {
     serversById: state.currentUserServers.serversById,
 		channelsById: state.currentServerChannels.channelsById,
 		channelIds: state.currentServerChannels.channelIds,
-		state,
   };
 }
 
