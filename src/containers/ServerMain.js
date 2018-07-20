@@ -1,18 +1,15 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { indexUserServers } from '../store/actions/server';
-import HomePage from '../components/HomePage';
+import ServerMainComponent from '../components/ServerMainComponent';
 
 
 const mapStateToProps = state => {
-  return {
-    currentUser: state.currentUser,
-  };
+	return {
+	};
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-		indexServers: (userId) => dispatch(indexUserServers(userId)),
+	return {
 	};
 }
 
@@ -20,4 +17,4 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomePage));
+)(ServerMainComponent));

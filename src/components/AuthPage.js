@@ -31,7 +31,7 @@ class AuthPage extends Component {
 		  .then(() => {
         if (currentUser.isAuthenticated) {
           this.handleClear();
-          this.props.history.push("/home");
+          this.props.history.push("/activity");
 				}
 			});
 	}
@@ -45,7 +45,7 @@ class AuthPage extends Component {
 	render() {
     // Redirect if user is already logged in.
     if (this.props.currentUser.isAuthenticated) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/activity" />;
     }
 	
 		let { 

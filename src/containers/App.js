@@ -7,9 +7,8 @@ import configureStore from '../store';
 import SignIn from './SignIn';
 import Register from './Register';
 import Home from './Home';
-
-// components
-import LaunchPage from '../components/LaunchPage';
+import Blank from './Blank';
+import Launch from '../containers/Launch';
 
 // functions and utils
 import { setCurrentUser } from '../store/actions/auth';
@@ -33,11 +32,19 @@ class App extends Component {
 				<BrowserRouter>
           <div className="App">
             <Switch>
-              <Route exact path="/" render={LaunchPage} />
+              <Route exact path="/" render={Launch} />
               <Route exact path="/signin" render={SignIn} />
               <Route exact path="/register" render={Register} />
-              <AuthRoute 
-                exact path="/home" 
+							<AuthRoute 
+                exact path="/channels/:serverId" 
+                component={Home} 
+              />
+							<AuthRoute 
+                exact path="/channels/:serverId/:channelId"
+                component={Home} 
+              />
+							<AuthRoute 
+                exact path="/activity"
                 component={Home} 
               />
             </Switch>
