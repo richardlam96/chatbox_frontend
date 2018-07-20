@@ -7,10 +7,31 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
+
   handleCreateServer = (e) => {
     let index = Math.floor(Math.random() * 100000);
     this.props.createServer(this.props.currentUser.id, 'new server' + index);
   }
+
+  handleDeleteServer = (currentUserId, serverId) => {
+		let {
+			serversById,
+			serverIds,
+			history,
+		} = this.props;
+
+		// Get serverid behind the deleted one.
+		let serverIndex = serverIds.indexOf(serverId)
+		if (serverIndex > 0) {
+			serverIndex--;
+		}
+		let nextServerId = serverIds[serverIndex];
+		let nextPath = '/channels/' + nextServerId;
+		// Dispatch delete and route to previous server in list
+    this.props.deleteServer(currentUserId, serverId)
+			.then(() => history.push(nextPath));
+  }
+
 
 	render() {
 		let { 
@@ -19,8 +40,12 @@ class ServerNavComponent extends Component {
 			serverIds,
 			createServer, 
 			deleteServer,
+      channelsById,
 			indexChannels,
+      match: { params },
 		} = this.props;
+
+    
 
 		const serverList = serverIds.map(serverId => {
 			// Create path based on existance of channels.
@@ -31,17 +56,15 @@ class ServerNavComponent extends Component {
 			} else {
 				path = '/channels/' + serverId;  
 			}
-			console.log(path);
 
 			return (
 				<Link 
-					to={path} 
+					to={path}
 					key={serverId}
-					onClick={() => indexChannels(currentUser.id, serverId)}
 					>
 					{serversById[serverId].name}
 					<button
-						onClick={() => deleteServer(currentUser.id, serverId)}
+						onClick={() => this.handleDeleteServer(currentUser.id, serverId)}
 						>
 						Delete
 					</button>

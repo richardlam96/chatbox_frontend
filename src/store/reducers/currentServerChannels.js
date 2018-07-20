@@ -1,9 +1,11 @@
 import {
+	INDEX_USER_CHANNELS_SUCCESS,
 	INDEX_SERVER_CHANNELS_SUCCESS,
 	CREATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_SERVER_CHANNEL_SUCCESS,
 	UPDATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_USER_SERVER_SUCCESS,
+	CREATE_CHANNEL_MESSAGE_SUCCESS,
 } from '../actionTypes';
 
 
@@ -14,8 +16,9 @@ const DEFAULT_STATE = {
 
 
 export default (state=DEFAULT_STATE, action) => {
+  state = Object.freeze(state);
 	switch(action.type) {
-		case INDEX_SERVER_CHANNELS_SUCCESS:
+    case INDEX_USER_CHANNELS_SUCCESS:
 			return {
 				...state,
 				channelsById: action.channelData.channelsById,
@@ -51,15 +54,15 @@ export default (state=DEFAULT_STATE, action) => {
 				[action.deletedChannel._id]: deletedChannel,
 				...channelsByIdAfterDelete,
 			} = state.channelsById;
-			const [
-				deletedId = action.deletedChannel._id,
-				...channelIdsAfterDelete
-			] = state.channelIds;
+			const leftoverChannels = state.channelIds.filter(channelId => {
+        return channelId !== action.deletedChannel._id;
+      });
 			return { 
 				...state,
-				channelsById,
-				channelIds,
+				channelsById: channelsByIdAfterDelete,
+				channelIds: leftoverChannels,
 			};
+		case CREATE_CHANNEL_MESSAGE_SUCCESS:
 		case DELETE_USER_SERVER_SUCCESS:
 		default:
 			return state;

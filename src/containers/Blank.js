@@ -6,6 +6,7 @@ import BlankPage from '../components/BlankPage';
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
+		serversById: state.currentUserServers.serversById,
   };
 }
 

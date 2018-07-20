@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ServerNav from '../containers/ServerNav';
+import ControlPane from '../containers/ControlPane';
 import '../styles/HomePage.css';
 
 // To be later replaced by UserControl.
@@ -10,8 +11,7 @@ import Navbar from './Navbar';
 import Blank from '../containers/Blank';
 
 // Component in current progress.
-import ControlPane from '../containers/ControlPane';
-
+import MainContent from '../containers/MainContent';
 
 
 class HomePage extends Component {
@@ -19,9 +19,14 @@ class HomePage extends Component {
 		super(props);
 	}
 
-	componentWillMount() {
-		let { indexServers, currentUser } = this.props;
-		indexServers(currentUser.id);
+	async componentDidMount() {
+		let {
+			currentUser,
+			indexServers,
+			indexChannels,
+		} = this.props;
+		await indexServers(currentUser.id);
+    await indexChannels(currentUser.id);
 	}
 
 	render() {
@@ -31,14 +36,10 @@ class HomePage extends Component {
 				<Navbar />
 				<ServerNav />
 				<Switch className="control-pane">
-					<Route exact path="/channels/:serverId/:channelId" render={ControlPane} />
-					<Route exact path="/channels/:serverId" render={ControlPane} />
+					<Route path="/channels/:serverId" render={ControlPane} />
 					<Route exact path="/activity" render={Blank} />
 				</Switch>
-				<Switch className="main-content">
-					<Route exact path="/channels/:serverId" render={Blank} />
-					<Route exact path="/channels/:serverId/:channelId" render={Blank} />
-				</Switch>
+				<MainContent />
 			</div>
 		);
 	}
