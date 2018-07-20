@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class ControlPaneComponent extends Component {
@@ -8,6 +8,7 @@ class ControlPaneComponent extends Component {
 	}
 
 	handleCreateChannel = () => {
+    console.log(this.props.currentUser);
     let index = Math.floor(Math.random() * 100000);
 		this.props.createChannel(
 			this.props.currentUser.id, 
@@ -16,39 +17,18 @@ class ControlPaneComponent extends Component {
 		);
 	}
 
-  async handleDeleteChannel(channelId) {
-    let { 
-			currentUser,
-			channelIds,
-			match: { params },
-			history,
-		} = this.props;
-
-		// Get index of deleted channel.
-		let channelIndex = channelIds.indexOf(channelId);
-		if (channelIndex > 0) {
-			channelIndex--;
-		}
-
-		// Create next path.
-		let nextPath;
-		if (channelIds.length <= 1) {
-			nextPath = '/channels/' + params.serverId;
-		} else {
-			let nextChannelId = channelIds[channelIndex];
-			nextPath = '/channels/' + params.serverId + '/' + nextChannelId;
-		}
-
+  handleDeleteChannel = (channelId) => {
+    console.log(this.props.state);
+    let { currentUser, match: { params } } = this.props;
     this.props.deleteChannel(
       currentUser.id,
       params.serverId,
       channelId
-    ).then(() => {
-			history.push(nextPath);
-		});
+    );
   }
 
   render() {
+    console.log('controlpane', this.props.state);
 		let { 
 			currentUser, 
       serversById,
@@ -65,11 +45,8 @@ class ControlPaneComponent extends Component {
           let link = '/channels/' + params.serverId + '/' + channelId;
           return (
             <li key={channelId}>
-              <Link 
-								to={link}
-								onClick={() => this.props.indexMessages(currentUser.id, channelId)}
-								>
-								{channelsById[channelId].name}
+              <Link to={link}>
+              {channelsById[channelId].name}
                 <button
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >

@@ -22,11 +22,11 @@ export function createChannelMessageFailure(error) {
 	};
 }
 
-export function createChannelMessage(userId, channelId, text) {
+export function createChannelMessage(serverId, channelId, text) {
 	return dispatch => {
 		return apiCall(
 			'POST',
-			`/api/users/${userId}/channels/${channelId}/messages`,
+			`/api/servers/${serverId}/channels/${channelId}/messages`,
 			{ text }
 		).then(newMessage => {
 			dispatch(createChannelMessageSuccess(newMessage));
@@ -51,11 +51,12 @@ export function indexChannelMessagesFailure(error) {
 	};
 }
 
-export function indexChannelMessages(userId, channelId) {
+export function indexChannelMessages(serverId) {
 	return dispatch => {
+    console.log(serverId);
 		return apiCall(
 			'GET',
-			`/api/users/${userId}/channels/${channelId}/messages`,
+			`/api/servers/${serverId}/messages`,
 		).then(messages => {
 			console.log('messages', messages);
 			dispatch(indexChannelMessagesSuccess(messages));

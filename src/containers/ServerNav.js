@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { createUserServer, deleteUserServer } from '../store/actions/server';
 import { indexUserServers } from '../store/actions/server';
 import { indexUserChannels } from '../store/actions/channel';
+import { indexChannelMessages } from '../store/actions/message';
 
 import ServerNavComponent from '../components/ServerNavComponent';
 
@@ -22,6 +23,7 @@ const mapDispatchToProps = dispatch => {
 		deleteServer: (ownerId, serverId) => dispatch(deleteUserServer(ownerId, serverId)),
 		indexServers: (userId) => dispatch(indexUserServers(userId)),
 		indexChannels: (userId) => dispatch(indexUserChannels(userId)),
+    indexMessages: (serverId) => dispatch(indexChannelMessages(serverId)),
 	};
 }
 

@@ -92,6 +92,7 @@ export function createServerChannel(userId, serverId, channelName) {
 			`/api/users/${userId}/servers/${serverId}/channels`,
 			{ name: channelName }
 		).then(newChannel => {
+      console.log('newChannel', newChannel)
 			dispatch(createServerChannelSuccess(newChannel));
 		}).catch(error => {
 			dispatch(createServerChannelFailure(error));

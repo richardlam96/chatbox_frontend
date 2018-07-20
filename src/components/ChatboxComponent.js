@@ -6,7 +6,7 @@ class ChatboxComponent extends Component {
 		super(props);
 	}
 
-	async componentDidMount() {
+	componentDidMount() {
 		let {
 			currentUser,
 			indexMessages,
@@ -17,7 +17,7 @@ class ChatboxComponent extends Component {
 		} = this.props;
 
 		// for reloading
-		await indexMessages(currentUser.id, params.channelId);
+		indexMessages(params.serverId);
 	}
 
 	handleCreateMessage = (e) => {
@@ -30,32 +30,32 @@ class ChatboxComponent extends Component {
 		} = this.props;
 
 		let text = 'message' + Math.floor(Math.random() * 100000);
-		createMessage(currentUser.id, params.channelId, text);
+		createMessage(params.serverId, params.channelId, text);
 	}
 
 	render() {
 		let {
+      currentUser,
+      serversById,
+      serverIds,
 			channelsById,
 			channelIds,
 			messagesById,
 			messageIds,
+      indexMessages,
 			match: { params },
 		} = this.props;
 
-		console.log(this.props.state);
-		// if channel is not valid, (on deletion of channel), redirect or empty
-		// chat?
-		let messageList;
-		if (channelIds.indexOf(params.channelId) === -1) {
-			messageList = [];
-		} else {
-			messageList = messageIds.map(messageId => {
-				return (
-					<li key={messageId}>{messagesById[messageId].text}</li>
-				);
-			});
-		}
-
+    let currentChannel = channelsById[params.channelId];
+    let messageList = [];
+    if (currentChannel && currentChannel.messages) {
+      messageList =  currentChannel.messages.map(messageId => {
+        if (messagesById[messageId]) {
+          return (<li key={messageId}>{messagesById[messageId].text}</li>);
+        }
+      });
+    }
+		
 		return (
 			<div className="chatbox-component">
 				<p>Chatbox on {params.channelId}</p>
