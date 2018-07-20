@@ -39,10 +39,7 @@ class HomePage extends Component {
 					<Route path="/channels/:serverId" render={ControlPane} />
 					<Route exact path="/activity" render={Blank} />
 				</Switch>
-				<Switch className="main-content">
-					<Route exact path="/channels/:serverId" render={MainContent} />
-					<Route exact path="/channels/:serverId/:channelId" render={MainContent} />
-				</Switch>
+				<MainContent />
 			</div>
 		);
 	}

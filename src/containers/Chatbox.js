@@ -8,8 +8,11 @@ import { indexChannelMessages, createChannelMessage } from '../store/actions/mes
 const mapStateToProps = state => {
 	return {
 		currentUser: state.currentUser,
+		channelsById: state.currentServerChannels.channelsById,
+		channelIds: state.currentServerChannels.channelIds,
 		messagesById: state.channelMessages.messagesById,
 		messageIds: state.channelMessages.messageIds,
+		state,
 	};
 }
 

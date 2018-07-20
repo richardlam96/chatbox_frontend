@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class ControlPaneComponent extends Component {
@@ -16,7 +16,7 @@ class ControlPaneComponent extends Component {
 		);
 	}
 
-  handleDeleteChannel = (channelId) => {
+  async handleDeleteChannel(channelId) {
     let { 
 			currentUser,
 			channelIds,
@@ -43,7 +43,9 @@ class ControlPaneComponent extends Component {
       currentUser.id,
       params.serverId,
       channelId
-    ).then(() => history.push(nextPath));
+    ).then(() => {
+			history.push(nextPath);
+		});
   }
 
   render() {

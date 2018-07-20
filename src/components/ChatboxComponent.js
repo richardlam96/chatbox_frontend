@@ -13,8 +13,10 @@ class ChatboxComponent extends Component {
 			messagesById,
 			messageIds,
 			match: { params },
+			history,
 		} = this.props;
 
+		// for reloading
 		await indexMessages(currentUser.id, params.channelId);
 	}
 
@@ -33,16 +35,26 @@ class ChatboxComponent extends Component {
 
 	render() {
 		let {
+			channelsById,
+			channelIds,
 			messagesById,
 			messageIds,
 			match: { params },
 		} = this.props;
 
-		let messageList = messageIds.map(messageId => {
-			return (
-				<li key={messageId}>{messagesById[messageId].text}</li>
-			);
-		});
+		console.log(this.props.state);
+		// if channel is not valid, (on deletion of channel), redirect or empty
+		// chat?
+		let messageList;
+		if (channelIds.indexOf(params.channelId) === -1) {
+			messageList = [];
+		} else {
+			messageList = messageIds.map(messageId => {
+				return (
+					<li key={messageId}>{messagesById[messageId].text}</li>
+				);
+			});
+		}
 
 		return (
 			<div className="chatbox-component">
