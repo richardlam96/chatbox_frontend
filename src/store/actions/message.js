@@ -58,10 +58,8 @@ export function indexChannelMessages(serverId) {
 			'GET',
 			`/api/servers/${serverId}/messages`,
 		).then(messages => {
-			console.log('messages', messages);
 			dispatch(indexChannelMessagesSuccess(messages));
 		}).catch(error => {
-			console.log('error', error);
 			dispatch(indexChannelMessagesFailure(error));
 		});
 	}

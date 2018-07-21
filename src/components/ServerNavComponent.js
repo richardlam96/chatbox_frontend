@@ -49,7 +49,7 @@ class ServerNavComponent extends Component {
 
 			return (
 				<Link 
-					to={path} 
+					to={path}
 					key={serverId}
           onClick={() => this.handleIndexServerMessages(serverId)}
 					>
