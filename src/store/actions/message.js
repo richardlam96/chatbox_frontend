@@ -29,6 +29,7 @@ export function createChannelMessage(serverId, channelId, text) {
 			`/api/servers/${serverId}/channels/${channelId}/messages`,
 			{ text }
 		).then(newMessage => {
+			console.log('newMessage', newMessage);
 			dispatch(createChannelMessageSuccess(newMessage));
 		}).catch(error => {
 			dispatch(createChannelMessageSuccess(error));

@@ -50,19 +50,35 @@ export default (state=DEFAULT_STATE, action) => {
 				channelsById: updatedChannelsById,
 			};
 		case DELETE_SERVER_CHANNEL_SUCCESS:
-			const {
+			console.log('changing channels state after delete');
+			let {
 				[action.deletedChannel._id]: deletedChannel,
 				...channelsByIdAfterDelete,
 			} = state.channelsById;
-			const leftoverChannels = state.channelIds.filter(channelId => {
+			let leftoverChannels = state.channelIds.filter(channelId => {
         return channelId !== action.deletedChannel._id;
       });
+			console.log('isolating changes');
+			console.log(channelsByIdAfterDelete);
+			console.log(leftoverChannels);
 			return { 
 				...state,
 				channelsById: channelsByIdAfterDelete,
 				channelIds: leftoverChannels,
 			};
 		case CREATE_CHANNEL_MESSAGE_SUCCESS:
+			let { 
+				[action.newMessage.channel]: targetChannel, 
+				...rest 
+			} = state.channelsById;
+			targetChannel.messages.push(action.newMessage._id);
+			return {
+				...state,
+				channelsById: { 
+					...rest, 
+					[targetChannel._id]: targetChannel,
+				},
+			};
 		case DELETE_USER_SERVER_SUCCESS:
 		default:
 			return state;
