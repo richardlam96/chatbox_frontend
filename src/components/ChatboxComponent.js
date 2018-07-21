@@ -46,10 +46,11 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
+		console.log(this.props.state);
     let currentChannel = channelsById[params.channelId];
     let messageList = [];
     if (currentChannel && currentChannel.messages) {
-      messageList =  currentChannel.messages.map(messageId => {
+      messageList = currentChannel.messages.map(messageId => {
         if (messagesById[messageId]) {
           return (<li key={messageId}>{messagesById[messageId].text}</li>);
         }
