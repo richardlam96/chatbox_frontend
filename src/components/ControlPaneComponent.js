@@ -7,6 +7,16 @@ class ControlPaneComponent extends Component {
 		super(props);
 	}
 
+	componentDidMount() {
+		let { 
+			currentUser, 
+			indexChannels,
+			match: { params },
+		} = this.props;
+
+		// indexChannels(currentUser.id);
+	}
+
 	handleCreateChannel = () => {
     let index = Math.floor(Math.random() * 100000);
 		this.props.createChannel(
@@ -42,8 +52,10 @@ class ControlPaneComponent extends Component {
           let link = '/channels/' + params.serverId + '/' + channelId;
           return (
             <li key={channelId}>
-              <Link to={link}>
-              {channelsById[channelId].name}
+              <Link 
+								to={link}
+								>
+								{channelsById[channelId].name}
                 <button
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >

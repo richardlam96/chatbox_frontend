@@ -22,14 +22,13 @@ export function createChannelMessageFailure(error) {
 	};
 }
 
-export function createChannelMessage(serverId, channelId, text) {
+export function createChannelMessage(userId, channelId, text) {
 	return dispatch => {
 		return apiCall(
 			'POST',
-			`/api/users/${userId}/servers/${serverId}/channels/${channelId}/messages`,
+			`/api/users/${userId}/channels/${channelId}/messages`,
 			{ text }
 		).then(newMessage => {
-			console.log('newMessage', newMessage);
 			dispatch(createChannelMessageSuccess(newMessage));
 		}).catch(error => {
 			dispatch(createChannelMessageSuccess(error));
@@ -52,12 +51,11 @@ export function indexChannelMessagesFailure(error) {
 	};
 }
 
-export function indexChannelMessages(serverId) {
+export function indexChannelMessages(userId, channelId) {
 	return dispatch => {
-    console.log(serverId);
 		return apiCall(
 			'GET',
-			`/api/users/${userId}/servers/${serverId}/channels/${channelId}/messages`,
+			`/api/users/${userId}/channels/${channelId}/messages`,
 		).then(messages => {
 			dispatch(indexChannelMessagesSuccess(messages));
 		}).catch(error => {

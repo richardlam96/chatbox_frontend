@@ -20,14 +20,15 @@ class HomePage extends Component {
 	}
 
 	async componentDidMount() {
-    // // If something similar is called in App container, is this necessary?
-		// let {
-		// 	currentUser,
-		// 	indexServers,
-		// 	indexChannels,
-		// } = this.props;
-		// await indexServers(currentUser.id);
-    // await indexChannels(currentUser.id);
+		let {
+			currentUser,
+			indexServers,
+			indexChannels,
+		} = this.props;
+		console.log('getting servers');
+		await indexServers(currentUser.id);
+		console.log('getting channels');
+    await indexChannels(currentUser.id);
 	}
 
 	render() {

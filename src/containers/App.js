@@ -13,7 +13,7 @@ import Launch from '../containers/Launch';
 // functions and utils
 import { setCurrentUser } from '../store/actions/auth';
 import { indexUserServers } from '../store/actions/server';
-import { indexUserChannels } from '../store/actions/channel';
+import { indexServerChannels } from '../store/actions/channel';
 
 import AuthRoute from '../utils/AuthRoute';
 
@@ -24,9 +24,9 @@ import '../styles/App.css';
 const store = configureStore();
 
 // Functions to run after reload to keep user and content.
+// Won't need this if componentDidMounts work for fetching data.
 async function reload(userId) {
   await store.dispatch(indexUserServers(userId));
-  await store.dispatch(indexUserChannels(userId));
 }
 
 const token = localStorage.getItem('jwtToken');

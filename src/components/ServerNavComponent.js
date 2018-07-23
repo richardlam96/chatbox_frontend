@@ -7,6 +7,14 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
+	componentDidMount() {
+		let { 
+			currentUser, 
+			indexServers,
+		} = this.props;
+
+		// indexServers(currentUser.id);
+	}
 
   handleCreateServer = (e) => {
     let index = Math.floor(Math.random() * 100000);
@@ -14,14 +22,8 @@ class ServerNavComponent extends Component {
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
-    console.log(this.props.state);
     this.props.deleteServer(currentUserId, serverId);
   }
-
-  handleIndexServerMessages = (serverId) => {
-    this.props.indexMessages(serverId);
-  }
-
 
 	render() {
 		let { 
@@ -31,7 +33,6 @@ class ServerNavComponent extends Component {
 			createServer, 
 			deleteServer,
       channelsById,
-			indexChannels,
       match: { params },
 		} = this.props;
 
@@ -49,7 +50,6 @@ class ServerNavComponent extends Component {
 				<Link 
 					to={path}
 					key={serverId}
-          onClick={() => this.handleIndexServerMessages(serverId)}
 					>
 					{serversById[serverId].name}
 					<button

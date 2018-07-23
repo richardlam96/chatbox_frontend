@@ -1,5 +1,4 @@
 import {
-	INDEX_USER_CHANNELS_SUCCESS,
 	INDEX_SERVER_CHANNELS_SUCCESS,
 	CREATE_SERVER_CHANNEL_SUCCESS,
 	DELETE_SERVER_CHANNEL_SUCCESS,
@@ -19,7 +18,7 @@ export default (state=DEFAULT_STATE, action) => {
 	switch(action.type) {
 
     // CRUD actions for Channels.
-    case INDEX_USER_CHANNELS_SUCCESS:
+    case INDEX_SERVER_CHANNELS_SUCCESS:
 			return {
 				...state,
 				channelsById: action.channelData.channelsById,
