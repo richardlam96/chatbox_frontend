@@ -22,7 +22,9 @@ const mapDispatchToProps = dispatch => {
 		createMessage: (userId, serverId, channelId, text) => {
 			return dispatch(createChannelMessage(userId, serverId, channelId, text));
 		},
-		indexMessages: (userId, channelId) => dispatch(indexChannelMessages(userId, channelId)),
+		indexMessages: (userId, serverId, channelId) => {
+			return dispatch(indexChannelMessages(userId, serverId, channelId));
+		},
 	};
 }
 

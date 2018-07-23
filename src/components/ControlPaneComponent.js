@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Navbar from './Navbar';
+
 
 class ControlPaneComponent extends Component {
 	constructor(props) {
@@ -75,6 +77,7 @@ class ControlPaneComponent extends Component {
 				<ul>
           {channelList}
 				</ul>
+				<Navbar />
 			</div>
 		);
 	}

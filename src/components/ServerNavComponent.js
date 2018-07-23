@@ -38,10 +38,7 @@ class ServerNavComponent extends Component {
 			}
 
 			return (
-				<Link 
-					to={path}
-					key={serverId}
-					>
+				<Link to={path} key={serverId}>
 					{serversById[serverId].name}
 					<button
 						onClick={() => this.handleDeleteServer(currentUser.id, serverId)}

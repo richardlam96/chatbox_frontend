@@ -4,9 +4,6 @@ import ServerNav from '../containers/ServerNav';
 import ControlPane from '../containers/ControlPane';
 import '../styles/HomePage.css';
 
-// To be later replaced by UserControl.
-import Navbar from './Navbar';
-
 // Placeholder component.
 import Blank from '../containers/Blank';
 
@@ -35,7 +32,6 @@ class HomePage extends Component {
 		// Focus on just rendering the Server Components of the app.
 		return (
 			<div className="homepage">
-				<Navbar />
 				<ServerNav />
 				<Switch className="control-pane">
 					<Route path="/channels/:serverId" render={ControlPane} />
