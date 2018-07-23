@@ -7,16 +7,6 @@ class ControlPaneComponent extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-		let { 
-			currentUser, 
-			indexChannels,
-			match: { params },
-		} = this.props;
-
-		// indexChannels(currentUser.id);
-	}
-
 	handleCreateChannel = () => {
     let index = Math.floor(Math.random() * 100000);
 		this.props.createChannel(
@@ -27,12 +17,17 @@ class ControlPaneComponent extends Component {
 	}
 
   handleDeleteChannel = async function(channelId) {
-    let { currentUser, match: { params } } = this.props;
+    let { 
+			currentUser, 
+			match: { params },
+			history,
+		} = this.props;
     await this.props.deleteChannel(
       currentUser.id,
       params.serverId,
       channelId
     );
+		history.push('/activity');
   }
 
   render() {

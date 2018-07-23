@@ -43,7 +43,7 @@ export default (state=DEFAULT_STATE, action) => {
 			const filteredMessagesById = filteredMessageIds.reduce((acc, messageId) => {
 				acc[messageId] = state.messagesById[messageId];
 				return acc;
-			});
+			}, {});
 			return {
 				...state,
 				messagesById: filteredMessagesById,

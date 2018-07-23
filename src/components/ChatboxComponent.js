@@ -16,8 +16,7 @@ class ChatboxComponent extends Component {
 			history,
 		} = this.props;
 
-		// for reloading
-		indexMessages(params.serverId);
+		indexMessages(currentUser.id, params.serverId, params.channelId);
 	}
 
 	handleCreateMessage = (e) => {
@@ -30,7 +29,7 @@ class ChatboxComponent extends Component {
 		} = this.props;
 
 		let text = 'message' + Math.floor(Math.random() * 100000);
-		createMessage(params.serverId, params.channelId, text);
+		createMessage(currentUser.id, params.serverId, params.channelId, text);
 	}
 
 	render() {

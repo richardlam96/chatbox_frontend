@@ -7,15 +7,6 @@ class ServerNavComponent extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-		let { 
-			currentUser, 
-			indexServers,
-		} = this.props;
-
-		// indexServers(currentUser.id);
-	}
-
   handleCreateServer = (e) => {
     let index = Math.floor(Math.random() * 100000);
     this.props.createServer(this.props.currentUser.id, 'new server' + index);

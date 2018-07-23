@@ -19,8 +19,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		createMessage: (userId, channelId, text) => {
-			return dispatch(createChannelMessage(userId, channelId, text));
+		createMessage: (userId, serverId, channelId, text) => {
+			return dispatch(createChannelMessage(userId, serverId, channelId, text));
 		},
 		indexMessages: (userId, channelId) => dispatch(indexChannelMessages(userId, channelId)),
 	};
