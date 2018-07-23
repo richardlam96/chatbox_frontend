@@ -19,13 +19,11 @@ class ServerNavComponent extends Component {
   }
 
   handleIndexServerMessages = (serverId) => {
-    console.log('serverId', serverId);
     this.props.indexMessages(serverId);
   }
 
 
 	render() {
-    console.log('server nav', this.props.state);
 		let { 
 			currentUser, 
 			serversById, 

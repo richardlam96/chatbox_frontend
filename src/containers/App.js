@@ -20,13 +20,15 @@ import AuthRoute from '../utils/AuthRoute';
 // styles
 import '../styles/App.css';
 
+
+const store = configureStore();
+
+// Functions to run after reload to keep user and content.
 async function reload(userId) {
   await store.dispatch(indexUserServers(userId));
   await store.dispatch(indexUserChannels(userId));
 }
 
-
-const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
 	const userData = JSON.parse(localStorage.getItem('currentUser'));

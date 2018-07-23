@@ -27,11 +27,11 @@ export function indexUserChannelsFailure(error) {
 	};
 }
 
-export function indexUserChannels(ownerId) {
+export function indexUserChannels(userId) {
 	return dispatch => {
 		return apiCall(
 			'GET',
-			`/api/users/${ownerId}/channels`,
+			`/api/users/${userId}/channels`,
 		).then(channelData => {
 			dispatch(indexUserChannelsSuccess(channelData));
 		}).catch(error => {
@@ -56,11 +56,11 @@ export function indexServerChannelsFailure(error) {
 	};
 }
 
-export function indexServerChannels(ownerId, serverId) {
+export function indexServerChannels(userId, serverId) {
 	return dispatch => {
 		return apiCall(
 			'GET',
-			`/api/users/${ownerId}/servers/${serverId}/channels`,
+			`/api/users/${userId}/servers/${serverId}/channels`,
 		).then(channelData => {
 			dispatch(indexServerChannelsSuccess(channelData));
 		}).catch(error => {
@@ -116,11 +116,11 @@ export function deleteServerChannelFailure(error) {
 	};
 }
 
-export function deleteServerChannel(ownerId, serverId, channelId) {
+export function deleteServerChannel(userId, serverId, channelId) {
 	return dispatch => {
 		return apiCall(
 			'DELETE',
-			`/api/users/${ownerId}/servers/${serverId}/channels/${channelId}`,
+			`/api/users/${userId}/servers/${serverId}/channels/${channelId}`,
 		).then(deletedChannel => {
 			dispatch(deleteServerChannelSuccess(deletedChannel));
 		}).catch(error => {

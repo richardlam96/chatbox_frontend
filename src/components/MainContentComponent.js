@@ -11,13 +11,11 @@ class MainContentComponent extends Component {
 	}
 
 	async componentDidMount() {
-		let {
-			currentUser,
-			indexMessages,
-			match: { params, path },
-		} = this.props;
-		if (params.channelId) {
-		}
+		// let {
+		// 	currentUser,
+		// 	indexMessages,
+		// 	match: { params, path },
+		// } = this.props;
 	}
 
 	render() {

@@ -23,11 +23,9 @@ class ControlPaneComponent extends Component {
       params.serverId,
       channelId
     );
-		console.log('after delete', this.props.state);
   }
 
   render() {
-    console.log('controlpane', this.props.state);
 		let { 
 			currentUser, 
       serversById,

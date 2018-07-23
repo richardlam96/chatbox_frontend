@@ -1,7 +1,6 @@
 import {
 	INDEX_CHANNEL_MESSAGES_SUCCESS, 
 	CREATE_CHANNEL_MESSAGE_SUCCESS,
-	DELETE_USER_SERVER_SUCCESS,
 	DELETE_SERVER_CHANNEL_SUCCESS,
 } from '../actionTypes';
 
@@ -12,8 +11,9 @@ const DEFAULT_STATE = {
 
 export default (state=DEFAULT_STATE, action) => {
 	switch(action.type) {
+
+    // CRUD actions for Messages.
 		case CREATE_CHANNEL_MESSAGE_SUCCESS:
-			console.log('state', state);
 			return {
 				...state,
 				messagesById: {
@@ -25,11 +25,15 @@ export default (state=DEFAULT_STATE, action) => {
 					action.newMessage._id,
 				],
 			};
+
 		case INDEX_CHANNEL_MESSAGES_SUCCESS:
 			return {
 				messagesById: action.messages.messagesById,
 				messageIds: action.messages.messageIds,
 			};
+
+
+    // CRUD actions that affect Messages.
 		case DELETE_SERVER_CHANNEL_SUCCESS:
 			// Find messages with channel.
 			const filteredMessageIds = state.messageIds.filter(messageId => {
@@ -45,7 +49,7 @@ export default (state=DEFAULT_STATE, action) => {
 				messagesById: filteredMessagesById,
 				messageIds: filteredMessageIds,
 			};
-		case DELETE_USER_SERVER_SUCCESS:
+
 		default:
 			return state;
 	}

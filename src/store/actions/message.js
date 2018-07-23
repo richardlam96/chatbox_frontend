@@ -26,7 +26,7 @@ export function createChannelMessage(serverId, channelId, text) {
 	return dispatch => {
 		return apiCall(
 			'POST',
-			`/api/servers/${serverId}/channels/${channelId}/messages`,
+			`/api/users/${userId}/servers/${serverId}/channels/${channelId}/messages`,
 			{ text }
 		).then(newMessage => {
 			console.log('newMessage', newMessage);
@@ -57,7 +57,7 @@ export function indexChannelMessages(serverId) {
     console.log(serverId);
 		return apiCall(
 			'GET',
-			`/api/servers/${serverId}/messages`,
+			`/api/users/${userId}/servers/${serverId}/channels/${channelId}/messages`,
 		).then(messages => {
 			dispatch(indexChannelMessagesSuccess(messages));
 		}).catch(error => {

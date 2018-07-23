@@ -26,11 +26,11 @@ export function indexUserServersFailure(error) {
 	};
 }
 
-export function indexUserServers(ownerId) {
+export function indexUserServers(userId) {
 	return dispatch => {
 		return apiCall(
 			'GET',
-			`/api/users/${ownerId}/servers`,
+			`/api/users/${userId}/servers`,
 		).then(serverData => {
 			dispatch(indexUserServersSuccess(serverData));
 		}).catch(error => {
@@ -85,11 +85,11 @@ export function deleteUserServerFailure(error) {
 	};
 }
 
-export function deleteUserServer(ownerId, serverId) {
+export function deleteUserServer(userId, serverId) {
 	return dispatch => {
 		return apiCall(
 			'DELETE',
-			`/api/users/${ownerId}/servers/${serverId}`,
+			`/api/users/${userId}/servers/${serverId}`,
 		).then(deletedServer => {
 			dispatch(deleteUserServerSuccess(deletedServer));
 		}).catch(error => {
@@ -97,5 +97,4 @@ export function deleteUserServer(ownerId, serverId) {
 		});
 	}
 }
-
 

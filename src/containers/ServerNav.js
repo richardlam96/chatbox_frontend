@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		createServer: (userId, serverName) => dispatch(createUserServer(userId, serverName)),
-		deleteServer: (ownerId, serverId) => dispatch(deleteUserServer(ownerId, serverId)),
+		deleteServer: (userId, serverId) => dispatch(deleteUserServer(userId, serverId)),
 		indexServers: (userId) => dispatch(indexUserServers(userId)),
 		indexChannels: (userId) => dispatch(indexUserChannels(userId)),
     indexMessages: (serverId) => dispatch(indexChannelMessages(serverId)),

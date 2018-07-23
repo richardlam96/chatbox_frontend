@@ -15,11 +15,14 @@ const DEFAULT_STATE = {
 export default (state=DEFAULT_STATE, action) => {
 	state = Object.freeze(state);
 	switch(action.type) {
+
+    // CRUD for Servers.
 		case INDEX_USER_SERVERS_SUCCESS:
 			return {
 				...state,
 				...action.serverData,
 			};
+
 		case CREATE_USER_SERVER_SUCCESS:
 			const serversById = {
 				...state.serversById,
@@ -34,6 +37,7 @@ export default (state=DEFAULT_STATE, action) => {
 				serversById,
 				serverIds,
 			};
+
 		case DELETE_USER_SERVER_SUCCESS:
 			const { [action.deletedServer._id]: deletedServer, ...rest } = state.serversById;
 			const remainingServerIds = state.serverIds.filter(id => {
@@ -44,6 +48,9 @@ export default (state=DEFAULT_STATE, action) => {
 				serversById: rest,
 				serverIds: remainingServerIds,
 			};
+
+
+    // Channel CRUD actions that affect Servers.
     case CREATE_SERVER_CHANNEL_SUCCESS:
       const targetServerId = action.newChannel.server;
       const targetServerChannels = state.serversById[targetServerId].channels;
@@ -63,6 +70,7 @@ export default (state=DEFAULT_STATE, action) => {
           ),
         }),
       }
+
     case DELETE_SERVER_CHANNEL_SUCCESS:
       const deletedChannelServerId = action.deletedChannel.server;
       const serverChannels = state.serversById[deletedChannelServerId].channels;

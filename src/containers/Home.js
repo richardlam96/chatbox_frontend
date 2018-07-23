@@ -8,11 +8,6 @@ import HomePage from '../components/HomePage';
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-		serversById: state.currentUserServers.serversById,
-		serverIds: state.currentUserServers.serverIds,
-		channelsById: state.currentServerChannels.channelsById,
-		channelIds: state.currentServerChannels.channelIds,
-		state,
   };
 }
 
@@ -20,7 +15,6 @@ const mapDispatchToProps = dispatch => {
   return {
 		indexServers: (userId) => dispatch(indexUserServers(userId)),
 		indexChannels: (userId) => dispatch(indexUserChannels(userId)),
-    sayHello: () => console.log('hello'),
 	};
 }
 
