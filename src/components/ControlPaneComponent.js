@@ -27,7 +27,7 @@ class ControlPaneComponent extends Component {
       params.serverId,
       channelId
     );
-		history.push('/activity');
+		history.push('/channels/' + params.serverId);
   }
 
   render() {
