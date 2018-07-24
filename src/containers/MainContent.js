@@ -7,9 +7,7 @@ import { indexChannelMessages } from '../store/actions/message';
 
 const mapStateToProps = state => {
 	return {
-		currentUser: state.currentUser,
-		messagesById: state.channelMessages.messagesById,
-		messageIds: state.channelMessages.messageIds,
+		channelsById: state.currentServerChannels.channelsById,
 	};
 }
 

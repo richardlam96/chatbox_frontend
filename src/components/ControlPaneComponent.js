@@ -31,7 +31,7 @@ class ControlPaneComponent extends Component {
       this.props.createChannel(
         this.props.currentUser.id, 
         this.props.match.params.serverId, 
-        this.state.channelName
+        '# ' + this.state.channelName
       );
     }
     this.toggleForm();
@@ -62,8 +62,9 @@ class ControlPaneComponent extends Component {
 		} = this.props;
     
     let server = serversById[params.serverId];
-    let channelList;
+    let serverName, channelList;
     if (server) {
+			serverName = server.name;
       channelList = server.channels.map(channelId => {
         if (channelsById[channelId]) {
           let link = '/channels/' + params.serverId + '/' + channelId;
@@ -89,7 +90,9 @@ class ControlPaneComponent extends Component {
 
 		return (
 			<div className="control-pane-component">
-				<p>ControlPaneComponent</p>
+				<div className="control-pane-header">
+					<p>{serverName}</p>
+				</div>
 				<button
 					onClick={this.toggleForm}
 					>

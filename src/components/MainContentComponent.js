@@ -10,19 +10,18 @@ class MainContentComponent extends Component {
 		super(props);
 	}
 
-	async componentDidMount() {
-		// let {
-		// 	currentUser,
-		// 	indexMessages,
-		// 	match: { params, path },
-		// } = this.props;
-	}
-
 	render() {
+		let {
+			channelsById,
+			match: { params },
+		} = this.props;
+
+		let channel = channelsById[params.channelId];
+		let channelName = channel ? channel.name : 'Channel';
 		return ( 
 			<div className="main-content-component">
-				<p>Main Content</p>
 				<div className="main-content-header">
+					<p>{channelName}</p>
 				</div>
 				<Switch>
 					<Route exact path="/channels/:serverId" render={Blank} />
