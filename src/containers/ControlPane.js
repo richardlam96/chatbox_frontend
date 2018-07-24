@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { indexChannelMessages } from '../store/actions/message';
 import ControlPaneComponent from '../components/ControlPaneComponent';
 
 import { 
@@ -26,6 +27,9 @@ const mapDispatchToProps = dispatch => {
     deleteChannel: (userId, serverId, channelId) => {
       return dispatch(deleteServerChannel(userId, serverId, channelId));
     },
+		indexMessages: (userId, serverId, channelId) => {
+			return dispatch(indexChannelMessages(userId, serverId, channelId));
+		},
 	};
 }
 

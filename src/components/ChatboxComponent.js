@@ -15,7 +15,8 @@ class ChatboxComponent extends Component {
 			indexMessages,
 			match: { params },
 		} = this.props;
-		console.log('wee');
+
+		// For handling refreshes
 		indexMessages(currentUser.id, params.serverId, params.channelId);
 	}
 
@@ -75,8 +76,6 @@ class ChatboxComponent extends Component {
             <input type="text" onChange={this.handleChange} value={this.state.message} />
           </form>
         </div>
-
-
 			</div>
 		);
 	}

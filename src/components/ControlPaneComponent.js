@@ -57,6 +57,7 @@ class ControlPaneComponent extends Component {
       serversById,
 			channelsById, 
 			channelIds,
+			indexMessages,
 			match: { params },
 		} = this.props;
     
@@ -70,6 +71,7 @@ class ControlPaneComponent extends Component {
             <li key={channelId}>
               <Link 
 								to={link}
+								onClick={() => indexMessages(currentUser.id, params.serverId, channelId)}
 								>
 								{channelsById[channelId].name}
                 <button
