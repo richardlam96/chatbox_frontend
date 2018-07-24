@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import '../styles/ServerNavComponent.css';
+import '../styles/ControlPaneComponent.css';
 
 
 class ControlPaneComponent extends Component {
 	constructor(props) {
 		super(props);
     this.state = {
+			showOptions: false,
       showForm: false,
       channelName: '',
     };
+	}
+
+	toggleOptions = () => {
+		this.setState({
+			showOptions: !this.state.showOptions,
+		});
 	}
 
 	// Handle Channel Form display, changes, and submission......................
@@ -104,19 +111,24 @@ class ControlPaneComponent extends Component {
 
 		return (
 			<div className="control-pane-component">
-				<div className="control-pane-header">
-					<p>{serverName}</p>
+
+				<div className="control-pane-header" onClick={this.toggleOptions}>
+					<span>{serverName}</span>
+				</div>
+
+				<div className={this.state.showOptions ? "control-pane-options" : "hidden"}>
 					<button
 						onClick={() => this.handleDeleteServer(currentUser.id)}
 						>
 						Delete Server
 					</button>
+					<button
+						onClick={this.toggleForm}
+						>
+						Create Channel
+					</button>
 				</div>
-				<button
-					onClick={this.toggleForm}
-					>
-					Create Channel
-				</button>
+
 				<ul>
           {channelList}
 				</ul>

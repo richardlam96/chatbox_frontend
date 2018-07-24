@@ -1,10 +1,10 @@
 .server-nav-component {
 	width: 70px;
 	background: #202225;
-	box-sizing: border-box;
 }
 
 .server-list {
+	font-size: 14pt;
   display: flex;
   flex-direction: column;
 	align-items: center;

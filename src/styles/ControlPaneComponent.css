@@ -1,0 +1,40 @@
+.control-pane-component {
+	width: 240px;
+}
+
+.control-pane-header {
+	background: #2f3136;
+	height: 48px;
+	line-height: 48px;
+	cursor: pointer;
+	margin-top: 0;
+	border-bottom: 1px solid #111;
+	position: relative;
+	top: 0;
+	padding: 0 10px;
+}
+
+.control-pane-header:hover {
+	background: #202225;
+}
+
+.control-pane-options {
+	margin: 10px;
+	border: 1px solid #111;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.control-pane-options button {
+	outline: none;
+	border: none;
+	background: none;
+	color: #7d848e;
+	width: 100%;
+	height: 25px;
+}
+
+.control-pane-options button:hover {
+	color: #fff;
+	background: rgba(79,84,92, 0.6);
+}
