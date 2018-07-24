@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 class ChatboxComponent extends Component {
 	constructor(props) {
 		super(props);
+    this.state = {
+      message: '',
+    };
 	}
 
 	componentDidMount() {
@@ -46,15 +49,20 @@ class ChatboxComponent extends Component {
 		
 		return (
 			<div className="chatbox-component">
-				<p>Chatbox on {params.channelId}</p>
-				<button
-					onClick={this.handleCreateMessage}
-					>
-					Create Message
-				</button>
-				<ul>
+        <div className="chatbox-header">
+          <p>Chatbox on {params.channelId}</p>
+        </div>
+        <ul className="chatbox-messages">
 					{messageList}
 				</ul>
+        <div className="chatbox-input">
+          <form onSubmit={this.handleCreateMessage}>
+            <input type="text" />
+            <button>SEND</button>
+          </form>
+        </div>
+
+
 			</div>
 		);
 	}
