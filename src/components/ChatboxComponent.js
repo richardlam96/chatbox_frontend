@@ -57,8 +57,16 @@ class ChatboxComponent extends Component {
     let messageList = [];
     if (currentChannel && currentChannel.messages) {
       messageList = currentChannel.messages.map(messageId => {
-        if (messagesById[messageId]) {
-          return (<li key={messageId}>{messagesById[messageId].text}</li>);
+				let message = messagesById[messageId];
+        if (message) {
+          return (
+						<li key={messageId} className="chatbox-message">
+							<div className="chatbox-message-details">
+								{message.user}
+							</div>
+							{message.text}
+						</li>
+					);
         }
       });
     }
