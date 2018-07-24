@@ -26,10 +26,6 @@ class ServerNavComponent extends Component {
 		this.toggleForm();
   }
 
-  handleDeleteServer = (currentUserId, serverId) => {
-    this.props.deleteServer(currentUserId, serverId);
-  }
-
 	toggleForm = () => {
 		this.setState({
 			showForm: !this.state.showForm,
@@ -58,13 +54,8 @@ class ServerNavComponent extends Component {
 			}
 
 			return (
-				<Link to={path} key={serverId}>
-					{serversById[serverId].name}
-					<button
-						onClick={() => this.handleDeleteServer(currentUser.id, serverId)}
-						>
-						Delete
-					</button>
+				<Link to={path} key={serverId} className="server-list-item">
+					{serversById[serverId].name[0]}
 				</Link>
 			);
 		});
@@ -72,14 +63,17 @@ class ServerNavComponent extends Component {
 		return (
 			<div className="server-nav-component">
 				<div className="server-list">
-					<Link to="/activity">Activity</Link>
+					<Link to="/activity" className="server-list-item">A</Link>
+					<hr />
 					{serverList}
+					<button 
+						className="server-list-item"
+						onClick={this.toggleForm}
+						>
+						+
+					</button>
+					<hr />
 				</div>
-				<button 
-					onClick={this.toggleForm}
-					>
-					Create new Server
-				</button>
 				<div className={this.state.showForm ? "modal" : "hidden"}>
 					<form className="server-form" onSubmit={this.handleCreateServer}>
 						<div className="server-form-header">

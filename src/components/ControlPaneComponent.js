@@ -13,6 +13,7 @@ class ControlPaneComponent extends Component {
     };
 	}
 
+	// Handle Channel Form display, changes, and submission......................
   toggleForm = () => {
     this.setState({
       showForm: !this.state.showForm,
@@ -37,6 +38,7 @@ class ControlPaneComponent extends Component {
     this.toggleForm();
 	}
 
+	// Handle Channel deletion..................................................
   handleDeleteChannel = async function(channelId) {
     let { 
 			currentUser, 
@@ -50,6 +52,18 @@ class ControlPaneComponent extends Component {
     );
 		history.push('/channels/' + params.serverId);
   }
+
+	// Handle Server deletion...................................................
+	handleDeleteServer = (currentUserId) => {
+		let {
+			deleteServer,
+			match: { params },
+			history,
+		} = this.props;
+    deleteServer(currentUserId, params.serverId);
+		history.push('/activity');
+  }
+
 
   render() {
 		let { 
@@ -92,6 +106,11 @@ class ControlPaneComponent extends Component {
 			<div className="control-pane-component">
 				<div className="control-pane-header">
 					<p>{serverName}</p>
+					<button
+						onClick={() => this.handleDeleteServer(currentUser.id)}
+						>
+						Delete Server
+					</button>
 				</div>
 				<button
 					onClick={this.toggleForm}

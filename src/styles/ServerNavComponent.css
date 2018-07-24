@@ -1,6 +1,48 @@
+.server-nav-component {
+	width: 70px;
+	background: #202225;
+	box-sizing: border-box;
+}
+
 .server-list {
   display: flex;
   flex-direction: column;
+	align-items: center;
+	padding-top: 10px;
+}
+
+.server-list-item {
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	text-decoration: none;
+	background: #36393f;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	margin: 5px 0;
+	transition: border-radius 0.2s, background 0.2s;
+}
+
+.server-list-item:hover {
+	border-radius: 15px;
+	background: rgb(114, 137, 218);
+}
+
+button.server-list-item {
+	outline: none;
+	border: 1px dashed #535559;
+	color: #535559;
+	background: #202225;
+	transition: color 0.2s, border 0.2s;
+}
+
+button.server-list-item:hover {
+	border: 1px dashed #fff;
+	border-radius: 50%;
+	background: #202225;
+	color: #fff;
+	cursor: pointer;
 }
 
 .modal {
