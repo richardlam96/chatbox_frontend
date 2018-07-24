@@ -15,19 +15,34 @@ class ChatboxComponent extends Component {
 			indexMessages,
 			match: { params },
 		} = this.props;
-
+		console.log('wee');
 		indexMessages(currentUser.id, params.serverId, params.channelId);
 	}
 
+	handleChange = e => {
+		this.setState({
+			message: e.target.value,
+		});
+	}
+
 	handleCreateMessage = (e) => {
+		e.preventDefault();
 		let {
 			currentUser,
 			createMessage,
 			match: { params },
 		} = this.props;
 
-		let text = 'message' + Math.floor(Math.random() * 100000);
-		createMessage(currentUser.id, params.serverId, params.channelId, text);
+		createMessage(
+			currentUser.id, 
+			params.serverId, 
+			params.channelId, 
+			this.state.message
+		);
+
+		this.setState({
+			message: '',
+		});
 	}
 
 	render() {
@@ -57,8 +72,7 @@ class ChatboxComponent extends Component {
 				</ul>
         <div className="chatbox-input">
           <form onSubmit={this.handleCreateMessage}>
-            <input type="text" />
-            <button>SEND</button>
+            <input type="text" onChange={this.handleChange} value={this.state.message} />
           </form>
         </div>
 
