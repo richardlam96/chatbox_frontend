@@ -10,10 +10,7 @@ class ChatboxComponent extends Component {
 		let {
 			currentUser,
 			indexMessages,
-			messagesById,
-			messageIds,
 			match: { params },
-			history,
 		} = this.props;
 
 		indexMessages(currentUser.id, params.serverId, params.channelId);
@@ -23,8 +20,6 @@ class ChatboxComponent extends Component {
 		let {
 			currentUser,
 			createMessage,
-			messagesById,
-			messageIds,
 			match: { params },
 		} = this.props;
 
@@ -34,14 +29,8 @@ class ChatboxComponent extends Component {
 
 	render() {
 		let {
-      currentUser,
-      serversById,
-      serverIds,
 			channelsById,
-			channelIds,
 			messagesById,
-			messageIds,
-      indexMessages,
 			match: { params },
 		} = this.props;
 

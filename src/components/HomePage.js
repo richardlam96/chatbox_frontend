@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ServerNav from '../containers/ServerNav';
 import ControlPane from '../containers/ControlPane';
+import MainContent from '../containers/MainContent';
 import '../styles/HomePage.css';
 
 // Placeholder component.
 import Blank from '../containers/Blank';
 
 // Component in current progress.
-import MainContent from '../containers/MainContent';
-
 
 class HomePage extends Component {
 	constructor(props) {

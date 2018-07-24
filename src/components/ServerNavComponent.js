@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/ServerNavComponent.css';
 
 
 class ServerNavComponent extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			showForm: false,
+			serverName: '',
+		};
 	}
 
-  handleCreateServer = (e) => {
-    let index = Math.floor(Math.random() * 100000);
-    this.props.createServer(this.props.currentUser.id, 'new server' + index);
+	handleChange = (e) => {
+		this.setState({
+			serverName: e.target.value,
+		});
+	}
+
+  handleCreateServer = () => {
+    this.props.createServer(this.props.currentUser.id, this.state.serverName);
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
     this.props.deleteServer(currentUserId, serverId);
   }
+
+	toggleForm = () => {
+		this.setState({
+			showForm: !this.state.showForm,
+		});
+	}
 
 	render() {
 		let { 
@@ -51,14 +67,24 @@ class ServerNavComponent extends Component {
 
 		return (
 			<div className="server-nav-component">
-				<button 
-					onClick={this.handleCreateServer}
-					>
-					Create new Server
-				</button>
 				<div className="server-list">
 					<Link to="/activity">Activity</Link>
 					{serverList}
+				</div>
+				<button 
+					onClick={this.toggleForm}
+					>
+					Create new Server
+				</button>
+				<div className={this.state.showForm ? "server-form-modal" : "server-form-modal hidden"}>
+					<form className="server-form" onSubmit={this.handleCreateServer}>
+						<div className="server-form-header">
+							CREATE YOUR SERVER 
+						</div>
+						SERVER NAME:
+						<input type="text" onChange={this.handleChange} autofocus />
+						<button>Submit</button>
+					</form>
 				</div>
 			</div>
 		);
