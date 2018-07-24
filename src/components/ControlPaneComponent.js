@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import Navbar from './Navbar';
+import '../styles/ServerNavComponent.css';
 
 
 class ControlPaneComponent extends Component {
 	constructor(props) {
 		super(props);
+    this.state = {
+      showForm: false,
+      channelName: '',
+    };
 	}
 
-	handleCreateChannel = () => {
-    let index = Math.floor(Math.random() * 100000);
-		this.props.createChannel(
-			this.props.currentUser.id, 
-			this.props.match.params.serverId, 
-			'channel' + index
-		);
+  toggleForm = () => {
+    this.setState({
+      showForm: !this.state.showForm,
+    });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      channelName: e.target.value,
+    });
+  }
+
+	handleCreateChannel = (e) => {
+    e.preventDefault();
+    if (this.state.channelName) {
+      this.props.createChannel(
+        this.props.currentUser.id, 
+        this.props.match.params.serverId, 
+        this.state.channelName
+      );
+    }
+    this.toggleForm();
 	}
 
   handleDeleteChannel = async function(channelId) {
@@ -70,13 +89,25 @@ class ControlPaneComponent extends Component {
 			<div className="control-pane-component">
 				<p>ControlPaneComponent</p>
 				<button
-					onClick={this.handleCreateChannel}
+					onClick={this.toggleForm}
 					>
 					Create Channel
 				</button>
 				<ul>
           {channelList}
 				</ul>
+
+				<div className={this.state.showForm ? "modal" : "hidden"}>
+          <form className="server-form" onSubmit={this.handleCreateChannel}>
+            <div className="server-form-header">
+              CREATE YOUR CHANNEL 
+            </div>
+            CHANNEL NAME:
+            <input type="text" onChange={this.handleChange} />
+            <button>Submit</button>
+          </form>
+        </div>
+
 				<Navbar />
 			</div>
 		);

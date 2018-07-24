@@ -3,13 +3,15 @@
   flex-direction: column;
 }
 
-.server-form-modal {
+.modal {
 	background: #111;
 	opacity: 0.9;
 	position: fixed;
 	top: 0;
+  left: 0;
 	height: 100%;
 	width: 100%;
+  z-index: 10;
 }
 
 .server-form {
