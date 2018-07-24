@@ -48,6 +48,7 @@ class ChatboxComponent extends Component {
 
 	render() {
 		let {
+			currentUser,
 			channelsById,
 			messagesById,
 			match: { params },
@@ -62,7 +63,7 @@ class ChatboxComponent extends Component {
           return (
 						<li key={messageId} className="chatbox-message">
 							<div className="chatbox-message-details">
-								{message.user}
+								{currentUser.username}
 							</div>
 							{message.text}
 						</li>
