@@ -18,8 +18,12 @@ class ServerNavComponent extends Component {
 		});
 	}
 
-  handleCreateServer = () => {
-    this.props.createServer(this.props.currentUser.id, this.state.serverName);
+  handleCreateServer = e => {
+		e.preventDefault();
+		if (this.state.serverName) {
+			this.props.createServer(this.props.currentUser.id, this.state.serverName);
+		}
+		this.toggleForm();
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
@@ -76,7 +80,7 @@ class ServerNavComponent extends Component {
 					>
 					Create new Server
 				</button>
-				<div className={this.state.showForm ? "server-form-modal" : "server-form-modal hidden"}>
+				<div className={this.state.showForm ? "modal" : "hidden"}>
 					<form className="server-form" onSubmit={this.handleCreateServer}>
 						<div className="server-form-header">
 							CREATE YOUR SERVER 
