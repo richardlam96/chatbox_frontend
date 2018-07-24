@@ -18,8 +18,10 @@ class ServerNavComponent extends Component {
 		});
 	}
 
-  handleCreateServer = () => {
+  handleCreateServer = (e) => {
+    e.preventDefault();
     this.props.createServer(this.props.currentUser.id, this.state.serverName);
+    this.toggleForm();
   }
 
   handleDeleteServer = (currentUserId, serverId) => {
@@ -82,7 +84,7 @@ class ServerNavComponent extends Component {
 							CREATE YOUR SERVER 
 						</div>
 						SERVER NAME:
-						<input type="text" onChange={this.handleChange} autofocus />
+						<input type="text" onChange={this.handleChange} />
 						<button>Submit</button>
 					</form>
 				</div>

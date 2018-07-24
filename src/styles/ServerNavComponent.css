@@ -1,3 +1,8 @@
+.server-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .server-form-modal {
 	background: #111;
 	opacity: 0.9;
