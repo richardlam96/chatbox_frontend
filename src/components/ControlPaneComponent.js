@@ -94,13 +94,14 @@ class ControlPaneComponent extends Component {
               <Link 
 								to={link}
 								onClick={() => indexMessages(currentUser.id, params.serverId, channelId)}
+								className="control-pane-list-item"
 								>
 								{channelsById[channelId].name}
-                <button
+                <span
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >
                   Delete
-                </button>
+                </span>
               </Link>
             </li>
           );
@@ -129,7 +130,7 @@ class ControlPaneComponent extends Component {
 					</button>
 				</div>
 
-				<ul>
+				<ul className="control-pane-list">
           {channelList}
 				</ul>
 

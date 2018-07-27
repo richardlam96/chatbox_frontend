@@ -1,5 +1,7 @@
 .control-pane-component {
 	width: 240px;
+	display: flex;
+	flex-direction: column;
 }
 
 .control-pane-header {
@@ -37,4 +39,24 @@
 .control-pane-options button:hover {
 	color: #fff;
 	background: rgba(79,84,92, 0.6);
+}
+
+.control-pane-list {
+	list-style-type: none;
+	padding-left: 0;
+	margin: 10px;
+	border: 1px solid red;
+}
+
+.control-pane-list-item {
+	color: inherit;
+	text-decoration: none;
+	padding: 15px;
+	margin: 15px 0;
+}
+
+.control-pane-list-item span {
+	float: right;
+	border: none;
+	border-radius: 5px;
 }
