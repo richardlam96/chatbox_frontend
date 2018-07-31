@@ -1,6 +1,7 @@
 .control-pane-component {
 	background: #2f3136;
 	width: 240px;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

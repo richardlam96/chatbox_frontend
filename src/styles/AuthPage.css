@@ -81,13 +81,13 @@
   text-decoration: underline;
 }
 
-h5 {
+.authform h5 {
   color: #b9bbbe;
   font-size: 12px;
   margin: 0;
 }
 
-input {
+.authform input {
   font-size: 16px;
   color: white;
   border: 1px solid  #040405;
@@ -103,11 +103,11 @@ input {
   width: 100%;
 }
 
-input:focus {
+.authform input:focus {
   border: 1px solid #7289da;
 }
 
-button[type="submit"] {
+.authform button[type="submit"] {
   border: none;
   border-radius: 3px;
   font-size: 15px;
@@ -116,7 +116,7 @@ button[type="submit"] {
   background: rgba(114, 137, 218, 1);
 }
 
-button[type="submit"]:hover {
+.authform button[type="submit"]:hover {
   background: rgba(114, 137, 218, 0.9);
 }
 

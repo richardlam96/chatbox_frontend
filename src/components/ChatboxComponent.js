@@ -78,16 +78,19 @@ class ChatboxComponent extends Component {
         <div className="chatbox-header">
           <p>Chatbox on {params.channelId}</p>
         </div>
+
         <ul className="chatbox-messages">
 					{messageList}
 				</ul>
+
 				<div className="chatbox-footer">
-					<div className="chatbox-input">
+					<div className="chatbox-form">
 						<form onSubmit={this.handleCreateMessage}>
-							<input type="text" onChange={this.handleChange} value={this.state.message} />
+							<input type="text" id="chatbox-form-input" onChange={this.handleChange} value={this.state.message} />
 						</form>
 					</div>
 				</div>
+
 			</div>
 		);
 	}

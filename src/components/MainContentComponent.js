@@ -23,7 +23,7 @@ class MainContentComponent extends Component {
 				<div className="main-content-header">
 					<span># {channelName}</span>
 				</div>
-				<Switch>
+				<Switch className="main-content">
 					<Route exact path="/channels/:serverId" render={Blank} />
 					<Route exact path="/channels/:serverId/:channelId" render={Chatbox} />
 				</Switch>
