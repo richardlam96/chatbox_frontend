@@ -90,17 +90,17 @@ class ControlPaneComponent extends Component {
         if (channelsById[channelId]) {
           let link = '/channels/' + params.serverId + '/' + channelId;
           return (
-            <li key={channelId}>
+            <li key={channelId} className="control-pane-list-item">
               <Link 
 								to={link}
 								onClick={() => indexMessages(currentUser.id, params.serverId, channelId)}
-								className="control-pane-list-item"
+                className="control-pane-list-item-link"
 								>
 								{channelsById[channelId].name}
                 <span
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >
-                  Delete
+                  X
                 </span>
               </Link>
             </li>
