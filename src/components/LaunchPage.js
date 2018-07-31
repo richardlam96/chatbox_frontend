@@ -15,7 +15,7 @@ const LaunchPage = ({ currentUser }) => {
 			<Navbar />
 			<div className="intro">
 				<div className="logo">
-					<i class="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
+					<i className="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
 				</div>
 			</div>
 		</div>

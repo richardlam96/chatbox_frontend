@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 import '../styles/ChatboxComponent.css';
+
+const socket = io('http://localhost:3001');
 
 
 class ChatboxComponent extends Component {
@@ -29,6 +32,10 @@ class ChatboxComponent extends Component {
 
 	handleCreateMessage = (e) => {
 		e.preventDefault();
+
+		// Emit message for real time functionality.
+		socket.emit('send', this.state.message);
+
 		let {
 			currentUser,
 			createMessage,
@@ -55,6 +62,11 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
+		let socketTest;
+		socket.on('send', msg => {
+			socketTest = msg;
+		});
+
     let currentChannel = channelsById[params.channelId];
     let messageList = [];
     if (currentChannel && currentChannel.messages) {
@@ -77,6 +89,7 @@ class ChatboxComponent extends Component {
 			<div className="chatbox-component">
         <div className="chatbox-header">
           <p>Chatbox on {params.channelId}</p>
+					<p>{socketTest}</p>
         </div>
 
         <ul className="chatbox-messages">
