@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
 import '../styles/ControlPaneComponent.css';
 
 
@@ -79,6 +78,7 @@ class ControlPaneComponent extends Component {
 			channelsById, 
 			channelIds,
 			indexMessages,
+			logout,
 			match: { params },
 		} = this.props;
     
@@ -96,7 +96,7 @@ class ControlPaneComponent extends Component {
 								onClick={() => indexMessages(currentUser.id, params.serverId, channelId)}
                 className="control-pane-list-item-link"
 								>
-								{channelsById[channelId].name}
+								# {channelsById[channelId].name}
                 <span
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >
@@ -113,6 +113,7 @@ class ControlPaneComponent extends Component {
 		return (
 			<div className="control-pane-component">
 
+				<div className="control-pane-wrapper">
 				<div className="control-pane-header" onClick={this.toggleOptions}>
 					<span>{serverName}</span>
 				</div>
@@ -144,8 +145,12 @@ class ControlPaneComponent extends Component {
             <button>Submit</button>
           </form>
         </div>
-
-				<Navbar />
+        </div>
+			
+				<div className="control-pane-footer">
+					<span>{currentUser.username}</span>
+					<a className="logout-link" onClick={logout}>Logout</a>
+				</div>
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-
 import Chatbox from '../containers/Chatbox';
+import '../styles/MainContentComponent.css';
 
 import Blank from '../containers/Blank';
 
@@ -21,7 +21,7 @@ class MainContentComponent extends Component {
 		return ( 
 			<div className="main-content-component">
 				<div className="main-content-header">
-					<p>{channelName}</p>
+					<span># {channelName}</span>
 				</div>
 				<Switch>
 					<Route exact path="/channels/:serverId" render={Blank} />

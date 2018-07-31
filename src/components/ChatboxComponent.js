@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/ChatboxComponent.css';
 
 
 class ChatboxComponent extends Component {
@@ -65,7 +66,7 @@ class ChatboxComponent extends Component {
 							<div className="chatbox-message-details">
 								{currentUser.username}
 							</div>
-							{message.text}
+							<p>{message.text}</p>
 						</li>
 					);
         }
@@ -80,11 +81,13 @@ class ChatboxComponent extends Component {
         <ul className="chatbox-messages">
 					{messageList}
 				</ul>
-        <div className="chatbox-input">
-          <form onSubmit={this.handleCreateMessage}>
-            <input type="text" onChange={this.handleChange} value={this.state.message} />
-          </form>
-        </div>
+				<div className="chatbox-footer">
+					<div className="chatbox-input">
+						<form onSubmit={this.handleCreateMessage}>
+							<input type="text" onChange={this.handleChange} value={this.state.message} />
+						</form>
+					</div>
+				</div>
 			</div>
 		);
 	}

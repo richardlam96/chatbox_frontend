@@ -1,23 +1,25 @@
 .control-pane-component {
+	background: #2f3136;
 	width: 240px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .control-pane-header {
-	background: #2f3136;
 	height: 48px;
 	line-height: 48px;
 	cursor: pointer;
 	margin-top: 0;
 	border-bottom: 1px solid #111;
+	box-sizing: border-bottom;
 	position: relative;
 	top: 0;
 	padding: 0 10px;
 }
 
 .control-pane-header:hover {
-	background: #202225;
+	background: rgba(32,34,37,.3);
 }
 
 .control-pane-options {
@@ -49,7 +51,7 @@
 
 .control-pane-list-item {
 	padding: 8px;
-	margin: 10px 0;
+	margin: 3px 0;
   border: none;
   border-radius: 5px;
   color: #aaa;
@@ -69,4 +71,29 @@
 	float: right;
 	border: none;
 	border-radius: 5px;
+}
+
+.control-pane-footer {
+	background: rgba(32,34,37,.3);
+	height: 48px;
+	line-height: 48px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.logout-link {
+	opacity: 0.8;
+	padding: 5px;
+	border-left: 1px dotted #aaa;
+	border-right: 1px dotted #aaa;
+	box-sizing: border-box;
+	transition: background 0.2s;
+}
+
+.logout-link:hover {
+	opacity: 1.0;
+	background: #ff4136;
 }

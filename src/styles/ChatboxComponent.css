@@ -1,0 +1,39 @@
+.chatbox-component {
+	padding: 10px;
+}
+
+.chatbox-header {
+	opacity: 0.8;
+}
+
+.chatbox-messages {
+	list-style-type: none;
+	padding-left: 0px;
+	overflow: hidden;
+}
+
+.chatbox-message {
+	border-top: 1px solid #aaa;
+}
+
+.chatbox-message p {
+	font-size: 14px;
+	opacity: 0.8;
+}
+
+.chatbox-footer {
+	border: 1px solid red;
+	position: absolute;
+	bottom: 0;
+}
+
+.chatbox-input {
+	width: 100%;
+}
+
+.friends-list {
+	height: 100%;
+	width: 240px;
+	position: fixed;
+	right: 0;
+}

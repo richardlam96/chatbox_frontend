@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import { indexChannelMessages } from '../store/actions/message';
 import { deleteUserServer } from '../store/actions/server';
+import { signoutUser } from '../store/actions/auth';
+
 import ControlPaneComponent from '../components/ControlPaneComponent';
 
 import { 
@@ -32,6 +35,7 @@ const mapDispatchToProps = dispatch => {
 			return dispatch(indexChannelMessages(userId, serverId, channelId));
 		},
 		deleteServer: (userId, serverId) => dispatch(deleteUserServer(userId, serverId)),
+    logout: () => dispatch(signoutUser()),
 	};
 }
 
