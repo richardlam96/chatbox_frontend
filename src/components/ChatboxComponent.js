@@ -10,7 +10,15 @@ class ChatboxComponent extends Component {
 		super(props);
     this.state = {
       message: '',
+			socketTest: '',
     };
+
+		// Socket to listen to broadcasts.
+		socket.on('send', msg => {
+			this.setState({
+				socketTest: msg,
+			});
+		});
 	}
 
 	componentDidMount() {
@@ -22,7 +30,8 @@ class ChatboxComponent extends Component {
 
 		// For handling refreshes
 		indexMessages(currentUser.id, params.serverId, params.channelId);
-	}
+
+}
 
 	handleChange = e => {
 		this.setState({
@@ -36,18 +45,18 @@ class ChatboxComponent extends Component {
 		// Emit message for real time functionality.
 		socket.emit('send', this.state.message);
 
-		let {
-			currentUser,
-			createMessage,
-			match: { params },
-		} = this.props;
+		// let {
+		// 	currentUser,
+		// 	createMessage,
+		// 	match: { params },
+		// } = this.props;
 
-		createMessage(
-			currentUser.id, 
-			params.serverId, 
-			params.channelId, 
-			this.state.message
-		);
+		// createMessage(
+		// 	currentUser.id, 
+		// 	params.serverId, 
+		// 	params.channelId, 
+		// 	this.state.message
+		// );
 
 		this.setState({
 			message: '',
@@ -62,12 +71,7 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		let socketTest;
-		socket.on('send', msg => {
-			socketTest = msg;
-		});
-
-    let currentChannel = channelsById[params.channelId];
+		let currentChannel = channelsById[params.channelId];
     let messageList = [];
     if (currentChannel && currentChannel.messages) {
       messageList = currentChannel.messages.map(messageId => {
@@ -89,7 +93,7 @@ class ChatboxComponent extends Component {
 			<div className="chatbox-component">
         <div className="chatbox-header">
           <p>Chatbox on {params.channelId}</p>
-					<p>{socketTest}</p>
+					<p>{this.state.socketTest}</p>
         </div>
 
         <ul className="chatbox-messages">
