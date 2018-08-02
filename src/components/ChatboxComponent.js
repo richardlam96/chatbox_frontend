@@ -12,15 +12,22 @@ class ChatboxComponent extends Component {
 			messages: [],
     };
 
+	}
+
+	componentDidMount() {
+		this.openSocket();
+	}
+
+	openSocket = () => {
 		// Socket to listen to broadcasts.
 		let { 
 			match: { params },
 		} = this.props;
 
-		let url = 'http://localhost:3001/' + params.serverId + '/' + params.channelId; 
-		console.log(url);
-		// let url = 'http://localhost:3001/555555/555555';
-		this.socket = io(url);
+		// Technically, the route is pointless.
+		// let url = 'http://localhost:3000/' + params.serverId + '/' + params.channelId; 
+
+		this.socket = io('/chat');
 		this.socket.on('send', msg => {
 			this.setState({
 				messages: [
@@ -31,16 +38,6 @@ class ChatboxComponent extends Component {
 		});
 	}
 
-	componentDidMount() {
-		// let {
-		// 	currentUser,
-		// 	indexMessages,
-		// 	match: { params },
-		// } = this.props;
-
-		// // For handling refreshes
-		// indexMessages(currentUser.id, params.serverId, params.channelId);
-	}
 
 	handleChange = e => {
 		this.setState({
@@ -106,7 +103,7 @@ class ChatboxComponent extends Component {
     //     }
     //   });
     // }
-		
+			
 		let messageList = this.state.messages.map((message, idx) => (
 			<li key={idx} className="chatbox-message">
 				<div className="chatbox-message-details">
