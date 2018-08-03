@@ -10,16 +10,22 @@ class ChatboxComponent extends Component {
     this.state = {
       message: '',
 			messages: [],
-    };
-
+			room: this.props.match.params.channelId,
+		};
 	}
 
 	componentDidMount() {
 		this.openSocket();
 	}
 
+	componentWillReceiveProps() {
+		this.changeRoom();
+		this.setState({
+			messages: [],
+		});
+	}
+
 	openSocket = () => {
-		// Socket to listen to broadcasts.
 		let { 
 			match: { params },
 		} = this.props;
@@ -27,8 +33,17 @@ class ChatboxComponent extends Component {
 		// Technically, the route is pointless.
 		// let url = 'http://localhost:3000/' + params.serverId + '/' + params.channelId; 
 
-		this.socket = io('/chat');
+		// Start general socket to listen. 
+		// Connect to the server.
+		this.socket = io.connect('http://localhost:3000');
+
+		// Set up socket listeners.
+		this.socket.on('connect', () => {
+			console.log('client socket connected');
+		});
+
 		this.socket.on('send', msg => {
+			console.log('got a message!');
 			this.setState({
 				messages: [
 					...this.state.messages,
@@ -36,8 +51,25 @@ class ChatboxComponent extends Component {
 				],
 			});
 		});
+
+		this.socket.on('change room', ({ ok, room }) => {
+			if (ok) {
+				console.log('Now on room ' + room);
+			} else {
+				console.log('Cannot change room');
+			}
+		});
 	}
 
+	changeRoom = () => {
+		let {
+			match: { params },
+		} = this.props;
+		this.socket.emit('change room', { newRoom: params.channelId });
+		this.setState({
+			room: params.channelId,
+		});
+	}
 
 	handleChange = e => {
 		this.setState({
@@ -79,12 +111,12 @@ class ChatboxComponent extends Component {
 	}
 
 	render() {
-		// let {
-		// 	currentUser,
-		// 	channelsById,
-		// 	messagesById,
-		// 	match: { params },
-		// } = this.props;
+		let {
+			currentUser,
+			channelsById,
+			messagesById,
+			match: { params },
+		} = this.props;
 
 		// let currentChannel = channelsById[params.channelId];
     // let messageList = [];
@@ -103,7 +135,8 @@ class ChatboxComponent extends Component {
     //     }
     //   });
     // }
-			
+	
+		
 		let messageList = this.state.messages.map((message, idx) => (
 			<li key={idx} className="chatbox-message">
 				<div className="chatbox-message-details">
