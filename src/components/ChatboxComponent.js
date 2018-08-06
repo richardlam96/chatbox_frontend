@@ -12,7 +12,7 @@ class ChatboxComponent extends Component {
 			messages: [],
 			room: this.props.match.params.channelId,
 		};
-		this.socket;
+		this.socket = io.connect('http://localhost:3000');
 	}
 
 	async componentDidMount() {
@@ -24,7 +24,8 @@ class ChatboxComponent extends Component {
 			indexMessages,
 		} = this.props;
 		
-		await this.openSocket()
+		await this.openSocket();
+		await this.changeRoom();
 		await indexMessages(currentUser.id, params.serverId, params.channelId);
 		await this.getMessages();
 	}
@@ -57,13 +58,6 @@ class ChatboxComponent extends Component {
 		let { 
 			match: { params },
 		} = this.props;
-
-		// Technically, the route is pointless.
-		// let url = 'http://localhost:3000/' + params.serverId + '/' + params.channelId; 
-
-		// Start general socket to listen. 
-		// Connect to the server.
-		this.socket = io.connect('http://localhost:3000');
 
 		// Set up socket listeners.
 		this.socket.on('connect', () => {

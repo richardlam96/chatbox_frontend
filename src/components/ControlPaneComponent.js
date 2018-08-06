@@ -38,7 +38,7 @@ class ControlPaneComponent extends Component {
       this.props.createChannel(
         this.props.currentUser.id, 
         this.props.match.params.serverId, 
-        '# ' + this.state.channelName
+        this.state.channelName
       );
     }
     this.toggleForm();
