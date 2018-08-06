@@ -28,16 +28,26 @@ class ChatboxComponent extends Component {
 		await this.changeRoom();
 		await indexMessages(currentUser.id, params.serverId, params.channelId);
 		await this.getMessages();
+		this.scrollToBottom();
 	}
 
-	componentWillReceiveProps() {
+	componentDidUpdate() {
+		this.scrollToBottom();
+	}
+
+	async componentWillReceiveProps() {
 		let {
 			match: { params },
 		} = this.props;
 
 		if (this.state.room !== params.channelId) {
-			this.changeRoom().then(() => this.getMessages());
+			await this.changeRoom();
+			await this.getMessages();
 		}
+	}
+
+	scrollToBottom = () => {
+		this.messagesEnd.scrollIntoView({ behavior: "smooth" });
 	}
 
 	getMessages = () => {
@@ -140,37 +150,6 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		// let messageList = messageIds.map(id => {
-		// 	let message = messagesById[id];
-		// 	return (
-		// 		<li key={id} className="chatbox-message">
-		// 			<div className="chatbox-message-details">
-		// 				{currentUser.username}
-		// 			</div>
-		// 			<p>{message.text}</p>
-		// 		</li>
-		// 	);
-		// });
-	
-
-		// let currentChannel = channelsById[params.channelId];
-    // let messageList = [];
-    // if (currentChannel && currentChannel.messages) {
-    //   messageList = currentChannel.messages.map(messageId => {
-		// 		let message = messagesById[messageId];
-    //     if (message) {
-    //       return (
-		// 				<li key={messageId} className="chatbox-message">
-		// 					<div className="chatbox-message-details">
-		// 						{currentUser.username}
-		// 					</div>
-		// 					<p>{message.text}</p>
-		// 				</li>
-		// 			);
-    //     }
-    //   });
-    // }
-
 		let messageList = this.state.messages.map((message, idx) => (
 			<li key={idx} className="chatbox-message">
 				<p>{message.text}</p>
@@ -187,6 +166,8 @@ class ChatboxComponent extends Component {
 
         <ul className="chatbox-messages">
 					{messageList}
+					<div ref={(el) => { this.messagesEnd = el; }}>
+					</div>
 				</ul>
 
 				<div className="chatbox-footer">
@@ -196,6 +177,7 @@ class ChatboxComponent extends Component {
 						</form>
 					</div>
 				</div>
+
 
 			</div>
 		);
