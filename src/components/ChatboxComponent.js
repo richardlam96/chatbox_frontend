@@ -12,11 +12,21 @@ class ChatboxComponent extends Component {
 			messages: [],
 			room: this.props.match.params.channelId,
 		};
+		this.socket;
 	}
 
-	componentDidMount() {
-		this.openSocket();
-		this.getMessages();
+	async componentDidMount() {
+		let {
+			currentUser,
+			messagesById,
+			messageIds,
+			match: { params },
+			indexMessages,
+		} = this.props;
+		
+		await this.openSocket()
+		await indexMessages(currentUser.id, params.serverId, params.channelId);
+		await this.getMessages();
 	}
 
 	componentWillReceiveProps() {
@@ -38,15 +48,8 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		return new Promise((resolve, reject) => {
-			// Index Messages and load into state for each room change.
-			indexMessages(currentUser.id, params.serverId, params.channelId)
-				.then(() => {
-					this.setState({
-						messages: messageIds.map(id => messagesById[id]),
-					});
-				})
-				.then(resolve());
+		this.setState({
+			messages: messageIds.map(id => messagesById[id]),
 		});
 	}
 
@@ -58,36 +61,32 @@ class ChatboxComponent extends Component {
 		// Technically, the route is pointless.
 		// let url = 'http://localhost:3000/' + params.serverId + '/' + params.channelId; 
 
-		return new Promise((resolve, reject) => {
-			// Start general socket to listen. 
-			// Connect to the server.
-			this.socket = io.connect('http://localhost:3000');
+		// Start general socket to listen. 
+		// Connect to the server.
+		this.socket = io.connect('http://localhost:3000');
 
-			// Set up socket listeners.
-			this.socket.on('connect', () => {
-				console.log('client socket connected');
-				// Connect to all channels (join all rooms)?
+		// Set up socket listeners.
+		this.socket.on('connect', () => {
+			console.log('client socket connected');
+			// Connect to all channels (join all rooms)?
+		});
+
+		this.socket.on('send', msg => {
+			console.log('got a message!');
+			this.setState({
+				messages: [
+					...this.state.messages,
+					msg,
+				],
 			});
+		});
 
-			this.socket.on('send', msg => {
-				console.log('got a message!');
-				this.setState({
-					messages: [
-						...this.state.messages,
-						msg,
-					],
-				});
-			});
-
-			this.socket.on('change room', ({ ok, room }) => {
-				if (ok) {
-					console.log('Now on room ' + room);
-				} else {
-					console.log('Cannot change room');
-				}
-			});
-
-			resolve();
+		this.socket.on('change room', ({ ok, room }) => {
+			if (ok) {
+				console.log('Now on room ' + room);
+			} else {
+				console.log('Cannot change room');
+			}
 		});
 	}
 
@@ -143,8 +142,22 @@ class ChatboxComponent extends Component {
 			currentUser,
 			channelsById,
 			messagesById,
+			messageIds,
 			match: { params },
 		} = this.props;
+
+		// let messageList = messageIds.map(id => {
+		// 	let message = messagesById[id];
+		// 	return (
+		// 		<li key={id} className="chatbox-message">
+		// 			<div className="chatbox-message-details">
+		// 				{currentUser.username}
+		// 			</div>
+		// 			<p>{message.text}</p>
+		// 		</li>
+		// 	);
+		// });
+	
 
 		// let currentChannel = channelsById[params.channelId];
     // let messageList = [];
@@ -163,13 +176,9 @@ class ChatboxComponent extends Component {
     //     }
     //   });
     // }
-	
-		
+
 		let messageList = this.state.messages.map((message, idx) => (
 			<li key={idx} className="chatbox-message">
-				<div className="chatbox-message-details">
-
-				</div>
 				<p>{message.text}</p>
 			</li>
 		));

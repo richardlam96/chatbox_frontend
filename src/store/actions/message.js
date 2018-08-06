@@ -59,7 +59,6 @@ export function indexChannelMessages(userId, serverId, channelId) {
 		).then(messages => {
 			dispatch(indexChannelMessagesSuccess(messages));
 		}).catch(error => {
-			console.log(error);
 			dispatch(indexChannelMessagesFailure(error));
 		});
 	}
