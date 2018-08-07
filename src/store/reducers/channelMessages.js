@@ -10,6 +10,7 @@ const DEFAULT_STATE = {
 };
 
 export default (state=DEFAULT_STATE, action) => {
+	state = Object.freeze(state);
 	switch(action.type) {
 
     // CRUD actions for Messages.

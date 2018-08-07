@@ -20,11 +20,11 @@ class HomePage extends Component {
 			currentUser,
 			indexServers,
 			indexChannels,
+			indexUsers,
 		} = this.props;
-		console.log('getting servers');
 		await indexServers(currentUser.id);
-		console.log('getting channels');
     await indexChannels(currentUser.id);
+		await indexUsers();
 	}
 
 	render() {

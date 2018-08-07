@@ -1,3 +1,5 @@
+export const API_FAILURE = 'API_FAILURE';
+
 
 // Authentication.
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
@@ -6,6 +8,9 @@ export const AUTH_CURRENT_USER = 'AUTH_CURRENT_USER';
 export const SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
 export const CLEAR_CURRENT_USER_FAIL = 'CLEAR_CURRENT_USER_FAIL';
 
+
+// Users.
+export const INDEX_USERS_SUCCESS = 'INDEX_USERS_SUCCESS';
 
 // Servers.
 export const INDEX_USER_SERVERS_SUCCESS = 'INDEX_USER_SERVERS_SUCCESS';

@@ -36,22 +36,29 @@ class ChatboxComponent extends Component {
 		this.scrollToBottom();
 	}
 
-	componentDidUpdate() {
-		this.scrollToBottom();
-	}
+	// async componentDidUpdate() {
+	// 	this.scrollToBottom();
+	// 	if (this.state.room !== this.props.match.params.channelId) {
+	// 		await this.changeRoom();
+	// 		console.log('room changed');
+	// 	}
+	// }
 
-	async componentWillReceiveProps() {
+	// async componentWillReceiveProps() {
+	async componentDidUpdate() {
 		let {
 			currentUser,
 			indexMessages,
 			match: { params },
 		} = this.props;
 
+		this.scrollToBottom();
+
 		if (this.state.room !== params.channelId) {
 			await this.changeRoom();
+			await indexMessages(currentUser.id, params.serverId, params.channelId);
 			await this.getMessages();
 		}
-		await indexMessages(currentUser.id, params.serverId, params.channelId);
 	}
 
 	scrollToBottom = () => {
@@ -80,7 +87,6 @@ class ChatboxComponent extends Component {
 		// Set up socket listeners.
 		this.socket.on('connect', () => {
 			console.log('client socket connected');
-			// Connect to all channels (join all rooms)?
 		});
 
 		this.socket.on('send', msg => {
@@ -149,8 +155,11 @@ class ChatboxComponent extends Component {
 		});
 	}
 
+	
 	render() {
+		console.log('rendering');
 		let {
+			usersById,
 			currentUser,
 			channelsById,
 			messagesById,
@@ -158,12 +167,16 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		let messageList = this.state.messages.map((message, idx) => (
-			<li key={idx} className="chatbox-message">
-				{message.user}
-				<p>{message.text}</p>
-			</li>
-		));
+		console.log(usersById);
+		let messageList = this.state.messages.map((message, idx) => {
+			// let username = usersById[message.user].username;
+			return (
+				<li key={idx} className="chatbox-message">
+					{message.user}
+					<p>{message.text}</p>
+				</li>
+			);
+		});
 
 		
 		return (
