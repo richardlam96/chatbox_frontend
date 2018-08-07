@@ -93,7 +93,6 @@ class ControlPaneComponent extends Component {
             <li key={channelId} className="control-pane-list-item">
               <Link 
 								to={link}
-								onClick={() => indexMessages(currentUser.id, params.serverId, channelId)}
                 className="control-pane-list-item-link"
 								>
 								# {channelsById[channelId].name}

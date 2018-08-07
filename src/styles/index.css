@@ -9,3 +9,7 @@ body {
 	background: #36393f;
 	color: #fff;
 }
+
+a, button {
+	outline: 0;
+}

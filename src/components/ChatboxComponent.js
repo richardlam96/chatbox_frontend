@@ -23,11 +23,16 @@ class ChatboxComponent extends Component {
 			match: { params },
 			indexMessages,
 		} = this.props;
-		
+
+		// Open socket and connect to the room.
 		await this.openSocket();
 		await this.changeRoom();
+
+		// Index messages and store into state.
 		await indexMessages(currentUser.id, params.serverId, params.channelId);
 		await this.getMessages();
+
+		// Scroll chat list to bottom.
 		this.scrollToBottom();
 	}
 
@@ -37,6 +42,8 @@ class ChatboxComponent extends Component {
 
 	async componentWillReceiveProps() {
 		let {
+			currentUser,
+			indexMessages,
 			match: { params },
 		} = this.props;
 
@@ -44,6 +51,7 @@ class ChatboxComponent extends Component {
 			await this.changeRoom();
 			await this.getMessages();
 		}
+		await indexMessages(currentUser.id, params.serverId, params.channelId);
 	}
 
 	scrollToBottom = () => {
@@ -152,6 +160,7 @@ class ChatboxComponent extends Component {
 
 		let messageList = this.state.messages.map((message, idx) => (
 			<li key={idx} className="chatbox-message">
+				{message.user}
 				<p>{message.text}</p>
 			</li>
 		));
@@ -159,6 +168,7 @@ class ChatboxComponent extends Component {
 		
 		return (
 			<div className="chatbox-component">
+
         <div className="chatbox-header">
           <p>Chatbox on {this.props.match.params.channelId}</p>
 					<p>{this.state.socketTest}</p>
@@ -177,7 +187,6 @@ class ChatboxComponent extends Component {
 						</form>
 					</div>
 				</div>
-
 
 			</div>
 		);
