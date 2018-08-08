@@ -70,8 +70,8 @@ class ServerNavComponent extends Component {
 					<hr />
 				</div>
 				<div className={this.state.showForm ? "modal" : "hidden"}>
-					<form className="server-form" onSubmit={this.handleCreateServer}>
-						<div className="server-form-header">
+					<form className="modal-form" onSubmit={this.handleCreateServer}>
+						<div className="modal-form-header">
 							CREATE YOUR SERVER 
 						</div>
 						SERVER NAME:

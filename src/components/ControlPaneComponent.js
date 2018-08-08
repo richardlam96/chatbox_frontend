@@ -141,8 +141,8 @@ class ControlPaneComponent extends Component {
 				</ul>
 
 				<div className={this.state.showForm ? "modal" : "hidden"}>
-          <form className="server-form" onSubmit={this.handleCreateChannel}>
-            <div className="server-form-header">
+          <form className="modal-form" onSubmit={this.handleCreateChannel}>
+            <div className="modal-form-header">
               CREATE YOUR CHANNEL 
             </div>
             CHANNEL NAME:
