@@ -168,7 +168,7 @@ class ChatboxComponent extends Component {
         </div>
 
         <ul className="chatbox-messages">
-					{messageList}
+					{ messageList.length > 0 ? messageList : <p>No messages here. Start chatting now!</p> }
 					<div ref={(el) => { this.messagesEnd = el; }}>
 					</div>
 				</ul>
