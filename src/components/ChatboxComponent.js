@@ -165,8 +165,6 @@ class ChatboxComponent extends Component {
 			<div className="chatbox-component">
 
         <div className="chatbox-header">
-          <p>Chatbox on {this.props.match.params.channelId}</p>
-					<p>{this.state.socketTest}</p>
         </div>
 
         <ul className="chatbox-messages">

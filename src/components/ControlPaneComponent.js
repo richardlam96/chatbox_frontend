@@ -98,7 +98,7 @@ class ControlPaneComponent extends Component {
                 <span
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >
-                  X
+                  <i className="fa fa-minus-circle"></i>
                 </span>
               </Link>
             </li>
@@ -116,19 +116,23 @@ class ControlPaneComponent extends Component {
 
 				<div className="control-pane-wrapper">
 				<div className="control-pane-header" onClick={this.toggleOptions}>
-					<span>{serverName}</span>
+					<span>
+						<i className="fa fa-caret-down" aria-hidden="true"></i> {serverName}
+					</span>
 				</div>
 
 				<div className={this.state.showOptions ? "control-pane-options" : "hidden"}>
 					<button
 						onClick={() => this.handleDeleteServer(currentUser.id)}
 						>
-						Delete Server
+						<i className="fa fa-trash-o"></i>
+						<span> Delete Server</span>
 					</button>
 					<button
 						onClick={this.toggleForm}
 						>
-						Create Channel
+						<i className="fa fa-plus-circle"></i>
+						<span> Create Channel</span>
 					</button>
 				</div>
 

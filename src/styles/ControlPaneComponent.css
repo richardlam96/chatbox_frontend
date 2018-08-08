@@ -31,8 +31,11 @@
 }
 
 .control-pane-options button {
+	text-align: left;
 	outline: none;
 	border: none;
+	border-radius: 5px;
+	box-sizing: border-box;
 	background: none;
 	color: #7d848e;
 	width: 100%;
