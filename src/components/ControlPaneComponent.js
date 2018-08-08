@@ -76,8 +76,6 @@ class ControlPaneComponent extends Component {
 			currentUser, 
       serversById,
 			channelsById, 
-			channelIds,
-			indexMessages,
 			logout,
 			match: { params },
 		} = this.props;
@@ -87,7 +85,8 @@ class ControlPaneComponent extends Component {
     if (server) {
 			serverName = server.name;
       channelList = server.channels.map(channelId => {
-        if (channelsById[channelId]) {
+				try {
+					let channel = channelsById[channelId];
           let link = '/channels/' + params.serverId + '/' + channelId;
           return (
             <li key={channelId} className="control-pane-list-item">
@@ -95,7 +94,7 @@ class ControlPaneComponent extends Component {
 								to={link}
                 className="control-pane-list-item-link"
 								>
-								# {channelsById[channelId].name}
+								# {channel.name}
                 <span
                   onClick={() => this.handleDeleteChannel(channelId)}
                   >
@@ -105,7 +104,10 @@ class ControlPaneComponent extends Component {
             </li>
           );
         }
-        return;
+				catch(error) {
+					console.log('error', error.message);
+				}
+				return <li key={channelId}></li>;
       });
     }
 

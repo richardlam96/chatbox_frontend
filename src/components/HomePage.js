@@ -11,10 +11,6 @@ import Blank from '../containers/Blank';
 // Component in current progress.
 
 class HomePage extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	async componentDidMount() {
 		let {
 			currentUser,
@@ -28,7 +24,6 @@ class HomePage extends Component {
 	}
 
 	render() {
-		// Focus on just rendering the Server Components of the app.
 		return (
 			<div className="homepage">
 				<ServerNav />

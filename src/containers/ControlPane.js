@@ -11,7 +11,6 @@ import {
 	createServerChannel, 
 	deleteServerChannel,
 } from '../store/actions/channel';
-import { indexUserServers } from '../store/actions/server';
 
 
 const mapStateToProps = state => {

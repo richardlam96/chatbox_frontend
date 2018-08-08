@@ -6,10 +6,6 @@ import '../styles/MainContentComponent.css';
 import Blank from '../containers/Blank';
 
 class MainContentComponent extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		let {
 			channelsById,

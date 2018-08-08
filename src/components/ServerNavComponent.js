@@ -34,13 +34,8 @@ class ServerNavComponent extends Component {
 
 	render() {
 		let { 
-			currentUser, 
 			serversById, 
 			serverIds,
-			createServer, 
-			deleteServer,
-      channelsById,
-      match: { params },
 		} = this.props;
 
 		const serverList = serverIds.map(serverId => {

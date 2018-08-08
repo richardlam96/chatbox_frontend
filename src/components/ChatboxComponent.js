@@ -18,8 +18,6 @@ class ChatboxComponent extends Component {
 	async componentDidMount() {
 		let {
 			currentUser,
-			messagesById,
-			messageIds,
 			match: { params },
 			indexMessages,
 		} = this.props;
@@ -59,11 +57,8 @@ class ChatboxComponent extends Component {
 
 	getMessages = () => {
 		let {
-			currentUser,
-			indexMessages,
 			messagesById,
 			messageIds,
-			match: { params },
 		} = this.props;
 
 		this.setState({
@@ -72,10 +67,6 @@ class ChatboxComponent extends Component {
 	}
 
 	openSocket = () => {
-		let { 
-			match: { params },
-		} = this.props;
-
 		// Set up socket listeners.
 		this.socket.on('connect', () => {
 			console.log('socket: client socket connected');
@@ -151,15 +142,16 @@ class ChatboxComponent extends Component {
 	render() {
 		let {
 			usersById,
-			currentUser,
-			channelsById,
-			messagesById,
-			messageIds,
-			match: { params },
 		} = this.props;
 
 		let messageList = this.state.messages.map((message, idx) => {
-			let username = usersById[message.user].username;
+			let username;
+			try {
+				username = usersById[message.user].username;
+			} catch(error) {
+				// Sometimes catches a hard to reproduce error where users are undefined.
+				console.log('Error for ' + message.user, usersById)
+			}
 			return (
 				<li key={idx} className="chatbox-message">
 					{username}
