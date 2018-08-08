@@ -36,15 +36,6 @@ class ChatboxComponent extends Component {
 		this.scrollToBottom();
 	}
 
-	// async componentDidUpdate() {
-	// 	this.scrollToBottom();
-	// 	if (this.state.room !== this.props.match.params.channelId) {
-	// 		await this.changeRoom();
-	// 		console.log('room changed');
-	// 	}
-	// }
-
-	// async componentWillReceiveProps() {
 	async componentDidUpdate() {
 		let {
 			currentUser,
@@ -61,6 +52,7 @@ class ChatboxComponent extends Component {
 		}
 	}
 
+	// CONTENT LOADING AND SOCKET INTIALIZATION *********************************
 	scrollToBottom = () => {
 		this.messagesEnd.scrollIntoView({ behavior: "smooth" });
 	}
@@ -86,11 +78,11 @@ class ChatboxComponent extends Component {
 
 		// Set up socket listeners.
 		this.socket.on('connect', () => {
-			console.log('client socket connected');
+			console.log('socket: client socket connected');
 		});
 
 		this.socket.on('send', msg => {
-			console.log('got a message!');
+			console.log('socket: got a message!');
 			this.setState({
 				messages: [
 					...this.state.messages,
@@ -101,9 +93,9 @@ class ChatboxComponent extends Component {
 
 		this.socket.on('change room', ({ ok, room }) => {
 			if (ok) {
-				console.log('Now on room ' + room);
+				console.log('socket: Now on room ' + room);
 			} else {
-				console.log('Cannot change room');
+				console.log('socket: Cannot change room');
 			}
 		});
 	}
@@ -121,6 +113,7 @@ class ChatboxComponent extends Component {
 		});
 	}
 
+	// MESSAGE EVENT HANDLERS ***************************************************
 	handleChange = e => {
 		this.setState({
 			message: e.target.value,
@@ -135,10 +128,9 @@ class ChatboxComponent extends Component {
 			 match: { params },
 		 } = this.props;
 
-		// Emit message for real time functionality.
 		this.socket.emit('send', {
 			text: this.state.message,
-			user: currentUser.username,
+			user: currentUser.id,
 			server: params.serverId,
 			channel: params.channelId,
 		});
@@ -157,7 +149,6 @@ class ChatboxComponent extends Component {
 
 	
 	render() {
-		console.log('rendering');
 		let {
 			usersById,
 			currentUser,
@@ -167,12 +158,11 @@ class ChatboxComponent extends Component {
 			match: { params },
 		} = this.props;
 
-		console.log(usersById);
 		let messageList = this.state.messages.map((message, idx) => {
-			// let username = usersById[message.user].username;
+			let username = usersById[message.user].username;
 			return (
 				<li key={idx} className="chatbox-message">
-					{message.user}
+					{username}
 					<p>{message.text}</p>
 				</li>
 			);
