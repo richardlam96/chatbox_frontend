@@ -137,7 +137,7 @@ class ControlPaneComponent extends Component {
 				</div>
 
 				<ul className="control-pane-list">
-          {channelList}
+          { channelList && channelList.length > 0 ? channelList : <p>No channels. Just create one now!</p> }
 				</ul>
 
 				<div className={this.state.showForm ? "modal" : "hidden"}>
