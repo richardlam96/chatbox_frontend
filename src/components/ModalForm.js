@@ -24,16 +24,22 @@ class ModalForm extends Component {
 		e.preventDefault();
 		if (!this.state.textInput) {
 			this.setState({
-				errorMessage: 'Not a valid server name',
+				errorMessage: 'Not a valid ' + this.props.objectName + ' name',
 			});
 			return;
 		} 
 
 		await this.props.onSubmit(this.state.textInput);
 		if (this.props.error.exists) {
-			this.setState({
-				errorMessage: 'That server name already exists',
-			});
+			if (this.props.error.status === 11000) {
+				this.setState({
+					errorMessage: 'That ' + this.props.objectName + ' name already exists',
+				});
+			} else {
+				this.setState({
+					errorMessage: 'Something went wrong.',
+				});
+			}
 			return;
 		}
 		this.props.onToggle();

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from '../containers/Modal';
 import '../styles/ControlPaneComponent.css';
 
 
@@ -76,6 +77,7 @@ class ControlPaneComponent extends Component {
 			currentUser, 
       serversById,
 			channelsById, 
+			createChannel,
 			logout,
 			match: { params },
 		} = this.props;
@@ -115,41 +117,39 @@ class ControlPaneComponent extends Component {
 			<div className="control-pane-component">
 
 				<div className="control-pane-wrapper">
-				<div className="control-pane-header" onClick={this.toggleOptions}>
-					<span>
-						<i className="fa fa-caret-down" aria-hidden="true"></i> {serverName}
-					</span>
-				</div>
+					<div className="control-pane-header" onClick={this.toggleOptions}>
+						<span>
+							<i className="fa fa-caret-down" aria-hidden="true"></i> {serverName}
+						</span>
+					</div>
 
-				<div className={this.state.showOptions ? "control-pane-options" : "control-pane-options-hidden"}>
-					<button
-						onClick={() => this.handleDeleteServer(currentUser.id)}
-						>
-						<i className="fa fa-trash-o"></i>
-						<span> Delete Server</span>
-					</button>
-					<button
-						onClick={this.toggleForm}
-						>
-						<i className="fa fa-plus-circle"></i>
-						<span> Create Channel</span>
-					</button>
-				</div>
+					<div className={this.state.showOptions ? "control-pane-options" : "control-pane-options-hidden"}>
+						<button
+							onClick={() => this.handleDeleteServer(currentUser.id)}
+							>
+							<i className="fa fa-trash-o"></i>
+							<span> Delete Server</span>
+						</button>
+						<button
+							onClick={this.toggleForm}
+							>
+							<i className="fa fa-plus-circle"></i>
+							<span> Create Channel</span>
+						</button>
+					</div>
 
-				<ul className="control-pane-list">
-          {channelList}
-				</ul>
+					<ul className="control-pane-list">
+						{channelList}
+					</ul>
 
-				<div className={this.state.showForm ? "modal" : "hidden"}>
-          <form className="modal-form" onSubmit={this.handleCreateChannel}>
-            <div className="modal-form-header">
-              CREATE YOUR CHANNEL 
-            </div>
-            CHANNEL NAME:
-            <input type="text" onChange={this.handleChange} />
-            <button>Submit</button>
-          </form>
-        </div>
+					{ this.state.showForm 
+						? <Modal 
+								objectName="channel"
+								onSubmit={createChannel.bind(this, currentUser.id, params.serverId)}
+								onToggle={this.toggleForm}
+							/> 
+						: <div></div> }
+
         </div>
 			
 				<div className="control-pane-footer">
