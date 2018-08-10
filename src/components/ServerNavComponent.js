@@ -26,7 +26,7 @@ class ServerNavComponent extends Component {
 		this.toggleForm();
   }
 
-	toggleForm = () => {
+  toggleForm = () => {
 		this.setState({
 			showForm: !this.state.showForm,
 		});
@@ -55,8 +55,9 @@ class ServerNavComponent extends Component {
 			);
 		});
 
-		return (
+    return (
 			<div className="server-nav-component">
+
 				<div className="server-list">
 					<Link to="/activity" className="server-list-item">A</Link>
 					<hr />
@@ -69,6 +70,7 @@ class ServerNavComponent extends Component {
 					</button>
 					<hr />
 				</div>
+
 				<div className={this.state.showForm ? "modal" : "hidden"}>
 					<form className="modal-form" onSubmit={this.handleCreateServer}>
 						<div className="modal-form-header">
@@ -79,6 +81,7 @@ class ServerNavComponent extends Component {
 						<button>Submit</button>
 					</form>
 				</div>
+
 			</div>
 		);
 	}

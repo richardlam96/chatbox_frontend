@@ -3,8 +3,7 @@
 }
 
 .modal {
-	background: #111;
-	opacity: 0.9;
+	background: rgba(17, 17, 17, 0.9);
 	position: fixed;
 	top: 0;
   left: 0;
