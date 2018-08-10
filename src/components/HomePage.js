@@ -18,6 +18,7 @@ class HomePage extends Component {
 			indexChannels,
 			indexUsers,
 		} = this.props;
+
 		await indexUsers();
 		await indexServers(currentUser.id);
     await indexChannels(currentUser.id);

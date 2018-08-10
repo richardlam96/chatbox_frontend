@@ -142,13 +142,19 @@ class ChatboxComponent extends Component {
 	render() {
 		let {
 			usersById,
+      // testing
+      channelsById,
+      messagesById,
 		} = this.props;
+    console.log('Users', usersById)
+    console.log('Channels ', channelsById)
+    console.log('Messages ', messagesById)
 
 		let messageList = this.state.messages.map((message, idx) => {
 			let username;
 			try {
 				username = usersById[message.user].username;
-			} catch(error) {
+      } catch(error) {
 				// Sometimes catches a hard to reproduce error where users are undefined.
 				console.log('Error for ' + message.user, usersById)
 			}
