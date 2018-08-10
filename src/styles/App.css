@@ -1,5 +1,5 @@
 .App {
-  font-family: PT Sans;
+  font-family: PT Sans, Helvetica;
 }
 
 .modal {
@@ -16,13 +16,13 @@
 	background: #2f3136;
 	border-radius: 5px;
 	width: 25%;
+	min-width: 500px;
 	height: 40%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 20px;
-	text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,6 +30,27 @@
 
 .modal-form-header {
 	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.modal-form-content {
+	text-transform: uppercase;
+}
+
+.modal-form-content input {
+	outline: none;
+	background: none;
+	border: none;
+	border-bottom: 2px solid #111;
+	padding: 10px 0;
+	color: #ddd;
+	
+}
+
+.modal-form-error {
+	color: #ff4136;
+	font-size: 0.8em;
 }
 
 .modal-form-footer {

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import Modal from '../containers/Modal';
+
 import '../styles/ServerNavComponent.css';
 
 
@@ -18,13 +21,13 @@ class ServerNavComponent extends Component {
 		});
 	}
 
-  handleCreateServer = e => {
-		e.preventDefault();
-		if (this.state.serverName) {
-			this.props.createServer(this.props.currentUser.id, this.state.serverName);
-		}
-		this.toggleForm();
-  }
+  // handleCreateServer = e => {
+	// 	e.preventDefault();
+	// 	if (this.state.serverName) {
+	// 		this.props.createServer(this.props.currentUser.id, this.state.serverName);
+	// 	}
+	// 	this.toggleForm();
+  // }
 
   toggleForm = () => {
 		this.setState({
@@ -34,8 +37,10 @@ class ServerNavComponent extends Component {
 
 	render() {
 		let { 
+			currentUser,
 			serversById, 
 			serverIds,
+			createServer,
 		} = this.props;
 
 		const serverList = serverIds.map(serverId => {
@@ -71,23 +76,13 @@ class ServerNavComponent extends Component {
 					<hr />
 				</div>
 
-				<div className={this.state.showForm ? "modal" : "hidden"}>
-					<form className="modal-form" onSubmit={this.handleCreateServer}>
-						<div className="modal-form-header">
-							CREATE YOUR SERVER 
-						</div>
-            <div className="modal-form-content">
-              SERVER NAME:
-              <input type="text" onChange={this.handleChange} />
-            </div>
-            <div className="modal-form-footer">
-              <button className="modal-form-link">
-                <i className="fa fa-arrow-left"></i> Back
-                </button>
-              <button className="modal-form-submit">Submit</button>
-            </div>
-					</form>
-				</div>
+				{ this.state.showForm 
+					? <Modal 
+							objectName="server"
+							onSubmit={createServer.bind(this, currentUser.id)}
+							onToggle={this.toggleForm}
+						/> 
+					: <div></div> }
 
 			</div>
 		);

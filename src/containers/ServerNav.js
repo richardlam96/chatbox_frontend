@@ -10,6 +10,7 @@ const mapStateToProps = state => {
 		currentUser: state.currentUser,
 		serversById: state.currentUserServers.serversById,
 		serverIds: state.currentUserServers.serverIds,
+		error: state.error,
 	};
 }
 
