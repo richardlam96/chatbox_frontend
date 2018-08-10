@@ -21,19 +21,25 @@ class ModalForm extends Component {
 	}
 
 	handleSubmit = async (e) => {
+		let {
+			objectName,
+			onSubmit,
+			error,
+		} = this.props;
+
 		e.preventDefault();
 		if (!this.state.textInput) {
 			this.setState({
-				errorMessage: 'Not a valid ' + this.props.objectName + ' name',
+				errorMessage: 'Not a valid ' + objectName + ' name',
 			});
 			return;
 		} 
 
-		await this.props.onSubmit(this.state.textInput);
-		if (this.props.error.exists) {
-			if (this.props.error.status === 11000) {
+		await onSubmit(this.state.textInput);
+		if (error.exists) {
+			if (error.status === 11000) {
 				this.setState({
-					errorMessage: 'That ' + this.props.objectName + ' name already exists',
+					errorMessage: 'That ' + objectName + ' name already exists',
 				});
 			} else {
 				this.setState({

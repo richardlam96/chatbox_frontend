@@ -153,7 +153,13 @@ class ControlPaneComponent extends Component {
         </div>
 			
 				<div className="control-pane-footer">
-					<span>{currentUser.username}</span>
+					<button className="control-pane-user-settings">
+						<i className="fa fa-user-circle"></i>
+					</button>
+					<div className="control-pane-user-info">
+						<span>{currentUser.username}</span>
+						<span>#{currentUser.id.slice(currentUser.id.length - 4)}</span>
+					</div>
 					<a className="logout-link" onClick={logout}>
             <i className="fa fa-power-off"></i>
           </a>
