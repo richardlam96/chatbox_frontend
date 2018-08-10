@@ -76,9 +76,16 @@ class ServerNavComponent extends Component {
 						<div className="modal-form-header">
 							CREATE YOUR SERVER 
 						</div>
-						SERVER NAME:
-						<input type="text" onChange={this.handleChange} />
-						<button>Submit</button>
+            <div className="modal-form-content">
+              SERVER NAME:
+              <input type="text" onChange={this.handleChange} />
+            </div>
+            <div className="modal-form-footer">
+              <button className="modal-form-link">
+                <i className="fa fa-arrow-left"></i> Back
+                </button>
+              <button className="modal-form-submit">Submit</button>
+            </div>
 					</form>
 				</div>
 
