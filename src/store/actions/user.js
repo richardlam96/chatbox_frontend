@@ -25,7 +25,6 @@ export function indexUsers() {
 			'GET',
 			'/api/users'
 		).then(users => {
-			console.log(users);
 			dispatch(indexUsersSuccess(users));
 		}).catch(error => {
 			dispatch(apiFailure(error));

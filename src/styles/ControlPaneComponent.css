@@ -28,6 +28,15 @@
 	border: 1px solid #111;
 	border-radius: 5px;
 	box-sizing: border-box;
+  opacity: 1;
+  height: auto;
+  transition: opacity 0.4s;
+}
+
+.control-pane-options-hidden {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .control-pane-options button {

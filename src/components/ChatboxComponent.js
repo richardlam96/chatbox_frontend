@@ -142,13 +142,7 @@ class ChatboxComponent extends Component {
 	render() {
 		let {
 			usersById,
-      // testing
-      channelsById,
-      messagesById,
-		} = this.props;
-    console.log('Users', usersById)
-    console.log('Channels ', channelsById)
-    console.log('Messages ', messagesById)
+    } = this.props;
 
 		let messageList = this.state.messages.map((message, idx) => {
 			let username;
@@ -174,7 +168,7 @@ class ChatboxComponent extends Component {
         </div>
 
         <ul className="chatbox-messages">
-					{ messageList.length > 0 ? messageList : <p>No messages here. Start chatting now!</p> }
+					{messageList}
 					<div ref={(el) => { this.messagesEnd = el; }}>
 					</div>
 				</ul>

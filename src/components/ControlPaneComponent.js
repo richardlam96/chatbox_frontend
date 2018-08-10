@@ -121,7 +121,7 @@ class ControlPaneComponent extends Component {
 					</span>
 				</div>
 
-				<div className={this.state.showOptions ? "control-pane-options" : "hidden"}>
+				<div className={this.state.showOptions ? "control-pane-options" : "control-pane-options-hidden"}>
 					<button
 						onClick={() => this.handleDeleteServer(currentUser.id)}
 						>
@@ -137,7 +137,7 @@ class ControlPaneComponent extends Component {
 				</div>
 
 				<ul className="control-pane-list">
-          { channelList && channelList.length > 0 ? channelList : <p>No channels. Just create one now!</p> }
+          {channelList}
 				</ul>
 
 				<div className={this.state.showForm ? "modal" : "hidden"}>
