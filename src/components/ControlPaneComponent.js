@@ -95,12 +95,12 @@ class ControlPaneComponent extends Component {
                 className="control-pane-list-item-link"
 								>
 								# {channel.name}
-                <span
-                  onClick={() => this.handleDeleteChannel(channelId)}
-                  >
-                  <i className="fa fa-minus-circle"></i>
-                </span>
               </Link>
+              <span
+                onClick={() => this.handleDeleteChannel(channelId)}
+                >
+                <i className="fa fa-minus-circle"></i>
+              </span>
             </li>
           );
         }
