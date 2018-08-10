@@ -22,7 +22,9 @@
 	height: 50px;
 	width: 50px;
 	margin: 5px 0;
-	transition: border-radius 0.2s, background 0.2s;
+	transition: 
+    background 0.2s,
+    border-radius 0.4s;
 }
 
 .server-list-item:hover {

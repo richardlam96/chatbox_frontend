@@ -29,15 +29,21 @@
 	border-radius: 5px;
 	box-sizing: border-box;
   opacity: 1;
-  height: auto;
-  transition: opacity 0.4s;
+  transition:
+    margin 0.4s,
+    opacity 0.2s,
+    background 0.8s;
 }
 
 .control-pane-options-hidden {
   opacity: 0;
   height: 0;
   overflow: hidden;
+  background: #111;
+  transition:
+    margin 0.25s,
 }
+
 
 .control-pane-options button {
 	text-align: left;
