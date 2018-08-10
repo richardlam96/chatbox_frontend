@@ -154,7 +154,9 @@ class ControlPaneComponent extends Component {
 			
 				<div className="control-pane-footer">
 					<span>{currentUser.username}</span>
-					<a className="logout-link" onClick={logout}>Logout</a>
+					<a className="logout-link" onClick={logout}>
+            <i className="fa fa-power-off"></i>
+          </a>
 				</div>
 			</div>
 		);
