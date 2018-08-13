@@ -26,6 +26,11 @@ export default (state=DEFAULT_STATE, action) => {
         exists: false,
       };
     case SET_CURRENT_USER_FAIL:
+			return {
+				exists: true,
+				status: action.error.status,
+				message: 'Sorry, server is down.',
+			};
 		case INDEX_USER_SERVERS_FAILURE:
 		case CREATE_USER_SERVER_FAILURE:
 		case DELETE_USER_SERVER_FAILURE:

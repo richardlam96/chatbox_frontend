@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import ServerNav from '../containers/ServerNav';
 import ControlPane from '../containers/ControlPane';
 import MainContent from '../containers/MainContent';
@@ -28,10 +27,7 @@ class HomePage extends Component {
 		return (
 			<div className="homepage">
 				<ServerNav />
-				<Switch className="control-pane">
-					<Route path="/channels/:serverId" render={ControlPane} />
-					<Route exact path="/activity" render={Blank} />
-				</Switch>
+				<ControlPane />
 				<MainContent />
 			</div>
 		);
