@@ -29,7 +29,7 @@ export default (state=DEFAULT_STATE, action) => {
 			return {
 				exists: true,
 				status: action.error.status,
-				message: 'Sorry, server is down.',
+				message: action.error.message,
 			};
 		case INDEX_USER_SERVERS_FAILURE:
 		case CREATE_USER_SERVER_FAILURE:

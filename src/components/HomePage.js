@@ -4,10 +4,6 @@ import ControlPane from '../containers/ControlPane';
 import MainContent from '../containers/MainContent';
 import '../styles/HomePage.css';
 
-// Placeholder component.
-import Blank from '../containers/Blank';
-
-// Component in current progress.
 
 class HomePage extends Component {
 	async componentDidMount() {

@@ -5,6 +5,8 @@ import FriendsStatusComponent from '../components/FriendsStatusComponent';
 
 const mapStateToProps = state => {
 	return {
+		currentUser: state.currentUser,
+		usersById: state.users.usersById,
 	};
 }
 
