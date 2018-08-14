@@ -25,7 +25,10 @@ class FriendsStatusComponent extends Component {
 		let friendsList = currentUser.friends.map(friendId => {
 			if (usersById[friendId]) {
 				return (
-					<li className="friends-list-item" key={ friendId }>{ usersById[friendId].username }</li>
+					<li className="friends-list-item" key={ friendId }>
+						<i className="fa fa-user-circle-o"></i>
+						{ usersById[friendId].username }
+					</li>
 				);
 			}
 			return <li className="friends-list-item" key={ friendId }></li>;

@@ -1,3 +1,24 @@
 .friends-status-component {
-	border: 1px solid red;
+}
+
+.friends-list {
+	padding: 0;
+	padding-top: 20px;
+	margin: 0 15px;
+	list-style: none;
+}
+
+.friends-list-item {
+	border-top: 1px solid #7c7c7c;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.friends-list-item i {
+	padding-right: 10px;
+	color: #aaa;
+}
+
+.friends-list-item:hover {
+	background: #6d6d6d;
 }

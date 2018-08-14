@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../containers/Modal';
+import '../styles/FriendsNavComponent.css';
+
 
 class FriendsNavComponent extends Component {
 	constructor(props) {

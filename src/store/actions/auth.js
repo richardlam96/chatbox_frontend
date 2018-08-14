@@ -63,10 +63,8 @@ export function getUser(userId) {
 			'get',
 			'/api/users/' + userId,
 		).then(userData => {
-			console.log(userData);
 			dispatch(setCurrentUser(userData));
 		}).catch(error => {
-			console.log(error);
 			dispatch(setCurrentUserFail(error));
 		});
 	}
