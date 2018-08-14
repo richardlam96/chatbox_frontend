@@ -22,7 +22,11 @@ class MainContentComponent extends Component {
 				<div className="main-content-header">
 					<Switch>
 						<Route exact path="/activity" render={FriendsNav} /> 
-						<Route exact path="/channels/:serverId" render={Blank} />
+						<Route exact path="/channels/:serverId" 
+							render={() =>
+								<span>Channel</span>
+							}
+						/>
 						<Route 
 							exact path="/channels/:serverId/:channelId" 
 							render={() => 
@@ -34,7 +38,11 @@ class MainContentComponent extends Component {
 
 				<Switch className="main-content"> 
 					<Route exact path="/activity" render={FriendsStatus} />
-					<Route exact path="/channels/:serverId" render={Blank} />
+					<Route exact path="/channels/:serverId" 
+						render={() => 
+							<span>Create a channel!</span>
+						} 
+					/>
 					<Route exact path="/channels/:serverId/:channelId" render={Chatbox} />
 				</Switch>
 

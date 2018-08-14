@@ -10,7 +10,7 @@ import Home from './Home';
 import Launch from '../containers/Launch';
 
 // functions and utils
-import { getUser } from '../store/actions/auth';
+import { getUser, setCurrentUser } from '../store/actions/auth';
 
 import AuthRoute from '../utils/AuthRoute';
 
@@ -19,16 +19,19 @@ import '../styles/App.css';
 
 
 const store = configureStore();
-
 const token = localStorage.getItem('jwtToken');
 if (token) {
-	const userId = JSON.parse(localStorage.getItem('currentUser'));
-	console.log('on reload userId', userId);
-  store.dispatch(getUser(userId));
+	const userData = JSON.parse(localStorage.getItem('currentUser'));
+	store.dispatch(setCurrentUser(userData));
+	store.dispatch(getUser(userData.id));
 }
 
+	
 
 class App extends Component {
+	async componentWillMount() {
+}
+
 	render() {
 		return (
 			<Provider store={store}>
