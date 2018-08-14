@@ -64,7 +64,9 @@ class ServerNavComponent extends Component {
 			<div className="server-nav-component">
 
 				<div className="server-list">
-					<Link to="/activity" className="server-list-item">A</Link>
+					<Link to="/activity" className="server-list-item">
+						<i className="fa fa-gamepad" aria-hidden="true"></i>
+					</Link>
 					<hr />
 					{serverList}
 					<button 

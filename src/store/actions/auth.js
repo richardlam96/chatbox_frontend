@@ -41,8 +41,6 @@ export function signoutUser() {
   };
 }
 
-
-
 export function handleAuth(mode, userData) {
 	return dispatch => {
 		return apiCall(
@@ -51,7 +49,7 @@ export function handleAuth(mode, userData) {
 			userData,
 		).then(data => {
 			localStorage.setItem('jwtToken', data.token);
-			localStorage.setItem('currentUser', JSON.stringify(data));
+			localStorage.setItem('currentUser', JSON.stringify(data.id));
 			dispatch(setCurrentUser(data));
 		}).catch(error => {
       dispatch(setCurrentUserFail(error));
@@ -59,3 +57,15 @@ export function handleAuth(mode, userData) {
 	}
 }
 
+export function getUser(userId) {
+	return dispatch => {
+		return apiCall(
+			'get',
+			'/api/users/' + userId,
+		).then(userData => {
+			dispatch(setCurrentUser(userData));
+		}).catch(error => {
+			dispatch(setCurrentUserFail(error));
+		});
+	}
+}

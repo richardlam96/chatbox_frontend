@@ -11,5 +11,5 @@ body {
 }
 
 a, button {
-	outline: 0;
+	outline: none;
 }

@@ -2,6 +2,7 @@ import {
   SET_CURRENT_USER,
   AUTH_CURRENT_USER,
   SIGNOUT_CURRENT_USER,
+	ADD_FRIEND_SUCCESS,
 } from '../actionTypes';
 
 
@@ -26,6 +27,14 @@ export default (state=DEFAULT_STATE, action) => {
       return {
         isAuthenticated: false,
       };
+		case ADD_FRIEND_SUCCESS:
+			return {
+				...state,
+				friends: [
+					...state.friends,
+					action.response.friend._id,
+				],
+			}
 		default:
 			return state;
 	}

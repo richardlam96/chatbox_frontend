@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addFriend } from '../store/actions/user';
-import FriendsStatusComponent from '../components/FriendsStatusComponent';
+import FriendsNavComponent from '../components/FriendsNavComponent';
 
 
 const mapStateToProps = state => {
 	return {
 		currentUser: state.currentUser,
-		usersById: state.users.usersById,
 	};
 }
 
@@ -21,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(FriendsStatusComponent));
+)(FriendsNavComponent));

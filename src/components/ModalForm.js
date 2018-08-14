@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 
+// Requires the component usig this to pass in:
+// - objectName: for the title
+// - onSubmit
+// - onToggle
+// and the containing component needs to also be a Component 
 class ModalForm extends Component {
 	constructor(props) {
 		super(props);
@@ -70,7 +75,7 @@ class ModalForm extends Component {
 				<form className="modal-form" onSubmit={this.handleSubmit}>
 
 					<div className="modal-form-header">
-						Create your {objectName} 
+						Add a {objectName} 
 					</div>
 
 					<div className="modal-form-content">

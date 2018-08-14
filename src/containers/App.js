@@ -10,7 +10,7 @@ import Home from './Home';
 import Launch from '../containers/Launch';
 
 // functions and utils
-import { setCurrentUser } from '../store/actions/auth';
+import { getUser } from '../store/actions/auth';
 
 import AuthRoute from '../utils/AuthRoute';
 
@@ -22,8 +22,8 @@ const store = configureStore();
 
 const token = localStorage.getItem('jwtToken');
 if (token) {
-	const userData = JSON.parse(localStorage.getItem('currentUser'));
-  store.dispatch(setCurrentUser(userData));
+	const userId = JSON.parse(localStorage.getItem('currentUser'));
+  store.dispatch(getUser(userId));
 }
 
 

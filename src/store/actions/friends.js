@@ -28,6 +28,9 @@ export function indexFriends(userId) {
 	}
 }
 
+export function addFriendFailure(error) {
+}
+
 export function addFriendSuccess(response) {
 	return {
 		type: ADD_FRIEND_SUCCESS,
@@ -35,18 +38,15 @@ export function addFriendSuccess(response) {
 	};
 }
 
-export function addFriendFailure(error) {
-}
-
 export function addFriend(userId, friendId) {
 	return dispatch => {
 		return apiCall(
 			'POST',
-			'/api/users/' + userid + '/friends/' + friendId,
+			'/api/users/' + userId + '/friends/' + friendId,
 		).then(response => {
-			dispatch(addFriendSuccess);
-		}.catch(error => {
-			dispatch(addFriendFailure);
+			dispatch(addFriendSuccess(response));
+		}).catch(error => {
+			dispatch(apiFailure(error));
 		});
 	};
 }
