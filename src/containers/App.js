@@ -23,6 +23,7 @@ const store = configureStore();
 const token = localStorage.getItem('jwtToken');
 if (token) {
 	const userId = JSON.parse(localStorage.getItem('currentUser'));
+	console.log('on reload userId', userId);
   store.dispatch(getUser(userId));
 }
 

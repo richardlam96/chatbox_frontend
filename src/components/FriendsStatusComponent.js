@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/FriendsStatusComponent.css';
+
 
 class FriendsStatusComponent extends Component {
 	constructor(props) {
