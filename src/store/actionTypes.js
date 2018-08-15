@@ -53,6 +53,7 @@ export const CREATE_CHANNEL_MESSAGE_FAILURE = 'CREATE_CHANNEL_MESSAGE_FAILURE';
 
 
 // Socket
+export const OPEN_SOCKET = 'OPEN_SOCKET';
 export const CHANGE_ROOM = 'CHANGE_ROOM';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 

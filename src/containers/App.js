@@ -29,9 +29,6 @@ if (token) {
 	
 
 class App extends Component {
-	async componentWillMount() {
-}
-
 	render() {
 		return (
 			<Provider store={store}>
