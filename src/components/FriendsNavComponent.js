@@ -26,7 +26,7 @@ class FriendsNavComponent extends Component {
 		return (
 			<div className="friends-nav-component">
 
-				<button onClick={this.handleToggle}>Add Friend</button>
+				<button className="friends-nav-button" onClick={this.handleToggle}>Add Friend</button>
 
 				{ this.state.showForm
 					? <Modal 

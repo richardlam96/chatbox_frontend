@@ -1,4 +1,4 @@
-.friends-nav-component button {
+.friends-nav-button {
 	border: 0;
 	border-radius: 5px;
 	background: rgb(114, 137, 218);
@@ -7,6 +7,6 @@
 	transition: background 0.2s;
 }
 
-.friends-nav-component button:hover {
+.friends-nav-button:hover {
 	background: rgba(114, 137, 218, 0.6);
 }
