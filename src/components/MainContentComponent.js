@@ -5,7 +5,7 @@ import '../styles/MainContentComponent.css';
 
 import FriendsStatus from '../containers/FriendsStatus';
 import FriendsNav from '../containers/FriendsNav';
-import Blank from '../containers/Blank';
+
 
 class MainContentComponent extends Component {
 	render() {

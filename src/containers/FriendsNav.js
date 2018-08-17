@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { addFriend } from '../store/actions/user';
+import { sendFriendRequest } from '../store/actions/friends';
 import FriendsNavComponent from '../components/FriendsNavComponent';
 
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addFriend: (userId, friendId) => dispatch(addFriend(userId, friendId)),
+		sendFriendRequest: (userId, friendId) => dispatch(sendFriendRequest(userId, friendId)),
 	};
 }
 

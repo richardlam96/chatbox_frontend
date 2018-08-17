@@ -20,7 +20,7 @@ class FriendsNavComponent extends Component {
 	render() {
 		let {
 			currentUser,
-			addFriend,
+			sendFriendRequest,
 		} = this.props;
 
 		return (
@@ -31,7 +31,7 @@ class FriendsNavComponent extends Component {
 				{ this.state.showForm
 					? <Modal 
 							objectName="friend"
-							onSubmit={addFriend.bind(this, currentUser.id)}
+							onSubmit={sendFriendRequest.bind(this, currentUser.id)}
 							onToggle={this.handleToggle}
 						/>
 					: <div></div>

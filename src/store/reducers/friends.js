@@ -11,11 +11,13 @@ const DEFAULT_STATE = {
 export default function(state=DEFAULT_STATE, action) {
 	state = Object.freeze(state);
 	switch(action.type) {
+
 		case INDEX_FRIENDS_SUCCESS:
 			return {
 				friendsById: action.friends.friendsById,
 				friendIds: action.friends.friendIds,
 			};
+
 		case ADD_FRIEND_SUCCESS:
 			return {
 				friendsById: {
@@ -27,6 +29,7 @@ export default function(state=DEFAULT_STATE, action) {
 					action.response.friendId,
 				],
 			};
+
 		default:
 			return state;
 	}

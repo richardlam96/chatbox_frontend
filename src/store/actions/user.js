@@ -2,7 +2,6 @@ import { apiCall } from '../../services/api';
 import {
 	INDEX_USERS_SUCCESS,
 	API_FAILURE,
-	ADD_FRIEND_SUCCESS,
 } from '../actionTypes.js';
 
 
@@ -33,22 +32,4 @@ export function indexUsers() {
 	}
 }
 
-export function addFriendSuccess(response) {
-	return {
-		type: ADD_FRIEND_SUCCESS,
-		response,
-	};
-}
 
-export function addFriend(userId, friendId) {
-	return dispatch => {
-		return apiCall(
-			'POST',
-			'/api/users/' + userId + '/friends/' + friendId,
-		).then(response => {
-			dispatch(addFriendSuccess(response));
-		}).catch(error => {
-			dispatch(apiFailure(error));
-		});
-	};
-}

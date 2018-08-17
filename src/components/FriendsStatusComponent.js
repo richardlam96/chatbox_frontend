@@ -11,6 +11,7 @@ class FriendsStatusComponent extends Component {
 	};
 
 	handleToggle = () => {
+    // Will need this for accepting/rejecting invites.
 		this.setState({
 			showForm: !this.state.showForm,
 		});
@@ -34,11 +35,50 @@ class FriendsStatusComponent extends Component {
 			return <li className="friends-list-item" key={ friendId }></li>;
 		});
 
+    let incomingRequestsList = currentUser.incomingRequests.map(id => {
+      if (usersById[id]) {
+        return (
+          <li className="friends-list-item" key={ id }>
+            <i className="fa fa-user-circle-o"></i>
+						{ usersById[id].username }
+          </li>
+        );
+      }
+      return <li className="friends-list-item" key={ id }></li>;
+    });
+
+    let outgoingRequestsList = currentUser.outgoingRequests.map(id => {
+      if (usersById[id]) {
+        return (
+          <li className="friends-list-item" key={ id }>
+            <i className="fa fa-user-circle-o"></i>
+						{ usersById[id].username }
+          </li>
+        );
+      }
+      return <li className="friends-list-item" key={ id }></li>;
+    });
+
+
 		return (
 			<div className="friends-status-component">
+
+        <h4>Friends</h4>
 				<ul className="friends-list">
 					{ friendsList }
 				</ul>
+
+        <h4>Incoming Requests</h4>
+        <ul className="friends-list">
+          { incomingRequestsList }
+        </ul>
+
+        <h4>Outgoing/Pending Requests</h4>
+        <ul className="friends-list">
+          { outgoingRequestsList }
+        </ul>
+
+
 			</div>
 		);
 	}
