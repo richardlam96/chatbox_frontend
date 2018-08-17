@@ -53,7 +53,7 @@ export default (state=DEFAULT_STATE, action) => {
 					...state.friends,
 					action.response.friend,
 				],
-        outgoingRequests: this.outgoingRequests.filter(id => {
+        incomingRequests: this.incomingRequests.filter(id => {
           return id !== action.response.friend;
         }),
 			}

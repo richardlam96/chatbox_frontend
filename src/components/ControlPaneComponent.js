@@ -37,7 +37,7 @@ class ControlPaneComponent extends Component {
     e.preventDefault();
     if (this.state.channelName) {
       this.props.createChannel(
-        this.props.currentUser.id, 
+        this.props.currentUser._id, 
         this.props.match.params.serverId, 
         this.state.channelName
       );
@@ -53,7 +53,7 @@ class ControlPaneComponent extends Component {
 			history,
 		} = this.props;
     await this.props.deleteChannel(
-      currentUser.id,
+      currentUser._id,
       params.serverId,
       channelId
     );
@@ -125,7 +125,7 @@ class ControlPaneComponent extends Component {
 
 					<div className={this.state.showOptions ? "control-pane-options" : "control-pane-options-hidden"}>
 						<button
-							onClick={() => this.handleDeleteServer(currentUser.id)}
+							onClick={() => this.handleDeleteServer(currentUser._id)}
 							>
 							<i className="fa fa-trash-o"></i>
 							<span> Delete Server</span>
@@ -145,7 +145,7 @@ class ControlPaneComponent extends Component {
 					{ this.state.showForm 
 						? <Modal 
 								objectName="channel"
-								onSubmit={createChannel.bind(this, currentUser.id, params.serverId)}
+								onSubmit={createChannel.bind(this, currentUser._id, params.serverId)}
 								onToggle={this.toggleForm}
 							/> 
 						: <div></div> }
@@ -158,7 +158,7 @@ class ControlPaneComponent extends Component {
 					</button>
 					<div className="control-pane-user-info">
 						<span>{currentUser.username}</span>
-						<span>#{currentUser.id.slice(currentUser.id.length - 4)}</span>
+						<span>#{currentUser._id.slice(currentUser._id.length - 4)}</span>
 					</div>
 					<a className="logout-link" onClick={logout}>
             <i className="fa fa-power-off"></i>
