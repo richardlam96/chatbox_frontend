@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 =======
 /node_modules
-*.swp
+*.sw[op]
 
 >>>>>>> 124b267eec104a662292dce4aaac1429e996af95
