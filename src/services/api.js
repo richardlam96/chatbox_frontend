@@ -6,6 +6,7 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export function apiCall(method, path, data=undefined) {
 	const authToken = "Bearer " + localStorage.getItem('jwtToken');
+  console.log('SERVER', process.env.REACT_APP_SERVER_URL);
 	return fetch(SERVER_URL + path, {
 		method,
 		headers: {
