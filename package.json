@@ -5,6 +5,7 @@
   "dependencies": {
     "es6-promise": "^4.2.4",
     "isomorphic-fetch": "^2.2.1",
+    "node": "8.11.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
