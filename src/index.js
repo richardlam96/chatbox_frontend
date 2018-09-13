@@ -4,5 +4,5 @@ import App from './containers/App';
 import { unregister } from './registerServiceWorker';
 import './styles/index.css';
 
-unregister();
 ReactDOM.render(<App />, document.getElementById('root'));
+unregister();
