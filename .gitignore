@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
@@ -21,8 +20,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-=======
-/node_modules
+
+# system files
 *.sw[op]
 
->>>>>>> 124b267eec104a662292dce4aaac1429e996af95

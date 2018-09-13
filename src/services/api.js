@@ -2,9 +2,11 @@ import fetch from 'isomorphic-fetch';
 import 'es6-promise';
 
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 export function apiCall(method, path, data=undefined) {
 	const authToken = "Bearer " + localStorage.getItem('jwtToken');
-	return fetch(path, {
+	return fetch(SERVER_URL + path, {
 		method,
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
