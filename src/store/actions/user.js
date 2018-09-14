@@ -1,15 +1,15 @@
 import { apiCall } from '../../services/api';
 import {
 	INDEX_USERS_SUCCESS,
-	API_FAILURE,
+  INDEX_USERS_FAILURE,
 } from '../actionTypes.js';
 
 
-export function apiFailure(error) {
-	return {
-		type: API_FAILURE,
-		error,
-	};
+export function indexUsersFailure(error) {
+  return {
+    type: INDEX_USERS_FAILURE,
+    error,
+  };
 }
 
 export function indexUsersSuccess(users) {
@@ -27,7 +27,8 @@ export function indexUsers() {
 		).then(users => {
 			dispatch(indexUsersSuccess(users));
 		}).catch(error => {
-			dispatch(apiFailure(error));
+      console.log('trigger index user failure');
+      dispatch(indexUsersFailure(error));
 		});
 	}
 }

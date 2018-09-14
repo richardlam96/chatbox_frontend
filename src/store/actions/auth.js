@@ -22,6 +22,7 @@ export function setCurrentUserFail(error) {
   };
 }
 
+// This really acts as an all error clearing function.
 export function clearCurrentUserFail() {
   return {
     type: CLEAR_CURRENT_USER_FAIL,
@@ -63,7 +64,6 @@ export function getUser(userId) {
 			'get',
 			'/api/users/' + userId,
 		).then(userData => {
-      console.log(userData);
 			dispatch(setCurrentUser(userData));
 		}).catch(error => {
 			dispatch(setCurrentUserFail(error));

@@ -6,6 +6,11 @@ import '../styles/HomePage.css';
 
 
 class HomePage extends Component {
+
+  componentWillMount() {
+    this.props.clearError();
+  }
+
 	async componentDidMount() {
 		let {
 			currentUser,

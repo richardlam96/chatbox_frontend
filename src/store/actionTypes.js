@@ -13,6 +13,7 @@ export const CLEAR_CURRENT_USER_FAIL = 'CLEAR_CURRENT_USER_FAIL';
 
 // Users.
 export const INDEX_USERS_SUCCESS = 'INDEX_USERS_SUCCESS';
+export const INDEX_USERS_FAILURE = 'INDEX_USERS_FAILURE';
 
 
 // Servers.

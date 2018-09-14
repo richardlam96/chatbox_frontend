@@ -12,6 +12,10 @@ class AuthPage extends Component {
 		};
 	}
 
+  componentWillMount() {
+    this.handleClear();
+  }
+
   componentWillUnmount() {
     this.handleClear();
   }
@@ -87,7 +91,7 @@ class AuthPage extends Component {
 			<div className="authpage">
         <div className="header">
           <div className="logo"> 
-            <i className="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>DROCSID</span>
+            <i className="fa fa-gamepad fa-2x" aria-hidden="true"></i><span>CHATBOX</span>
           </div>
         </div>
         <div className="authform-wrapper">

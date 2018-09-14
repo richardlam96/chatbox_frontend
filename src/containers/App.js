@@ -10,7 +10,11 @@ import Home from './Home';
 import Launch from '../containers/Launch';
 
 // functions and utils
-import { getUser, setCurrentUser } from '../store/actions/auth';
+import { 
+  getUser, 
+  setCurrentUser, 
+  clearCurrentUserFail,
+} from '../store/actions/auth';
 
 import AuthRoute from '../utils/AuthRoute';
 
@@ -19,11 +23,14 @@ import '../styles/App.css';
 
 
 const store = configureStore();
+
+// On reload, get userData again and run actions.
 const token = localStorage.getItem('jwtToken');
 if (token) {
 	const userData = JSON.parse(localStorage.getItem('currentUser'));
+  store.dispatch(clearCurrentUserFail());
 	store.dispatch(setCurrentUser(userData));
-	store.dispatch(getUser(userData.id));
+	store.dispatch(getUser(userData._id));
 }
 
 	

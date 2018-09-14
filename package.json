@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "local": "cp ./.env.local ./.env.development.local && npm start",
     "production:local": "cp ./.env.production.local ./.env.development.local && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
