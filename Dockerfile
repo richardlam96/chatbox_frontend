@@ -1,13 +1,13 @@
 FROM node:8.11.4
 
-WORKDIR /usr/src/discord_fronend
+CMD mkdir -p /app/discord_frontend
+WORKDIR /app/discord_frontend
 
-ADD package*.json ./
+ADD package*.json /app/discord_frontend
 
 RUN npm install
 
-COPY . .
+COPY . /app/discord_frontend
 
-EXPOSE 3001
 CMD ["npm", "start"]
 

@@ -81,7 +81,7 @@ class ControlPaneComponent extends Component {
 			logout,
 			match: { params },
 		} = this.props;
-    
+
     let server = serversById[params.serverId];
     let serverName, channelList;
     if (server) {
