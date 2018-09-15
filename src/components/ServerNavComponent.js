@@ -21,14 +21,6 @@ class ServerNavComponent extends Component {
 		});
 	}
 
-  // handleCreateServer = e => {
-	// 	e.preventDefault();
-	// 	if (this.state.serverName) {
-	// 		this.props.createServer(this.props.currentUser.id, this.state.serverName);
-	// 	}
-	// 	this.toggleForm();
-  // }
-
   toggleForm = () => {
 		this.setState({
 			showForm: !this.state.showForm,
@@ -81,7 +73,7 @@ class ServerNavComponent extends Component {
 				{ this.state.showForm 
 					? <Modal 
 							objectName="server"
-							onSubmit={createServer.bind(this, currentUser.id)}
+							onSubmit={createServer.bind(this, currentUser._id)}
 							onToggle={this.toggleForm}
 						/> 
 					: <div></div> }

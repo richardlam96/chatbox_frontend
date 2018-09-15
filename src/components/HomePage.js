@@ -20,11 +20,12 @@ class HomePage extends Component {
 		} = this.props;
 
 		await indexUsers();
-		await indexServers(currentUser.id);
-    await indexChannels(currentUser.id);
+		await indexServers(currentUser._id);
+    await indexChannels(currentUser._id);
 	}
 
 	render() {
+    console.log(this.props.state);
 		return (
 			<div className="homepage">
 				<ServerNav />

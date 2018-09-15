@@ -1,11 +1,19 @@
 import fetch from 'isomorphic-fetch';
 import 'es6-promise';
 
-
+// CONSTANTS *****************************************************************
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
+
+// FUNCTIONS *****************************************************************
 export function apiCall(method, path, data=undefined) {
-	const authToken = "Bearer " + localStorage.getItem('jwtToken');
+  let authToken;
+  let mode = path.split('/').pop();
+  if (mode !== 'signin' && mode !=='register') {
+    // Get token and userId from localStorage for authorization.
+    authToken = "Bearer " + localStorage.getItem('jwtToken');
+  }
+
   return fetch(SERVER_URL + path, {
     method,
     headers: {
@@ -16,7 +24,7 @@ export function apiCall(method, path, data=undefined) {
   }).then(response => {
     return response.json();
   }).then(data => {
-    // If there is no error, there will not be a status code
+    // No error, no status code, so return any message.
     if (data.status !== 200 && data.status !== undefined) {
       throw new Error(data.message);
     }

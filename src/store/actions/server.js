@@ -62,8 +62,10 @@ export function createUserServer(userId, serverName) {
 			`/api/users/${userId}/servers`,
 			{ name: serverName }
 		).then(newServer => {
+      console.log('yesh!');
 			dispatch(createUserServerSuccess(newServer));
 		}).catch(error => {
+      console.log('what the hell', error);
 			dispatch(createUserServerFailure(error));
 		});
 	}
