@@ -121,13 +121,13 @@ class ChatboxComponent extends Component {
 
 		this.socket.emit('send', {
 			text: this.state.message,
-			user: currentUser.id,
+			user: currentUser.username,
 			server: params.serverId,
 			channel: params.channelId,
 		});
 
 		createMessage(
-			currentUser.id, 
+			currentUser._id, 
 			params.serverId, 
 			params.channelId, 
 			this.state.message
@@ -140,26 +140,15 @@ class ChatboxComponent extends Component {
 
 	
 	render() {
-		let {
-			usersById,
-    } = this.props;
 
 		let messageList = this.state.messages.map((message, idx) => {
-			let username;
-			try {
-				username = usersById[message.user].username;
-      } catch(error) {
-				// Sometimes catches a hard to reproduce error where users are undefined.
-				console.log('Error for ' + message.user, usersById)
-			}
 			return (
 				<li key={idx} className="chatbox-message">
-					{username}
+					{message.user}
 					<p>{message.text}</p>
 				</li>
 			);
 		});
-
 		
 		return (
 			<div className="chatbox-component">
