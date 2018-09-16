@@ -20,43 +20,33 @@ class FriendsStatusComponent extends Component {
 	render () {
 		let {
 			currentUser,
-			usersById,
 		} = this.props; 
 
 		let friendsList = currentUser.friends.map(friendId => {
-			if (usersById[friendId]) {
-				return (
-					<li className="friends-list-item" key={ friendId }>
-						<i className="fa fa-user-circle-o"></i>
-						{ usersById[friendId].username }
-					</li>
-				);
-			}
-			return <li className="friends-list-item" key={ friendId }></li>;
+      return (
+        <li className="friends-list-item" key={ friendId }>
+          <i className="fa fa-user-circle-o"></i>
+          { friendId }
+        </li>
+      );
 		});
 
     let incomingRequestsList = currentUser.incomingRequests.map(id => {
-      if (usersById[id]) {
-        return (
-          <li className="friends-list-item" key={ id }>
-            <i className="fa fa-user-circle-o"></i>
-						{ usersById[id].username }
-          </li>
-        );
-      }
-      return <li className="friends-list-item" key={ id }></li>;
+      return (
+        <li className="friends-list-item" key={ id }>
+          <i className="fa fa-user-circle-o"></i>
+          { id }
+        </li>
+      );
     });
 
     let outgoingRequestsList = currentUser.outgoingRequests.map(id => {
-      if (usersById[id]) {
-        return (
-          <li className="friends-list-item" key={ id }>
-            <i className="fa fa-user-circle-o"></i>
-						{ usersById[id].username }
-          </li>
-        );
-      }
-      return <li className="friends-list-item" key={ id }></li>;
+      return (
+        <li className="friends-list-item" key={ id }>
+          <i className="fa fa-user-circle-o"></i>
+          { id }
+        </li>
+      );
     });
 
 
