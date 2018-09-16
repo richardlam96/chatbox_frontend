@@ -22,30 +22,29 @@ export function indexFriends(userId) {
 			'GET',
 			'/api/users/' + userId + '/friends',
 		).then(friends => {
-			dispatch(indexFriendsSuccess);
+			dispatch(indexFriendsSuccess(friends));
 		}).catch(error => {
-			dispatch(indexFriendsFailure);
+			dispatch(indexFriendsFailure(error));
 		});
 	}
 }
 
 
-export function sendFriendRequestSuccess(response) {
+export function sendFriendRequestSuccess(friend) {
 	return {
 		type: SEND_FRIEND_REQUEST_SUCCESS,
-		response,
+		friend,
 	};
 }
 
 export function sendFriendRequest(userId, inviteeUsername) {
-  console.log('hello');
 	return dispatch => {
 		return apiCall(
 			'POST',
 			'/api/users/' + userId + '/friends/invite',
       { inviteeUsername }
-		).then(response => {
-			dispatch(sendFriendRequestSuccess(response));
+		).then(friend => {
+			dispatch(sendFriendRequestSuccess(friend));
 		}).catch(error => {
 			// dispatch(sendFriendFailure(error));
 		});
@@ -53,10 +52,10 @@ export function sendFriendRequest(userId, inviteeUsername) {
 }
 
 
-export function acceptFriendRequestSuccess(response) {
+export function acceptFriendRequestSuccess(friend) {
 	return {
 		type: ACCEPT_FRIEND_REQUEST_SUCCESS,
-		response,
+		friend,
 	};
 }
 
@@ -66,8 +65,8 @@ export function acceptFriendRequest(userId, friendUsername) {
 			'POST',
 			'/api/users/' + userId + '/friends/accept',
       { friendUsername }
-		).then(response => {
-			dispatch(acceptFriendRequestSuccess(response));
+		).then(friend => {
+			dispatch(acceptFriendRequestSuccess(friend));
 		}).catch(error => {
 			// dispatch(acceptFriendRequestFailure(error));
 		});

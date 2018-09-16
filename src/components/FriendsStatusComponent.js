@@ -20,7 +20,12 @@ class FriendsStatusComponent extends Component {
 	render () {
 		let {
 			currentUser,
+      friendsById,
+      friendIds,
 		} = this.props; 
+
+    console.log(friendsById);
+    console.log(friendIds);
 
 		let friendsList = currentUser.friends.map(friendId => {
       return (
@@ -40,11 +45,11 @@ class FriendsStatusComponent extends Component {
       );
     });
 
-    let outgoingRequestsList = currentUser.outgoingRequests.map(id => {
+    let outgoingRequestsList = currentUser.outgoingRequests.map((id, idx) => {
       return (
-        <li className="friends-list-item" key={ id }>
+        <li className="friends-list-item" key={ idx }>
           <i className="fa fa-user-circle-o"></i>
-          { id }
+          { friendsById[id].username }
         </li>
       );
     });
@@ -67,8 +72,6 @@ class FriendsStatusComponent extends Component {
         <ul className="friends-list">
           { outgoingRequestsList }
         </ul>
-
-
 			</div>
 		);
 	}

@@ -11,20 +11,28 @@ class HomePage extends Component {
     this.props.clearError();
   }
 
-	async componentDidMount() {
+	componentDidMount() {
 		let {
 			currentUser,
 			indexServers,
 			indexChannels,
+      indexFriends,
 		} = this.props;
 
-		await indexServers(currentUser._id);
-    await indexChannels(currentUser._id);
+		indexServers(currentUser._id);
+    indexChannels(currentUser._id);
+    indexFriends(currentUser._id);
 	}
 
 	render() {
-    console.log(this.props.state);
+    let {
+      friendsFetching,
+      channelFetching,
+      serverFetching,
+    } = this.props;
+
 		return (
+      !friendsFetching && !channelFetching && !serverFetching &&
 			<div className="homepage">
 				<ServerNav />
 				<ControlPane />

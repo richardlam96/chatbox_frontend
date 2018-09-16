@@ -8,6 +8,7 @@ import {
 
 
 const DEFAULT_STATE = {
+  isFetching: true,
 	serversById: {},
 	serverIds: [],
 }
@@ -20,6 +21,7 @@ export default (state=DEFAULT_STATE, action) => {
 		case INDEX_USER_SERVERS_SUCCESS:
 			return {
 				...state,
+        isFetching: false,
 				...action.serverData,
 			};
 

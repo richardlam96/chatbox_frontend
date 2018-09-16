@@ -8,6 +8,7 @@ import {
 
 
 const DEFAULT_STATE = {
+  isFetching: true,
 	channelsById: {},
 	channelIds: [],
 };
@@ -21,6 +22,7 @@ export default (state=DEFAULT_STATE, action) => {
     case INDEX_SERVER_CHANNELS_SUCCESS:
 			return {
 				...state,
+        isFetching: false,
 				channelsById: action.channelData.channelsById,
 				channelIds: action.channelData.channelIds,
 			};

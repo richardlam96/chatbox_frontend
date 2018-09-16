@@ -1,9 +1,10 @@
 import {
 	INDEX_FRIENDS_SUCCESS,
-	ADD_FRIEND_SUCCESS,
+	SEND_FRIEND_REQUEST_SUCCESS,
 } from '../actionTypes';
 
 const DEFAULT_STATE = {
+  isFetching: true,
 	friendsById: {},
 	friendIds: [],
 };
@@ -14,21 +15,23 @@ export default function(state=DEFAULT_STATE, action) {
 
 		case INDEX_FRIENDS_SUCCESS:
 			return {
+        isFetching: false,
 				friendsById: action.friends.friendsById,
 				friendIds: action.friends.friendIds,
 			};
 
-		case ADD_FRIEND_SUCCESS:
-			return {
-				friendsById: {
-					...state.friendsById,
-					action.response.friend,
-				},
-				friendIds: [
-					...state.friendIds,
-					action.response.friendId,
-				],
-			};
+    case SEND_FRIEND_REQUEST_SUCCESS:
+      console.log('yay');
+      return {
+        friendsById: {
+          ...state.friendsById,
+          [action.friend._id]: action.friend,
+        },
+        friendIds: [
+          ...state.friendIds,
+          action.friend._id,
+        ],
+      };
 
 		default:
 			return state;
