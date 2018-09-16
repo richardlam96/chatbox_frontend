@@ -31,6 +31,7 @@ export function indexFriends(userId) {
 
 
 export function sendFriendRequestSuccess(friend) {
+  console.log('friend', friend);
 	return {
 		type: SEND_FRIEND_REQUEST_SUCCESS,
 		friend,

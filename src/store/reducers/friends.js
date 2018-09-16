@@ -11,6 +11,7 @@ const DEFAULT_STATE = {
 
 export default function(state=DEFAULT_STATE, action) {
 	state = Object.freeze(state);
+  console.log('yay');
 	switch(action.type) {
 
 		case INDEX_FRIENDS_SUCCESS:
@@ -34,6 +35,7 @@ export default function(state=DEFAULT_STATE, action) {
       };
 
 		default:
+      console.log('return default');
 			return state;
 	}
 }
