@@ -27,7 +27,7 @@ class ChatboxComponent extends Component {
 		await this.changeRoom();
 
 		// Index messages and store into state.
-		await indexMessages(currentUser.id, params.serverId, params.channelId);
+		await indexMessages(currentUser._id, params.serverId, params.channelId);
 		await this.getMessages();
 
 		// Scroll chat list to bottom.
@@ -45,7 +45,7 @@ class ChatboxComponent extends Component {
 
 		if (this.state.room !== params.channelId) {
 			await this.changeRoom();
-			await indexMessages(currentUser.id, params.serverId, params.channelId);
+			await indexMessages(currentUser._id, params.serverId, params.channelId);
 			await this.getMessages();
 		}
 	}
