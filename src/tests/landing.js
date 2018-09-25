@@ -23,7 +23,7 @@ describe('Landing Page', function() {
   it('should have the title, Chatbox App', function() {
     return driver.getTitle()
     .then(title => {
-      return assert.equal(title, 'Chatbox App');
+      assert.equal(title, 'Chatbox App');
     });
   });
 
