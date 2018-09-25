@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "es6-promise": "^4.2.4",
     "isomorphic-fetch": "^2.2.1",
     "node": "8.11.1",
@@ -13,6 +15,7 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "socket.io-client": "^2.1.1"
   },
   "scripts": {
@@ -20,7 +23,7 @@
     "local": "cp ./.env.local ./.env.development.local && npm start",
     "production:local": "cp ./.env.production.local ./.env.development.local && npm start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "mocha src/tests/",
     "eject": "react-scripts eject"
   }
 }
