@@ -22,8 +22,8 @@ const Navbar = ({ currentUser, error, logout }) => {
   } else { 
     links = (
       <div className="navbar-links">
-        <Link className="navbar-link" to="/signin">SignIn</Link>
-        <Link className="navbar-link" to="/register">Register</Link>
+        <Link className="navbar-link" to="/signin" id="signin">SignIn</Link>
+        <Link className="navbar-link" to="/register" id="register">Register</Link>
       </div>
     );
   }
