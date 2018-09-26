@@ -1,5 +1,6 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
+const chrome = require('selenium-webdriver/chrome');
 const { assert } = require('chai');
 
 /* Test the Landing Page for proper elements */
