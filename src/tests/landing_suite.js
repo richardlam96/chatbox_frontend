@@ -50,6 +50,10 @@ suite(function(env) {
     });
 
     it('should go to signin page after clicking signin', function() {
+      /* Test that the signin button on the landing page works.
+       */
+
+      // Click the signin button and check the text in heading div.
       return driver.findElement(By.id('signin')).then(button => {
         return button.click();
       }).then(() => {
@@ -60,6 +64,11 @@ suite(function(env) {
     });
 
     it('should load main screen after signing in', function() {
+      /* Test that logging in with correct credentials will get you past
+       * the signin page.
+       */
+
+      // Find input areas and enter credentials.
       return driver.findElement(By.name('username')).then(element => {
         return element.sendKeys('demotester');
       }).then(() => {
@@ -70,6 +79,8 @@ suite(function(env) {
         return driver.findElement(By.css("button[type='submit']"));
       }).then(button => {
         return button.click();
+
+      // Check that Hompage loads.
       }).then(() => {
         return driver.wait(until.elementLocated(By.className('homepage')));
       }).then(() => {
