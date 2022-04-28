@@ -12,7 +12,7 @@ class ChatboxComponent extends Component {
 			messages: [],
 			room: this.props.match.params.channelId,
 		};
-		this.socket = io.connect('http://localhost:3001');
+		this.socket = io.connect(process.env.REACT_APP_SERVER_URL);
 	}
 
 	async componentDidMount() {
