@@ -12,7 +12,7 @@ class ChatboxComponent extends Component {
 			messages: [],
 			room: this.props.match.params.channelId,
 		};
-		this.socket = io.connect('http://localhost:3000');
+		this.socket = io.connect('http://localhost:3001');
 	}
 
 	async componentDidMount() {
@@ -27,7 +27,7 @@ class ChatboxComponent extends Component {
 		await this.changeRoom();
 
 		// Index messages and store into state.
-		await indexMessages(currentUser.id, params.serverId, params.channelId);
+		await indexMessages(currentUser._id, params.serverId, params.channelId);
 		await this.getMessages();
 
 		// Scroll chat list to bottom.
@@ -45,7 +45,7 @@ class ChatboxComponent extends Component {
 
 		if (this.state.room !== params.channelId) {
 			await this.changeRoom();
-			await indexMessages(currentUser.id, params.serverId, params.channelId);
+			await indexMessages(currentUser._id, params.serverId, params.channelId);
 			await this.getMessages();
 		}
 	}
@@ -121,13 +121,13 @@ class ChatboxComponent extends Component {
 
 		this.socket.emit('send', {
 			text: this.state.message,
-			user: currentUser.id,
+			user: currentUser._id,
 			server: params.serverId,
 			channel: params.channelId,
 		});
 
 		createMessage(
-			currentUser.id, 
+			currentUser._id, 
 			params.serverId, 
 			params.channelId, 
 			this.state.message

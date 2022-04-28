@@ -16,7 +16,7 @@ export default (state=DEFAULT_STATE, action) => {
   switch(action.type) {
     case OPEN_SOCKET:
       return {
-        socket: io.connect('http://localhost:3000'),
+        socket: io.connect('http://localhost:3001'),
       };
     default: 
       return state;
