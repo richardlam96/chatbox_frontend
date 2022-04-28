@@ -2,8 +2,7 @@ import fetch from 'isomorphic-fetch';
 import 'es6-promise';
 
 // CONSTANTS *****************************************************************
-// const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-const SERVER_URL = "http://localhost:3001";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 // FUNCTIONS *****************************************************************
